@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Style/Fault_Form.css">
+    <title>Report Fault</title>
+</head>
+<body>
+    <h1>Reporting a fault</h1>
+    <form action="" method="get">
+        <div class="formHeader">
+            <label>Category</label>
+            <label>Description</label>
+            <label>location</label>
+            <label>Technician</label>
+            <label>Phone</label>
+        </div>
+        <div class="formEntry">
+            <select name="category" id="">
+                <option value="electrical">electrical</option>
+                <option value="carpently">carpently</option>
+                <option value="weilding">weilding</option>
+                <option value="plumbling">plumbling</option>
+                <option value="general">general</option>
+            </select>
+            <textarea name="description" id="description" cols="30" rows="2"></textarea>
+            <input type="text" name="location" id="location" placeholder="location">
+            <input type="text" name="technician" id="technician" placeholder="technician">
+            <input type="text" name="phone" id="phone" placeholder="phone">
+        </div>
+        
+    </form>
+    <a href="./Dashboard-adminstrator.html">back</a>
+</body>
+</html>

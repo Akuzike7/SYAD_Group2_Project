@@ -1,0 +1,11 @@
+.formHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.formEntry{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}

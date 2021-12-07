@@ -1,0 +1,42 @@
+@media screen and (max-width:414px) {
+    .sidePanel{
+        display: none;
+
+    }
+
+    .navBar .navLinks{
+        display: none;
+    }
+
+    .faults{
+        display: none;
+    }
+
+    .Logo{
+        justify-content: space-between;
+        
+    }
+    .Logo img{
+        width: 30px;
+    }
+
+    .Logo h2{
+        font-size: small;
+    }
+
+    .sideBar{
+        width: 30px;
+        height: 30px;
+        float: right;
+        margin-right: 10px;
+        padding: 5px;
+    
+    }
+
+    .sideBar img{
+        src: url("../Images/add_list_48px.png");
+        width: 30px;
+        height: 30px;
+    }
+
+}

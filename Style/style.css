@@ -1,0 +1,417 @@
+@import "http://fonts.googleapis.com/css?family=Raleway";
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* scrollbar customization*/
+.chat::-webkit-scrollbar,.remarks::-webkit-scrollbar,.ListFaults tbody::-webkit-scrollbar{
+    width: 5px;
+    border-radius: 15px;
+      
+}
+.chat::-webkit-scrollbar-thumb,.remarks::-webkit-scrollbar-thumb,.ListFaults tbody::-webkit-scrollbar-thumb{
+    background-color: gray;
+    border-radius: 20px;
+}
+.chat::-webkit-scrollbar-track,.chat::-webkit-scrollbar-track,.ListFaults tbody::-webkit-scrollbar-track  {
+    border-radius: 15px;
+    background-color: #eee;
+}
+
+:root{
+    scrollbar-width: 1em;
+    scrollbar-color: gray #eee;
+        
+}
+
+.navBar{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.navBar h2{
+    color: gray;
+    font-size: x-large;
+}
+
+.Logo{
+    display: flex;
+    align-items: center;
+}
+
+.Logo h2{
+    margin-left:10px;
+}
+
+.navLink{
+    padding: 5px 10px;
+    font-size: small;
+    color: rgb(64, 137, 233);
+}
+
+.Content{
+    display: flex;
+    justify-content: flex-start;
+    margin: 30px;
+    border: 1px black solid;
+}
+.sidePanel{
+    flex: 2;
+    
+}
+.Stats{
+    border: 2px white solid;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    box-shadow: 0 1px 1px 1px gray;
+    margin: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    height: 230px;
+    
+}
+
+.sideTool{
+    display: flex;
+    flex-direction: column;
+    border: 2px white solid;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    box-shadow: 0 1px 1px 1px gray;
+    margin: 20px 0 0 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 30px;
+    height: 220px;
+    
+}
+
+.faults{
+    padding: 20px 0;
+    flex:6;
+    overflow-y: auto;
+    
+}
+
+
+.Stats h3{
+    color:rgb(255, 255, 255);
+    font-size: small;
+    margin-bottom: 20px;
+}
+
+.Stats h4{
+    color: black;
+    font-size: small;
+}
+
+.Stats_items{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 0 10px;
+    
+}
+
+.cardHead{
+    background-color: rgb(64, 137, 233);
+    height: 30px;
+    color: white;
+    font-size: small;
+    text-align: center;
+    padding-top: 5px;
+    margin: 0 10px;
+}
+.SidecardHead{
+    background-color: rgb(64, 137, 233);
+    height: 30px;
+    color: white;
+    font-size: small;
+    text-align: left;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.LogoutBtn{
+    background-color: rgb(64, 137, 233);
+    color: white;
+    border: 1px solid rgb(64, 137, 233);
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.LogoutBtn:hover{
+    cursor: pointer;
+    background-color: white;
+    color: rgb(64, 137, 233);
+}
+.ListFaultTitle{
+    background-color:rgb(64, 137, 233) ;
+    color: white;
+    padding: 6px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.ListFaults{
+    width: 97.8%;
+    margin: 0 10px;
+    font-size: small;
+    text-align: center;
+    border-collapse: collapse;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+.ListFaults thead{
+    display: flex;
+    width: 100%;
+  
+}
+
+.ListFaults thead tr{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.ListFaults thead tr th{
+    display: flex;
+}
+
+.ListFaults tbody{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   height: 500px;
+   overflow-y: auto;
+   
+    
+}
+
+.ListFaults tbody tr{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    
+}
+
+.ListFaults tbody tr td{
+    display: flex;
+    
+}
+
+
+.ListFaults td ,th {
+    float: left;
+    padding: 10px;
+}
+
+.ListFaults td{
+    font-size: smaller;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
+    color: rgb(44, 43, 43);
+}
+.ListFaults caption{
+    color: white;
+    background-color: rgb(64, 137, 233);
+    padding: 8px;
+}
+.ListFaults tr:nth-child(even) {
+    background-color: #eee;
+}
+.ListFaults tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.Hrule{
+    margin: 0 10px;
+}
+.mainContent{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 40px;
+}
+
+.LsideFault{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px;
+    flex: 1;
+    
+    
+}
+
+.RsideFault{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px;
+}
+
+.tileL{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+}
+.tileR{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+}
+.tileLink{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    padding: 20px;
+    padding-top: 35px;
+    padding-right: 20px;
+    flex: 1;
+   
+    
+}
+.tileOptions{
+    display: flex;
+    flex-direction: column;
+    font-size: smaller;
+    
+}
+.tileLink .navLink{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(97, 96, 96);
+    font-size: smaller;
+    border: 1px white solid;
+    border-radius: 3px;
+    
+}
+
+.tileLink .navLink:hover{
+    border: 1px rgb(64, 137, 233) solid;    
+    
+}
+
+.tileLink .tileTitle{
+    margin-left: 5px;
+}
+.tileStat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:smaller;
+    color: rgb(97, 96, 96);
+    margin: 5px 0;
+    margin-right: 10px;
+    width: 150px;
+    
+}
+
+.tileTitle{
+    font-size: medium;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: rgb(18, 18, 19);
+    
+}
+
+.tileItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    margin-left: 0;
+    
+    
+}
+
+.tileItem img{
+    margin-right: 10px;
+}
+
+.tileItem h4{
+    font-size: smaller;
+    
+}
+
+.tileStat h4{
+    font-size: smaller;
+}
+.faultCat{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.LeftPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px;
+    flex: 1;
+}
+.CenterPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px;
+    flex: 4;
+}
+.RightPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px;
+    flex: 1;
+}
+
+.Barchart{
+    
+    border: 1px #ccc solid;
+    padding: 10px;
+    width: 400px;
+    height: 250px;
+    
+}
+
+.LineChart{
+    border: 1px #ccc solid;
+    padding: 10px;
+    width: 400px;
+    height: 250px;
+}
+
+.PieChart{
+    border: 1px #ccc solid;
+    padding: 10px;
+    width: 400px;
+    height: 250px;
+}
+.CLeft{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.CRight{
+    display: flex;
+    justify-content: flex-end;
+}

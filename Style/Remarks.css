@@ -1,0 +1,136 @@
+:root{
+    scrollbar-width: 1em;
+    scrollbar-color: gray #eee;
+    
+        
+}
+.remarksBody{
+    display: flex;
+    justify-content: flex-start;
+    height: 570px;
+    max-height: 570px;
+}
+
+.remarks{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5px;
+    margin: 5px;
+    margin-right: 1px;
+    flex:2;
+    overflow-y:auto;
+}
+
+.chatbox{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    margin-left: 1px;
+    flex: 8;
+}
+
+.chat{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex:14;
+    background-color: #eee;
+    border-bottom: none;
+    padding: 10px;
+    overflow-y: auto;
+    
+}
+
+.chat::-webkit-scrollbar,.remarks::-webkit-scrollbar,.ListFault::-webkit-scrollbar{
+    width: 5px;
+    border-radius: 15px;
+      
+}
+.chat::-webkit-scrollbar-thumb,.remarks::-webkit-scrollbar-thumb,.ListFault::-webkit-scrollbar-thumb{
+    background-color: gray;
+    border-radius: 20px;
+}
+.chat::-webkit-scrollbar-track,.chat::-webkit-scrollbar-track,.ListFault::-webkit-scrollbar-track  {
+    border-radius: 15px;
+    background-color: #eee;
+}
+
+.messageBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex:1;
+    box-shadow: 0 0 1px 0 rgb(10, 10, 10);
+}
+
+
+.sendBtn{
+    width: 60px;
+    margin-left: 2.5px;
+    border: none;
+    background-color: transparent;
+}
+
+.sendBtn:hover{
+    cursor: pointer;
+}
+
+#comment{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-left: 5px;
+    margin-right: 2.5px;
+    resize:vertical;
+    overflow-y: hidden;
+    max-height: 200px;
+    
+}
+
+.remarkItem{
+    display: flex;
+    justify-content: flex-start;
+    padding:5px;
+    margin: 1px 0;
+    width:100%
+       
+}
+
+.remarkItem:hover{
+    background-color: #eee;
+}
+
+.remarkItemHead{
+    border-radius: 50%;
+    background-color: rgb(182, 179, 179);
+    color: white;
+    padding: 10px;
+    flex: 1;
+    font-size: small;
+    text-align: center;
+    align-self: center;
+}
+
+.remarkItemBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+    flex:9;
+    font-size: small;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.remarkItemBody h5{
+    color: grey;
+}
+
+.remarkItemBodyTop{
+    display:flex;
+    justify-content: space-between;
+}
+.remarkItemBodyBottom{
+    display: flex;
+    justify-content: flex-start;
+}
