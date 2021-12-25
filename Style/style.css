@@ -19,7 +19,7 @@
 }
 .chat::-webkit-scrollbar-track,.chat::-webkit-scrollbar-track,.ListFaults tbody::-webkit-scrollbar-track  {
     border-radius: 15px;
-    background-color: #eee;
+    background-color: transparent;
 }
 
 :root{
@@ -145,20 +145,19 @@
 }
 
 .LogoutBtn{
-    background-color: rgb(64, 137, 233);
-    color: white;
+    background-color:white ;
+    color: rgb(64, 137, 233);
     border: 1px solid rgb(64, 137, 233);
     border-radius: 3px;
     padding: 10px;
-    margin: 10px;
     margin-top: 10px;
-    width: 80%;
+    
 }
 
 .LogoutBtn:hover{
     cursor: pointer;
-    background-color: white;
-    color: rgb(64, 137, 233);
+    background-color: rgb(64, 137, 233);
+    color: white;
 }
 .ListFaultTitle{
     background-color:rgb(64, 137, 233) ;
@@ -175,50 +174,60 @@
     text-align: center;
     border-collapse: collapse;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow-y: auto;
     
 }
 
-.ListFaults thead{
-    display: flex;
-    width: 100%;
-  
-}
 
 .ListFaults thead tr{
     display: flex;
     justify-content: space-around;
     width: 100%;
+    
 }
 
 .ListFaults thead tr th{
     display: flex;
+    font-size: smaller;
+    
 }
 
 .ListFaults tbody{
    display: flex;
    flex-direction: column;
+   text-align: center;
    width: 100%;
-   height: 500px;
+   height: 450px;
    overflow-y: auto;
    
-    
 }
 
 .ListFaults tbody tr{
     display: flex;
-    justify-content: space-around;
+    justify-content:space-around;
+    text-align: center;
     width: 100%;
     
-}
-
-.ListFaults tbody tr td{
-    display: flex;
     
 }
 
+.ListFaults tbody tr:hover{
+    background-color: rgba(64, 137, 233, 0.6);
+}
+.ListFaults tbody td:hover{
+    cursor: default;
+}
+#selectAll{
+    display: none;
+}
+#select{
+    display: none;
+}
+.ListFaults thead{
+    border-bottom: 1px rgb(64, 137, 233) solid;
+}
 
 .ListFaults td ,th {
-    float: left;
     padding: 10px;
 }
 
@@ -233,11 +242,14 @@
     padding: 8px;
 }
 .ListFaults tr:nth-child(even) {
-    background-color: #eee;
+    background-color: #eee;   
 }
+
+
 .ListFaults tr:nth-child(odd) {
-    background-color: #fff;
+    background-color: #fff; 
 }
+
 
 .Hrule{
     margin: 0 10px;
@@ -269,13 +281,14 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    
+    border: 1px #ccc solid;
+    margin-bottom: 10px;
 }
 .tileR{
     display: flex;
     flex-direction: column;
     padding: 20px;
-    
+    border: 1px #ccc solid;
 }
 .tileLink{
     display: flex;
@@ -285,13 +298,14 @@
     padding-top: 35px;
     padding-right: 20px;
     flex: 1;
-   
+    
     
 }
 .tileOptions{
     display: flex;
     flex-direction: column;
     font-size: smaller;
+    
     
 }
 .tileLink .navLink{
@@ -302,12 +316,18 @@
     font-size: smaller;
     border: 1px white solid;
     border-radius: 3px;
-    
+    background-color: white;
 }
 
 .tileLink .navLink:hover{
     border: 1px rgb(64, 137, 233) solid;    
+    cursor: pointer;
     
+}
+
+.tileLink .navLink:disabled{
+    cursor: default;
+    opacity: 0.6;
 }
 
 .tileLink .tileTitle{
@@ -407,11 +427,56 @@
 }
 .CLeft{
     display: flex;
-    justify-content: flex-start;
-    padding: 10px;
+    justify-content: flex-end;
+    padding-bottom: 10px;
 }
 
 .CRight{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+.notifications{
+    border: 1px #ccc solid;
+    padding: 20px;
+    width: 400px;
+}
+
+.notifications .tileStat{
+    width: 95%;
+    margin-left: 10px;
+
+}
+
+.dashboardBtn{
+    padding: 10px;
+    border: 1px rgb(64, 137, 233) solid;
+    border-radius: 5px;
+    background-color: white;
+    color: rgb(64, 137, 233);
+    margin: 5px;
+    flex: 1;
+    
+}
+
+.dashboardBtn:hover{
+    background-color: rgb(64, 137, 233);
+    color:white;
+}
+
+.dashBtns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.Faultmanagement{
+    width: 700px;
+    height: 400px;
+    background-color: red;
+    display: inline-block;
+    z-index: 1;
 }

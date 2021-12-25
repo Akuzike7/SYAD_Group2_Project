@@ -1,0 +1,127 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 0;
+    width: 1000px;
+    background-color: white;
+    padding: 10px;
+}
+.Logo{
+    display: flex;
+    align-items: center;
+    color: gray;
+    font-size: small;
+}
+.navLinks{
+    font-size: small;
+    color: rgb(64, 137, 233);
+}
+
+.account{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: small;
+    color: gray;
+}
+
+.account img{
+    border: 1px rgb(64, 137, 233) solid;
+    border-radius: 100%;
+    padding: 5px;
+    margin: 5px;
+}
+
+}
+.statTile h4{
+    color: rgb(64, 137, 233);
+    font-size: large;
+}
+.statTile h5{
+    color: gray;
+    font-size: medium;
+}
+
+.maincontent{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+}
+.left{
+    flex-basis: 900px;
+    
+}
+.right{
+    flex-basis: 150px ;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+.title{
+    font-size: small;
+    text-align: center;
+    color: white;
+    background-color: rgb(64, 137, 233);
+    padding: 6px;
+}
+.Theader{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px rgb(64, 137, 233) solid;
+    padding: 5px;
+}
+.Theader li{
+    list-style: none;
+    font-size: smaller;
+}
+.dashBtn{
+    border: 1px rgb(64, 137, 233) solid;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: small;
+}
+.dashBtn:hover{
+    color: white;
+    background-color: rgb(64, 137, 233);
+}
+.Tbody{
+    height: 450px;
+    
+}
+#dashTable{
+    width: 100%;
+    font-size: smaller;
+    text-align: justify;
+}
+
+Table tr th{
+    font-size: smaller;
+    padding: 8px;
+}
+
+table tr td{
+    font-size: smaller;
+    padding: 6px;
+}
+
+table tr:nth-child(odd){
+    background-color: white;
+}
+
+table tr:nth-child(even){
+    background-color: #eee;
+}
+

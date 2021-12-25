@@ -15,15 +15,14 @@
     <nav class="navBar">
 
         <div class="Logo">
-            <img src="../../Images/Must_Logo.png" width="50px">
+            <img src="../../Images/Must_Logo.png" width="40px">
             <h2>Maintenance Portal</h2>
         </div>
         
         <div class="navLinks">
-            <a class="navLink" href="../Faults.html">Faults</a>
-            <a class="navLink" href="../admin/Remarks.html">Remarks</a>
-           <!-- <a class="navLink" href="./Report.html">Reports</a>
-            <a class="navLink" href="">Notifications</a>-->
+            <a class="navLink" href="./Faults.html">Faults</a>
+            <a class="navLink" href="./Remarks.html">Remarks</a>
+            <a class="navLink" href="./Report.html">Reports</a>
 
         </div>
 
@@ -122,6 +121,32 @@
 
         <div class="CenterPanel">
             <div class="CRight">
+
+                <div class="notifications">
+                    <h4 class="tileTitle">Notifications</h4>
+
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/online_maintenance_portal_48px.png" width="20px" alt="" srcset="">
+                            <h4>Remarks</h4>
+                        </div>
+                        <h4>9</h4>
+                    </div> 
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/error_48px.png" width="20px" alt="" srcset="">
+                            <h4>Faults not resolved in 24hrs</h4>
+                        </div>
+                        <h4>9</h4>
+                    </div> 
+                    <div class="dashBtns">
+                        <button class="dashboardBtn">Unassigned Faults</button>
+                        <button class="dashboardBtn">Unresolved Faults</button>
+                        <button class="dashboardBtn">Generate Report</button>
+                        <button class="dashboardBtn" onclick="navigate('./Remarks.html')">Remarks</button>
+                    </div>
+                </div>
+
                 <div class="LineChart">
                     <canvas id="myChart2" ></canvas>
                     <script>
@@ -252,6 +277,42 @@
                             <h4>Adminstrators</h4>
                         </div>
                         <h4>3</h4>
+                    </div>
+              </div>
+            </div>
+            <div class="tileL">
+ 
+                <h4 class="tileTitle">Faults Reported</h4>
+ 
+                <div class="faultCat">
+ 
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/student_male_48px.png" width="20px" alt="" srcset="">
+                            <h4>Students</h4>
+                        </div>
+                        <h4>150</h4>
+                    </div>
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/workers_48px.png" width="20px" alt="" srcset="">
+                            <h4>Technicians</h4>
+                        </div>
+                        <h4>50</h4>
+                    </div>
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/lecturer_48px.png" width="20px" alt="" srcset="">
+                            <h4>Lecturers</h4>
+                        </div>
+                        <h4>30</h4>
+                    </div>
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/administrator_male_48px.png" width="20px" alt="" srcset="">
+                            <h4>Adminstrators</h4>
+                        </div>
+                        <h4>39</h4>
                     </div>
               </div>
             </div>
