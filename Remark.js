@@ -18,12 +18,16 @@ messageBtn.addEventListener("click",() =>{
     message.className = "outgoingMsg";
 
     var msgtext = document.createElement("p");
-    msgtext.value = messageInput.value;
+    msgtext.textContent = messageInput.value;
     message.append(msgtext);
 
     var msgTime = document.createElement("h6");
     msgTime.id = "chatMsgTime2";
-    msgTime.value = Date.now();
+    var time = new Date();
+    msgTime.textContent = time.toLocaleString();
     message.append(msgTime);
+
+    messageBoard.append(message);
+    messageInput.value = "";
 
 })

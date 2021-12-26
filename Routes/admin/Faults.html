@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Style/style.css">
+    <link rel="stylesheet" href="../../Style/Fault_Form.css">
     <title>Faults</title>
 </head>
 <body>
@@ -114,6 +115,31 @@
         </div>
         <!--Center where faults are listed-->     
             <div class="faults">
+                <div class="addForm">
+                    <button id="close">&times;</button>
+                    <h3 id="title">Report Fault</h3>
+                    <label class="formLabel" for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electronic">Electronic</option>
+                        <option value="Welding">Welding</option>
+                        <option value="Carpentry">Carpentry</option>
+                    </select>
+                    <label class="formLabel" for="description">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="8"></textarea>
+                    <label class="formLabel" for="Location">Location</label>
+                    <input type="text" name="location" id="Location">
+                    <label class="formLabel" for="Phone">Phone</label>
+                    <input type="text" name="Phone" id="Phone">
+                </div>
+
+                <div class="assignForm">
+                    <button id="close">&times;</button>
+                    <h3 id="title">Assign Technician</h3>
+                    
+                </div>
+                <div class="updateForm"></div>
+                <div class="deleteForm"></div>
                 <div class="ListFaultTitle">Fault Activity Section</div>
                  
                 <form action="">
