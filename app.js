@@ -14,7 +14,8 @@ const initialState = [];
 const close = document.getElementById("close");
 
 close.addEventListener("click",() =>{
-    const fo
+    const addFault_form = document.querySelector(".addForm");
+    addFault_form.style.display = "none";
 })
 
 const add = document.getElementById("add");
