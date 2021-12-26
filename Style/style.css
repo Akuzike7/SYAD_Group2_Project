@@ -7,7 +7,6 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     user-select: none;
 }
-
 /* scrollbar customization*/
 .chat::-webkit-scrollbar,.remarks::-webkit-scrollbar,.ListFaults tbody::-webkit-scrollbar{
     width: 5px;
@@ -261,6 +260,7 @@
     display: flex;
     justify-content: flex-start;
     margin-top: 40px;
+    
 }
 
 .LsideFault{
@@ -390,6 +390,7 @@
     justify-content: flex-start;
     padding: 15px;
     flex: 1;
+    
 }
 .CenterPanel{
     display: flex;
@@ -430,13 +431,13 @@
 }
 .CLeft{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     padding-bottom: 10px;
 }
 
 .CRight{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-bottom: 10px;
 }
 

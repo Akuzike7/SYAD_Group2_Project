@@ -11,11 +11,19 @@ const remarksData = [];
 const active = [];
 const initialState = [];
 
+const close = document.getElementById("close");
 
-function faultForm(){
-   
+close.addEventListener("click",() =>{
+    const fo
+})
 
-}
+const add = document.getElementById("add");
+
+add.addEventListener("click",() =>{
+    const addFault_form = document.querySelector(".addForm");
+    addFault_form.style.display = "block";
+});
+
 function addFault(category,description,location,technician,reported,phone){
     faultData.push({
         "Date":Date.now(),
