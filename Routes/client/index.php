@@ -12,7 +12,14 @@
 
         <div class="Logo">
             <img src="../../Images/Must_Logo.png" width="40px">
-            <h2>Maintenance Portal</h2>
+            <div class="LogoTitle">
+                <h2>Maintenance Portal</h2>
+               <div>
+                   <h4>Akuzike Nchembe</h4>
+                   <h4>Student</h4>  
+               </div>
+                
+            </div>
         </div>
         
         <div class="account">

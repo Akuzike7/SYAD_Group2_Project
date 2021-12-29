@@ -13,13 +13,20 @@
 
         <div class="Logo">
             <img src="../../Images/Must_Logo.png" width="40px">
-            <h2>Maintenance Portal</h2>
+            <div class="LogoTitle">
+                <h2>Maintenance Portal</h2>
+               <div>
+                   <h4>Akuzike Nchembe</h4>
+                   <h4>Adminstrator</h4>  
+               </div>
+                
+            </div>
         </div>
         
         <div class="navLinks">
-            <a class="navLink" href="./Dashboard-adminstrator.html">Dashboard</a>
-            <a class="navLink" href="./Faults.html">Faults</a>
-            <a class="navLink" href="./Report.html">Reports</a>
+            <a class="navLink" href="./index.php">Dashboard</a>
+            <a class="navLink" href="./Faults.php">Faults</a>
+            <a class="navLink" href="./Report.php">Reports</a>
             
         </div>
 
@@ -223,7 +230,7 @@
                 </div>
 
                 <div class="outgoingMsg">
-                    <p>you are cleared to continue workingdddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+                    <p>you are cleared to continue working</p>
                     <h6 id="chatMsgTime2">9:34 PM</h6>
                 </div>
             </div>
@@ -234,6 +241,6 @@
             </div>
         </div>
     </div>
-    <script src="../../Remark.js"></script>
+    <script src="../../javascript/Remark.js"></script>
 </body>
 </html>

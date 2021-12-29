@@ -13,13 +13,20 @@
 
         <div class="Logo">
             <img src="../../Images/Must_Logo.png" width="40px">
-            <h2>Maintenance Portal</h2>
+            <div class="LogoTitle">
+                <h2>Maintenance Portal</h2>
+               <div>
+                   <h4>Akuzike Nchembe</h4>
+                   <h4>Student</h4>  
+               </div>
+                
+            </div>
         </div>
         
         <div class="navLinks">
-            <a class="navLink" href="./Dashboard-adminstrator.html">Dashboard</a>
-            <a class="navLink" href="./Remarks.html">Remarks</a>
-            <a class="navLink" href="./Report.html">Reports</a>
+            <a class="navLink" href="./index.php">Dashboard</a>
+            <a class="navLink" href="./Remarks.php">Remarks</a>
+            <a class="navLink" href="./Report.php">Reports</a>
             
 
         </div>
@@ -120,10 +127,10 @@
                     <h3 id="title">Report Fault</h3>
                     <label class="formLabel" for="category">Category</label>
                     <select name="category" id="category">
-                        <option value="Plumbing">Plumbing</option>
-                        <option value="Electronic">Electronic</option>
-                        <option value="Welding">Welding</option>
-                        <option value="Carpentry">Carpentry</option>
+                        <option class="optCategory" value="Plumbing">Plumbing</option>
+                        <option class="optCategory" value="Electronic">Electronic</option>
+                        <option class="optCategory" value="Welding">Welding</option>
+                        <option class="optCategory" value="Carpentry">Carpentry</option>
                     </select>
                     <label class="formLabel" for="description">Description</label>
                     <textarea name="description" id="description" cols="30" rows="8"></textarea>
@@ -390,15 +397,15 @@
                     <img src="../../Images/add_24px.png">
                 </button>
 
-                <button class="navLink" id="update" disabled>Update
+                <button class="navLink" id="update" onclick="" disabled>Update
                     <img src="../../Images/Update_24px.png" >
                 </button>
 
-                <button class="navLink" id="delete" disabled>Delete
+                <button class="navLink" id="delete" onclick="" disabled>Delete
                     <img src="../../Images/delete_trash_48px.png" width="24px">
                 </button>
 
-                <button class="navLink" id="assignTech" disabled>Assign Technician
+                <button class="navLink" id="assignTech" onclick="" disabled>Assign Technician
                     <img src="../../Images/worker_24px.png">
                 </button>
 
@@ -433,6 +440,6 @@
            
     </div>
 
-    <script src="../../app.js"></script>
+    <script src="../../javascript/app.js"></script>
 </body>
 </html>

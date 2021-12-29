@@ -1,3 +1,7 @@
+<?php
+    require "../core/database.php";
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
     <link rel="stylesheet" href="../../Style/style.css">
     <link rel="stylesheet" href="../../Style/Remarks.css">
     <link rel="stylesheet" href="../../Style/responsive.css">
-    <script src="../../app.js" defer></script>
+    <script src="../../javascript/app.js" defer></script>
     <script src="../../Chart.js-3.6.2/package/dist/chart.js"></script>
     <title>Dashboard-admin</title>
 </head>
@@ -16,13 +20,21 @@
 
         <div class="Logo">
             <img src="../../Images/Must_Logo.png" width="40px">
-            <h2>Maintenance Portal</h2>
+            <div class="LogoTitle">
+                <h2>Maintenance Portal</h2>
+               <div>
+                   <h4>Akuzike Nchembe</h4>
+                   <h4>Adminstrator</h4>  
+               </div>
+                
+            </div>
+            
         </div>
         
         <div class="navLinks">
-            <a class="navLink" href="./Faults.html">Faults</a>
-            <a class="navLink" href="./Remarks.html">Remarks</a>
-            <a class="navLink" href="./Report.html">Reports</a>
+            <a class="navLink" href="./Faults.php">Faults</a>
+            <a class="navLink" href="./Remarks.php">Remarks</a>
+            <a class="navLink" href="./Report.php">Reports</a>
 
         </div>
 
@@ -113,7 +125,7 @@
                
             </div>
 
-            <button class="LogoutBtn" onclick="navigate('../Login.html')">
+            <button class="LogoutBtn" onclick="navigate('../Login.php')">
                 Logout
             </button>
             
@@ -143,7 +155,7 @@
                         <button class="dashboardBtn">Unassigned Faults</button>
                         <button class="dashboardBtn">Unresolved Faults</button>
                         <button class="dashboardBtn">Generate Report</button>
-                        <button class="dashboardBtn" onclick="navigate('./Remarks.html')">Remarks</button>
+                        <button class="dashboardBtn" onclick="navigate('./Remarks.php')">Remarks</button>
                     </div>
                 </div>
 

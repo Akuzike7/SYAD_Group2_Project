@@ -27,6 +27,7 @@
     align-items: center;
     padding-top: 30px;
     padding-bottom: 20px;
+    
 }
 form{
     border: 1px solid grey;
@@ -149,4 +150,14 @@ form{
 
 .footer img:hover{
     cursor: pointer;
+}
+
+.error{
+    display: flex;
+    font-size: smaller;
+    color: red;
+    justify-content: flex-end;
+    align-items: center;
+    width: 250px;
+    margin: 10px auto;
 }

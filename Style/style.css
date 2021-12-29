@@ -37,7 +37,7 @@
 }
 
 .navBar h2{
-    color: gray;
+    color: rgb(61, 60, 60);
     font-size: x-large;
 }
 
@@ -50,6 +50,16 @@
     margin-left:10px;
 }
 
+.LogoTitle{
+    display: flex;
+    flex-direction: column;
+}
+
+.LogoTitle h4{
+    font-size: x-small;
+    color: grey;
+    margin-left: 10px;
+}
 .navLink{
     padding: 5px 10px;
     font-size: small;
@@ -484,3 +494,4 @@
     display: inline-block;
     z-index: 1;
 }
+

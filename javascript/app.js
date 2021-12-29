@@ -11,13 +11,14 @@ const remarksData = [];
 const active = [];
 const initialState = [];
 
-const close = document.getElementById("close");
+const closebtn = document.getElementById("close");
 
-close.addEventListener("click",() =>{
+closebtn.addEventListener("click",() =>{
     const addFault_form = document.querySelector(".addForm");
     addFault_form.style.display = "none";
 })
 
+//adding a fault button, which displays the fault form
 const add = document.getElementById("add");
 
 add.addEventListener("click",() =>{
