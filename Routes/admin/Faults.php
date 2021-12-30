@@ -120,40 +120,59 @@
 
             
         </div>
-        <!--Center where faults are listed-->     
-            <div class="faults">
-                <div class="addForm">
-                    <button id="close">&times;</button>
-                    <h3 id="title">Report Fault</h3>
-                    <label class="formLabel" for="category">Category</label>
-                    <select name="category" id="category">
-                        <option class="optCategory" value="Plumbing">Plumbing</option>
-                        <option class="optCategory" value="Electronic">Electronic</option>
-                        <option class="optCategory" value="Welding">Welding</option>
-                        <option class="optCategory" value="Carpentry">Carpentry</option>
-                    </select>
-                    <label class="formLabel" for="description">Description</label>
-                    <textarea name="description" id="description" cols="30" rows="8"></textarea>
-                    <label class="formLabel" for="Location">Location</label>
-                    <input type="text" name="location" id="Location">
-                    <label class="formLabel" for="Phone">Phone</label>
-                    <input type="text" name="Phone" id="Phone">
-                </div>
+        <!--Center where faults are listed--> 
+        
+            <form action="" method="POST" class="faults">
+                    <div class="addForm">
+                        <button id="close">&times;</button>
+                        <h3 id="title">Report Fault</h3>
+                        <label class="formLabel" for="category">Category</label>
+                        <select name="category" id="category">
+                            <option class="optCategory" value="Plumbing">Plumbing</option>
+                            <option class="optCategory" value="Electronic">Electronic</option>
+                            <option class="optCategory" value="Welding">Welding</option>
+                            <option class="optCategory" value="Carpentry">Carpentry</option>
+                        </select>
+                        <label class="formLabel" for="description">Description</label>
+                        <textarea name="description" id="description" cols="30" rows="2"></textarea>
+                        <label class="formLabel" for="Location">Location</label>
+                        <input type="text" name="location" id="Location">
+                        <label class="formLabel" for="Phone">Phone</label>
+                        <input type="text" name="Phone" id="Phone">
+                        <button class="formBtn"id="addBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
+                        <button class="formBtn"id="ReportBtn" type="submit">Report</button>
+                    </div>
 
-                <div class="assignForm">
-                    <button id="close">&times;</button>
-                    <h3 id="title">Assign Technician</h3>
+                    <div class="assignForm">
+                        <button id="close">&times;</button>
+                        <h3 id="title">Assign Technician</h3>
+                        <table>
+                            <tr id="header">
+                                <th>Id</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                            </tr>
+
+                        </table>
+                        <label class="formLabel" for="category">Technician</label>
+                        <select name="category" id="category">
+                            <option class="optCategory" value="Plumbing">Plumbing</option>
+                            <option class="optCategory" value="Electronic">Electronic</option>
+                            <option class="optCategory" value="Welding">Welding</option>
+                            <option class="optCategory" value="Carpentry">Carpentry</option>
+                        </select>
+                        <button class="formBtn"id="addBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
+                        <button class="formBtn"id="ReportBtn" type="submit">Assign</button>
+                    </div>
+
+                    <div class="updateForm"></div>
+                    <div class="deleteForm"></div>
                     
-                </div>
-                <div class="updateForm"></div>
-                <div class="deleteForm"></div>
-                <div class="ListFaultTitle">Fault Activity Section</div>
-                 
-                <form action="">
+                      
                     <table class="ListFaults">
-                        
-                        <thead>
-                            <tr>
+
+                            <caption class="ListFaultTitle">Fault Activity Section</caption>
+                            <tr id="header">
                                 <th id="selectAll"><input type="checkbox" name="" id="selectRadio" value="1"></th>
                                 <th>Id</th>
                                 <th>Date</th>
@@ -166,9 +185,7 @@
                                 <th>Status</th>
                             </tr>
                             
-                        </thead>
                         
-                        <tbody>
                             <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx"></td>
                                 <td>1</td>
@@ -193,7 +210,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>3</td>
                                 <td>3-Dec-2021</td>
@@ -205,7 +222,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>4</td>
                                 <td>18-Dec-2021</td>
@@ -217,7 +234,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>5</td>
                                 <td>9-Dec-2021</td>
@@ -229,7 +246,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>6</td>
                                 <td>20-Dec-2021</td>
@@ -241,7 +258,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
@@ -253,7 +270,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
@@ -265,7 +282,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
@@ -277,7 +294,7 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
@@ -289,7 +306,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -300,7 +318,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -311,7 +330,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -322,7 +342,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -333,7 +354,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -344,7 +366,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -355,7 +378,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -366,7 +390,8 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                            <tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
                                 <td>7</td>
                                 <td>12-Dec-2021</td>
                                 <td>Plumbing</td>
@@ -377,14 +402,132 @@
                                 <td>0882888136</td>
                                 <td>pending</td>
                             </tr>
-                        </tbody>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
+                            <tr id="tableRow">
+                                <td id="select"><input type="checkbox" name="selectionBx" id=""></td>
+                                <td>7</td>
+                                <td>12-Dec-2021</td>
+                                <td>Plumbing</td>
+                                <td>Broken urinal</td>
+                                <td>Hall 3 Floor 2</td>
+                                <td>Tech</td>
+                                <td>Akuzike Nchembe</td>
+                                <td>0882888136</td>
+                                <td>pending</td>
+                            </tr>
                        
                       
     
                     </table>
                 </form>
                 
-            </div>
 
       <!--Right side Panel-->      
            <div class="tileLink">
@@ -393,19 +536,19 @@
 
             <div class="tileOptions">
 
-                <button class="navLink" id="add" onclick="faultForm()">Add
+                <button class="navLink" id="add">Add
                     <img src="../../Images/add_24px.png">
                 </button>
 
-                <button class="navLink" id="update" onclick="" disabled>Update
+                <button class="navLink" id="update" disabled>Update
                     <img src="../../Images/Update_24px.png" >
                 </button>
 
-                <button class="navLink" id="delete" onclick="" disabled>Delete
+                <button class="navLink" id="delete" disabled>Delete
                     <img src="../../Images/delete_trash_48px.png" width="24px">
                 </button>
 
-                <button class="navLink" id="assignTech" onclick="" disabled>Assign Technician
+                <button class="navLink" id="assignTech" disabled>Assign Technician
                     <img src="../../Images/worker_24px.png">
                 </button>
 

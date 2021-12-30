@@ -30,19 +30,6 @@
             
 
             <div class="fields">
-                <label for="mail">Email</label>
-                <input type="email" name="Email" id="mail" placeholder="email" >
-            </div>
-
-            <?php if(!$valid->val() && isset($_POST['submit'])): ?>
-            <div class="error">
-                 <?php if(array_key_exists("email",$valid->errors)):?>
-                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["email"]; ?></p>
-                 <?php endif; ?>
-            </div>
-            <?php endif; ?>
-
-            <div class="fields">
                 <label for="password">Password</label>
                 <input type="password" name="Password" id="password" placeholder="new password" >
             </div>

@@ -11,7 +11,7 @@ messageInput.addEventListener("keypress",(e) =>{
 });
 
 const messageBtn = document.getElementById("messageBtn");
-const messageBoard = document.querySelector(".chat");
+const messageBoard = document.querySelector(".remarkchat");
 
 messageBtn.addEventListener("click",() =>{
     var message = document.createElement("div");

@@ -2,7 +2,7 @@
     require "./core/validation.php";
     $Login_directory = "./Login.php";  
     $valid = new validation();
-    $form = $valid->validateReset();
+    $form = $valid->Validate(false);
    
 ?>
 <!DOCTYPE html>
@@ -29,18 +29,14 @@
             </div>
             
 
-            <div class="fields">
-                <label for="mail">Email</label>
-                <input type="email" name="Email" id="mail" placeholder="email" >
+            <div>
+                <?php
+                    require "./core/user.php";
+                    $email = user::$email;
+                    echo $email;
+                    echo "<p>We have sent a link to $email</p>";
+                ?>
             </div>
-
-            <?php if(!$valid->val() && isset($_POST['submit'])): ?>
-            <div class="error">
-                 <?php if(array_key_exists("email",$valid->errors)):?>
-                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["email"]; ?></p>
-                 <?php endif; ?>
-            </div>
-            <?php endif; ?>
 
 
             <div class="LoginBtn" >

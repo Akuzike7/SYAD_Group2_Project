@@ -24,46 +24,42 @@ const add = document.getElementById("add");
 add.addEventListener("click",() =>{
     const addFault_form = document.querySelector(".addForm");
     addFault_form.style.display = "block";
-});
+})
 
-function addFault(category,description,location,technician,reported,phone){
-    faultData.push({
-        "Date":Date.now(),
-        "Category":category,
-        "Description":description,
-        "Location":location,
-        "Technician":technician,
-        "Reported-by":reported,
-        "Phone":phone,
-        "Status":"pending",
-    });
-    console.log(faultData);
-}
+//adding a update button
+const update = document.getElementById("update");
 
-function addRemark(FaultId,FaultLocation,FaultTitle){
-    remarksData.push({
-        "Id":"",
-        "Title":FaultTitle,
-        "Location":FaultLocation,
-        "RecentTime":Date.now(),
-        "Data":[{
-            "Id":FaultId,
-            "userId":user,
-            "message":""
-        }]
-            
-    });
-}
+update.addEventListener("click",() =>{
+    const updateFault_form = document.querySelector(".updateForm");
+    updateFault_form.style.display = "block";
+})
 
-function comment(id,message){
-    remarksData.Data.push({
-        "Id":id,
-        "userId":user.id,
-        "message":message
+//adding a delete button
+const deletes = document.getElementById("delete");
 
-    }
-    )
-}
+deletes.addEventListener("click",() =>{
+    const deleteFault_form = document.querySelector(".deleteForm");
+    deleteFault_form.style.display = "block";
+})
+
+//adding a assign button
+const assign = document.getElementById("assignTech");
+
+assign.addEventListener("click",() =>{
+    alert("assign button");
+    const addFault_form = document.querySelector(".assignForm");
+    assignFault_form.style.display = "block";
+})
+
+//adding a remark button
+const remark = document.getElementById("remark");
+
+remark.addEventListener("click",() =>{
+    const remarkFault_form = document.querySelector(".remarkForm");
+    remarkFault_form.style.display = "block";
+})
+
+
 function changeImage(faultAdd_icon){
     document.getElementById("add").setAttribute("src",faultAdd_icon);
 }
@@ -108,7 +104,7 @@ tableRows.forEach((row) => {
 const SelectAll = document.querySelector('#selectRadio');
 
 SelectAll.addEventListener('click', () => {
-    const checkBoxes = document.querySelectorAll("tbody tr td input");
+    const checkBoxes = document.querySelectorAll("tr td input");
    
     checkBoxes.forEach((checkbox) => {
 

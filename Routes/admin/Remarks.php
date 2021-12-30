@@ -4,241 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../Style/style.css">
-    <link rel="stylesheet" href="../../Style/Remarks.css">
+    <link rel="stylesheet" href="../../Style/remark.css">
     <title>Remarks</title>
 </head>
 <body>
-    <nav class="navBar">
-
-        <div class="Logo">
-            <img src="../../Images/Must_Logo.png" width="40px">
-            <div class="LogoTitle">
-                <h2>Maintenance Portal</h2>
-               <div>
-                   <h4>Akuzike Nchembe</h4>
-                   <h4>Adminstrator</h4>  
-               </div>
-                
-            </div>
+    <nav class="nav_bar">
+        <div class="logo">
+            <img src="../../Images/Must_Logo.png" width="60px" alt="" srcset="">
+            <h4 class="logoTitle">
+                Maintenance Portal
+            </h4>
         </div>
-        
-        <div class="navLinks">
+
+        <div class="user">
+            <h4>Akuzike Nchembe</h4>
+            <h4>Student</h4>
+        </div>
+
+        <div class="links">
             <a class="navLink" href="./index.php">Dashboard</a>
             <a class="navLink" href="./Faults.php">Faults</a>
             <a class="navLink" href="./Report.php">Reports</a>
             
         </div>
-
     </nav>
-    <div class="remarksBody">
-        <div class="remarks"> 
-
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R1</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R2</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R3</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R4</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R5</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R6</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R7</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R8</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R9</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R10</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="remarkItem">
-                <div class="remarkItemHead">
-                    <h3>R1000</h3>
-                </div>
-                <div class="remarkItemBody">
-                    <div class="remarkItemBodyTop">
-                        <h4>Broken urinal</h4>
-                        <h5>9:25 AM</h5>
-                    </div>
-                    <div class="remarkItemBodyBottom">
-                        <h5>Hall 3</h5>
-                    </div>
-                </div>
-                
-            </div>
-           
-            
+    <div class="remarkside">
+        <div class="remarkSideTab">
+            <h5>Remarks</h5>
         </div>
-
-        <div class="chatbox">
-            <div class="chatHead">
-                <h3>R1</h3>
-                <p>Broken urinal</p>
-                <h5>Hall 3 Floor 1</h5>
-                <h5>22-Dec-2021</h5>
-            </div>
-            <div class="chat">
-                <div class="incomingMsg">
-                    <h5 id="incomingSender">Akuzike</h5>
-                    <p>it took more time than anticipated</p>
-                    <h6 id="chatMsgTime">9:34 PM</h6>    
+        <div class="remark">
+            <div class="remarkDetail">
+                <div class="RFid">
+                    <h4>R1</h4>
                 </div>
-
-                <div class="outgoingMsg">
-                    <p>its okay</p>
-                    <h6 id="chatMsgTime2">9:34 PM</h6>
-                </div>
-
-                <div class="incomingMsg">
-                    <h5 id="incomingSender">Akuzike</h5>
-                   <p>we have a problem with the pipes</p>
-                   <h6 id="chatMsgTime">9:34 PM</h6> 
-                </div>
-
-                <div class="outgoingMsg">
-                    <p>you are cleared to continue working</p>
-                    <h6 id="chatMsgTime2">9:34 PM</h6>
+                <div id="remarkD">
+                    <h5>Broken urinal</h5>
+                    <h6>we tried fixing it</h6>
                 </div>
             </div>
-
-            <div class="messageBox">
-                <textarea name="comment" id="comment"  placeholder="Write comment" cols="30"  rows="1" wrap="hard"></textarea>
-                <button class="sendBtn" id="messageBtn"><img src="../../Images/send_comment_48px.png" width="20px" alt="" srcset=""></button>
+            <div class="remarkDetails">
+                <h5>9:23 am</h5>
             </div>
+        </div>
+    </div>
+    <div class="remarkmain">
+        <div class="remarkTitle">
+            <div class="Fid">R1</div>
+            <h5>Broken urinal</h5>
+            <h5>9:23 am</h5>
+        </div>
+        <div class="remarkChat">
+            <div class="outgoingMsg">
+                <p>hey</p>
+                <h6>9:00 PM</h6>
+            </div>
+            <div class="incomingMsg">
+                <p>hi</p>
+                <h6>9:02 PM</h6>
+            </div>
+        </div>
+        <div class="remarkMessagebox">
+            <textarea name="comment" id="comment" cols="30" rows="1" placeholder="comment here"></textarea>
+            <button id="messageBtn"><img src="../../Images/send_comment_48px.png" width="24px" alt="" srcset=""></button>
         </div>
     </div>
     <script src="../../javascript/Remark.js"></script>

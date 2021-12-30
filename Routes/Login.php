@@ -1,9 +1,9 @@
 <?php
     require "./core/validation.php";
     
-    $ResetPassword_directory = './ResetPassword.php';
+    $ResetPassword_directory = './Reset.php';
     $valid = new validation();
-    $form = $valid->Validate(true);
+    $form = $valid->ValidateLogin(true);
     
     if(!$form){
         $valid->errors["creditional"] = "Incorrect creditionals";
