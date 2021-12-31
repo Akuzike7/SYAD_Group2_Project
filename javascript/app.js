@@ -29,9 +29,8 @@ closebtn.addEventListener("click",() =>{
 const addFaults = document.getElementById("addBtn");
 
 addFaults.addEventListener("click",() =>{
-    alert("add faults button clicked");
-    /*const addTable = document.getElementById("addTable");
-    addTable.style.display = "block";*/
+    const addTable = document.getElementById("addTable");
+    addTable.style.display = "block";
 })
 
 

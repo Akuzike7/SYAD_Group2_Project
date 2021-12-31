@@ -124,20 +124,21 @@
         
             <form action="" method="POST" class="faults">
                     <div class="addForm">
+
                         <button class="close" id="close">&times;</button>
                         <h3 id="title">Report Fault</h3>
 
-                        <table id="addTable">
-                            <tr id="formheader">
-                                <th>Id</th>
-                                <th>Category</th>
-                                <th>Description</th>
-                                <th>Location</th>
-                                <th>Phone</th>
-                            </tr>
+                        <div class="addTable">
+                            <div class="formheader">
+                                <h4>Id</h4>
+                                <h4>Category</h4>
+                                <h4>Description</h4>
+                                <h4>Location</h4>
+                                <h4>Phone</h4>
+                            </div>
 
-                        </table>
-                        
+                        </div>
+
                         <label class="formLabel" for="category">Category</label>
                         <select name="category" id="category">
                             <option class="optCategory" value="Plumbing">Plumbing</option>
