@@ -30,6 +30,21 @@
     border: 1px rgb(64, 137, 233) solid;
 }
 
+#formheader{
+    position: sticky;
+    top: 10px;
+}
+#formheader ::after{
+    content: "";
+    width: 100%;
+    height:1px;
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(64, 137, 233);
+}
+
 /*Updating a fault styles*/
 .updateForm{
     width: 600px;
