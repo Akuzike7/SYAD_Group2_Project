@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+/*Adding a fault styles */
 .addForm{
     width: 600px;
     display: none;
@@ -14,7 +15,22 @@
     transform: translate(-50%,-50%);
     padding: 8px;
 }
+.assignForm table{
+    display: none;
+    width: 100%;
+}
+.assignForm table th{
+    font-size: smaller;
+}
+.assignForm table tr{
+    width: 100%;
+}
+#addBtn{
+    background-color: white;
+    border: 1px rgb(64, 137, 233) solid;
+}
 
+/*Updating a fault styles*/
 .updateForm{
     width: 600px;
     display: none;
@@ -26,6 +42,8 @@
     transform: translate(-50%,-50%);
     padding: 8px;
 }
+
+/*Deleting a fault styles*/
 .deleteForm{
     width: 600px;
     display: none;
@@ -39,7 +57,7 @@
 }
 .assignForm{
     width: 600px;
-    display: block;
+    display: none;
     background-color: white;
     border: 1px royalblue solid;
     position: absolute;
@@ -49,7 +67,8 @@
     padding: 8px;
 }
 
-#close{
+
+.close{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,7 +80,7 @@
     border: none;
     background-color: #ccc;
 }
-#close:hover{
+.close:hover{
     background-color: red;
     color: white;
 }
@@ -144,7 +163,5 @@
     outline: 1px rgb(64, 137, 233) solid;
 }
 
-#addBtn{
-    background-color: white;
-    border: 1px rgb(64, 137, 233) solid;
-}
+
+

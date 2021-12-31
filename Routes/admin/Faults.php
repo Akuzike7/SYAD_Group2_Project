@@ -124,8 +124,20 @@
         
             <form action="" method="POST" class="faults">
                     <div class="addForm">
-                        <button id="close">&times;</button>
+                        <button class="close" id="close">&times;</button>
                         <h3 id="title">Report Fault</h3>
+
+                        <table id="addTable">
+                            <tr id="formheader">
+                                <th>Id</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Phone</th>
+                            </tr>
+
+                        </table>
+                        
                         <label class="formLabel" for="category">Category</label>
                         <select name="category" id="category">
                             <option class="optCategory" value="Plumbing">Plumbing</option>
@@ -139,14 +151,14 @@
                         <input type="text" name="location" id="Location">
                         <label class="formLabel" for="Phone">Phone</label>
                         <input type="text" name="Phone" id="Phone">
-                        <button class="formBtn"id="addBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
-                        <button class="formBtn"id="ReportBtn" type="submit">Report</button>
+                        <button class="formBtn" id="addBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
+                        <button class="formBtn" id="ReportBtn" type="submit">Report</button>
                     </div>
 
                     <div class="assignForm">
-                        <button id="close">&times;</button>
+                        <button class="close" id="close4">&times;</button>
                         <h3 id="title">Assign Technician</h3>
-                        <table>
+                        <table id="assignTable">
                             <tr id="header">
                                 <th>Id</th>
                                 <th>Category</th>
@@ -161,8 +173,8 @@
                             <option class="optCategory" value="Welding">Welding</option>
                             <option class="optCategory" value="Carpentry">Carpentry</option>
                         </select>
-                        <button class="formBtn"id="addBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
-                        <button class="formBtn"id="ReportBtn" type="submit">Assign</button>
+                        <button class="formBtn"id="assignBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
+                        <button class="formBtn"id="assignFaultBtn" type="submit">Assign</button>
                     </div>
 
                     <div class="updateForm"></div>

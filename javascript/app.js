@@ -1,9 +1,7 @@
-const user = document.getElementById('mail');
-const password = document.getElementById('password');
-const form = document.getElementById('Login');
 
-var faultAdd_icon;
-var route;
+
+let faultAdd_icon;
+let route;
 
 const faultData = [];
 const remarksData = [];
@@ -11,12 +9,7 @@ const remarksData = [];
 const active = [];
 const initialState = [];
 
-const closebtn = document.getElementById("close");
 
-closebtn.addEventListener("click",() =>{
-    const addFault_form = document.querySelector(".addForm");
-    addFault_form.style.display = "none";
-})
 
 //adding a fault button, which displays the fault form
 const add = document.getElementById("add");
@@ -26,38 +19,38 @@ add.addEventListener("click",() =>{
     addFault_form.style.display = "block";
 })
 
-//adding a update button
-const update = document.getElementById("update");
+const closebtn = document.getElementById("close");
 
-update.addEventListener("click",() =>{
-    const updateFault_form = document.querySelector(".updateForm");
-    updateFault_form.style.display = "block";
+closebtn.addEventListener("click",() =>{
+    const addFault_form = document.querySelector(".addForm");
+    addFault_form.style.display = "none";
 })
 
-//adding a delete button
-const deletes = document.getElementById("delete");
+const addFaults = document.getElementById("addBtn");
 
-deletes.addEventListener("click",() =>{
-    const deleteFault_form = document.querySelector(".deleteForm");
-    deleteFault_form.style.display = "block";
+addFaults.addEventListener("click",() =>{
+    alert("add faults button clicked");
+    /*const addTable = document.getElementById("addTable");
+    addTable.style.display = "block";*/
 })
+
+
 
 //adding a assign button
 const assign = document.getElementById("assignTech");
 
 assign.addEventListener("click",() =>{
-    alert("assign button");
-    const addFault_form = document.querySelector(".assignForm");
+    const assignFault_form = document.querySelector(".assignForm");
     assignFault_form.style.display = "block";
 })
 
-//adding a remark button
-const remark = document.getElementById("remark");
+const closebtn4 = document.getElementById("close4");
 
-remark.addEventListener("click",() =>{
-    const remarkFault_form = document.querySelector(".remarkForm");
-    remarkFault_form.style.display = "block";
+closebtn.addEventListener("click",() =>{
+    const assignFault_form = document.querySelector(".assignForm");
+    assignFault_form.style.display = "none";
 })
+
 
 
 function changeImage(faultAdd_icon){
@@ -69,14 +62,15 @@ function navigate(route){
 }
 
 
-const tableRows = document.querySelectorAll("tbody tr");
+const tableRows = document.querySelectorAll("tr");
 const RowsCheckBox = document.querySelectorAll("#select");
 const RowsCheckBoxAll = document.querySelectorAll("#selectAll");
-var state = false;
+let state = false;
 
 tableRows.forEach((row) => {
     
     row.addEventListener("dblclick",() => {
+    
         if(state == false){
             RowsCheckBoxAll.forEach((checkbox) =>{
                 checkbox.style.display = "block";
