@@ -1,3 +1,4 @@
+/*Remark messagebox functionality for increasing rows on keypress */
 const messageInput = document.getElementById("comment");
 
 messageInput.addEventListener("keypress",(e) =>{
@@ -10,24 +11,25 @@ messageInput.addEventListener("keypress",(e) =>{
     }
 });
 
+/*Adding the message on the messageboard */
 const messageBtn = document.getElementById("messageBtn");
-const messageBoard = document.querySelector(".remarkchat");
+const messageBoard = document.querySelector(".remarkChat");
 
 messageBtn.addEventListener("click",() =>{
-    var message = document.createElement("div");
+    let message = document.createElement("div");
     message.className = "outgoingMsg";
 
-    var msgtext = document.createElement("p");
+    let msgtext = document.createElement("p");
     msgtext.textContent = messageInput.value;
-    message.append(msgtext);
+    message.appendChild(msgtext);
 
-    var msgTime = document.createElement("h6");
+    let msgTime = document.createElement("h6");
     msgTime.id = "chatMsgTime2";
-    var time = new Date();
+    let time = new Date();
     msgTime.textContent = time.toLocaleString();
-    message.append(msgTime);
+    message.appendChild(msgTime);
 
-    messageBoard.append(message);
+    messageBoard.appendChild(message);
     messageInput.value = "";
 
 })

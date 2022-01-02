@@ -47,29 +47,32 @@ class validation{
                    //getting user details 
                    
 
-                   $data = new database;
+                   $data = new user;
                    echo $data->checkConnection();
                    $row = $data->getUser($this->email);
 
                    //setting the user
-                   user::$Id = $row["id"];
-                   user::$email = $row["$email"];
-                   user::$password = $row["$password"];
-                   user::$name = $row["firstname"] ." ". $row["lastname"];
-                   user::$role = $row["role"];
-                   
+                   session_start();
+                    $_SESSION["user_id"] = $row["id"];
+                    $_SESSION["email"] = $row["email"];
+                    $_SESSION["password"] = $row["password"];
+                    $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
+                    $_SESSION["role"] = $row["role"];
+                    $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
+                    print_r($_SESSION["roleName"]);
+
                    //navigating to dashboard based on user role
                    if($this->password == $row["password"]){
-                       if(user::$role == 1){
+                       if($_SESSION["role"] == 1){
                             return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
                        }
-                       if(user::$role == 2){
+                       if($_SESSION["role"] == 2){
                             return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
                        }
-                       if(user::$role == 3){
+                       if($_SESSION["role"] == 3){
                             return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
                        }
-                       if(user::$role == 4){
+                       if($_SESSION["role"] == 4){
                             return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
                        }
                    }
@@ -121,7 +124,7 @@ class validation{
             }
 
             if(empty($this->errors)){
-                $data = new database;
+                $data = new user;
                 echo $data->checkConnection();
 
                 //reseting the password
@@ -134,24 +137,25 @@ class validation{
                 require "database.php";
 
                 //setting the user
-                user::$Id = $row["id"];
-                user::$email = $row["$email"];
-                user::$password = $row["$password"];
-                user::$name = $row["firstname"] ." ". $row["lastname"];
-                user::$role = $row["role"];
+                session_start();
+                $_SESSION["user_id"] = $row["id"];
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["password"] = $row["password"];
+                $_SESSION["firstname"] = $row["firstname"] ." ". $row["lastname"];
+                $_SESSION["role"] = $row["role"];
 
                 //navigating to dashboard based on user role
                 if($this->password == $row["password"]){
-                    if($row['role'] == 1){
+                    if($_SESSION["role"] == 1){
                         return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
                     }
-                    if($row['role'] == 2){
+                    if($_SESSION["role"] == 2){
                         return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
                     }
-                    if($row['role'] == 3){
+                    if($_SESSION["role"] == 3){
                         return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
                     }
-                    if($row['role'] == 4){
+                    if($_SESSION["role"] == 4){
                         return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
                     }
                 }

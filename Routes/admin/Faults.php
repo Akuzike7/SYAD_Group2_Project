@@ -4,34 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../components/style/Header.css">
     <link rel="stylesheet" href="../../Style/style.css">
     <link rel="stylesheet" href="../../Style/Fault_Form.css">
     <title>Faults</title>
 </head>
 <body>
-    <nav class="navBar">
-
-        <div class="Logo">
-            <img src="../../Images/Must_Logo.png" width="40px">
-            <div class="LogoTitle">
-                <h2>Maintenance Portal</h2>
-               <div>
-                   <h4>Akuzike Nchembe</h4>
-                   <h4>Student</h4>  
-               </div>
-                
-            </div>
-        </div>
-        
-        <div class="navLinks">
-            <a class="navLink" href="./index.php">Dashboard</a>
-            <a class="navLink" href="./Remarks.php">Remarks</a>
-            <a class="navLink" href="./Report.php">Reports</a>
-            
-
-        </div>
-
-    </nav>
+   <?php require_once"../components/Header.php" ?>
+   <?php require_once"../core/faults.php"?>
     
     <div class="mainContent">
        
@@ -46,7 +26,7 @@
 
                    <div class="tileStat">
                        <div class="tileItem">
-                           <img src="../../Images/analytics_48px.png" width="20px" alt="" srcset="">
+                           <img src="../../Images/graph_report_48px.png" width="20px" alt="" srcset="">
                            <h4>Reported</h4>
                        </div>
                        <h4>25</h4>
@@ -62,14 +42,14 @@
               
                    <div class="tileStat">
                        <div class="tileItem">
-                           <img src="../../Images/maintenance_48px.png" width="20px" alt="" srcset="">
+                           <img src="../../Images/task_completed_48px.png" width="20px" alt="" srcset="">
                            <h4>Resolved</h4>
                         </div>
                    <h4>9</h4>
                    </div>
                    <div class="tileStat">
                        <div class="tileItem">
-                           <img src="../../Images/maintenance_48px.png" width="20px" alt="" srcset="">
+                           <img src="../../Images/work_authorisation_48px.png" width="20px" alt="" srcset="">
                            <h4>Resolved Today</h4>
                         </div>
                    <h4>3</h4>
@@ -122,65 +102,11 @@
         </div>
         <!--Center where faults are listed--> 
         
-            <form action="" method="POST" class="faults">
-                    <div class="addForm">
-
-                        <button class="close" id="close">&times;</button>
-                        <h3 id="title">Report Fault</h3>
-
-                        <div class="addTable">
-                            <div class="formheader">
-                                <h4>Id</h4>
-                                <h4>Category</h4>
-                                <h4>Description</h4>
-                                <h4>Location</h4>
-                                <h4>Phone</h4>
-                            </div>
-
-                        </div>
-
-                        <label class="formLabel" for="category">Category</label>
-                        <select name="category" id="category">
-                            <option class="optCategory" value="Plumbing">Plumbing</option>
-                            <option class="optCategory" value="Electronic">Electronic</option>
-                            <option class="optCategory" value="Welding">Welding</option>
-                            <option class="optCategory" value="Carpentry">Carpentry</option>
-                        </select>
-                        <label class="formLabel" for="description">Description</label>
-                        <textarea name="description" id="description" cols="30" rows="2"></textarea>
-                        <label class="formLabel" for="Location">Location</label>
-                        <input type="text" name="location" id="Location">
-                        <label class="formLabel" for="Phone">Phone</label>
-                        <input type="text" name="Phone" id="Phone">
-                        <button class="formBtn" id="addBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
-                        <button class="formBtn" id="ReportBtn" type="submit">Report</button>
-                    </div>
-
-                    <div class="assignForm">
-                        <button class="close" id="close4">&times;</button>
-                        <h3 id="title">Assign Technician</h3>
-                        <table id="assignTable">
-                            <tr id="header">
-                                <th>Id</th>
-                                <th>Category</th>
-                                <th>Description</th>
-                            </tr>
-
-                        </table>
-                        <label class="formLabel" for="category">Technician</label>
-                        <select name="category" id="category">
-                            <option class="optCategory" value="Plumbing">Plumbing</option>
-                            <option class="optCategory" value="Electronic">Electronic</option>
-                            <option class="optCategory" value="Welding">Welding</option>
-                            <option class="optCategory" value="Carpentry">Carpentry</option>
-                        </select>
-                        <button class="formBtn"id="assignBtn"><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
-                        <button class="formBtn"id="assignFaultBtn" type="submit">Assign</button>
-                    </div>
-
-                    <div class="updateForm"></div>
-                    <div class="deleteForm"></div>
-                    
+            <div class="faults">
+                    <?php require"../components/AddFault.php"?>
+                    <?php require"../components/AssignFault.php"?>
+                    <?php require"../components/UpdateFault.php"?>
+                    <?php require"../components/DeleteFault.php"?>
                       
                     <table class="ListFaults">
 
@@ -539,7 +465,7 @@
                       
     
                     </table>
-                </form>
+                </div>
                 
 
       <!--Right side Panel-->      
@@ -591,11 +517,15 @@
                     <img src="../../Images/request_service_48px.png" width="24px" >
                 </button>
 
+                <button class="navLink" id="Remarked-faults">All Faults
+                    <img src="../../Images/maintenance_48px.png" width="24px" >
+                </button>
+
             </div>
            </div> 
            
     </div>
 
-    <script src="../../javascript/app.js"></script>
+    <script src="../../javascript/fault.js"></script>
 </body>
 </html>

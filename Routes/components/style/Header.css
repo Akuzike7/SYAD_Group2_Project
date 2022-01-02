@@ -1,0 +1,41 @@
+.navBar{
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.navBar h2{
+    color: rgb(61, 60, 60);
+    font-size: x-large;
+}
+
+.Logo{
+    display: flex;
+    align-items: center;
+}
+
+.Logo h2{
+    margin-left:10px;
+}
+
+.LogoTitle{
+    display: flex;
+    flex-direction: column;
+}
+
+.LogoTitle h4{
+    font-size: x-small;
+    color: grey;
+    margin-left: 10px;
+}
+.navLink{
+    padding: 5px 10px;
+    font-size: small;
+    color: rgb(64, 137, 233);
+}
+
+.navLink:hover{
+    border-bottom: rgb(64, 137, 233) 2px solid;
+}

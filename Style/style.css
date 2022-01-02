@@ -28,44 +28,6 @@
         
 }
 
-.navBar{
-    margin: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-}
-
-.navBar h2{
-    color: rgb(61, 60, 60);
-    font-size: x-large;
-}
-
-.Logo{
-    display: flex;
-    align-items: center;
-}
-
-.Logo h2{
-    margin-left:10px;
-}
-
-.LogoTitle{
-    display: flex;
-    flex-direction: column;
-}
-
-.LogoTitle h4{
-    font-size: x-small;
-    color: grey;
-    margin-left: 10px;
-}
-.navLink{
-    padding: 5px 10px;
-    font-size: small;
-    color: rgb(64, 137, 233);
-}
-
 .Content{
     display: flex;
     justify-content: flex-start;
@@ -182,89 +144,6 @@
 
 
 
-.ListFaults{
-    
-    width: 98%;
-    margin: 0 10px;
-    font-size: small;
-    text-align: center;
-    border-collapse: collapse;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    overflow-y: auto;
-    
-}
-
-.ListFaults tr th{ 
-    position: sticky;
-    top: 30px;
-    font-size: smaller;
-    user-select: none;
-    box-sizing: border-box;
-    
-}
-
-
-#header{
-    position: sticky;
-    top: 30px;
-}
-#header ::after{
-    content: "";
-    width: 100%;
-    height:1px;
-    position: absolute;
-    top: 33px;
-    bottom: 0;
-    left: 0;
-    background-color: rgb(64, 137, 233);
-}
-
-.ListFaults tr{
-    width: 100%;
-    user-select: none;
-    
-}
-
-.ListFaults #tableRow:hover{
-    background-color: rgba(64, 137, 233, 0.6);
-}
-
-.ListFaults td:hover{
-    cursor: default;
-}
-
-#selectAll{
-    display: none;
-}
-#select{
-    display: none;
-}
-
-
-.ListFaults td ,th {
-    padding: 10px;
-    user-select:none;
-}
-
-.ListFaults td{
-    font-size: smaller;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
-    color: rgb(44, 43, 43);
-}
-.ListFaults caption{
-    color: white;
-    background-color: rgb(64, 137, 233);
-    padding: 8px;
-}
-.ListFaults tr:nth-child(even) {
-    background-color: #eee;   
-}
-
-
-.ListFaults tr:nth-child(odd) {
-    background-color: #fff; 
-}
-
 
 .Hrule{
     margin: 0 10px;
@@ -357,7 +236,7 @@
     color: rgb(97, 96, 96);
     margin: 5px 0;
     margin-right: 10px;
-    width: 150px;
+    width: 100%;
     
 }
 
@@ -455,6 +334,9 @@
 }
 
 .notifications{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     border: 1px #ccc solid;
     padding: 20px;
     width: 400px;

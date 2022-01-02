@@ -1,44 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.nav_bar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-}
-
-.logo{
-    display: flex;
-    align-items: center;
-    
-}
-
-.logo h4{
-    font-size: large;
-}
-
-.user{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: smaller;
-    color: gray;
-}
-
-.navLink{
-    color:rgb(64, 137, 233);
-    padding: 10px;
-    font-size: small;
-}
-
 .remarkside{
-    
     float: left;
     width: 20%;
     overflow-y: auto;

@@ -4,30 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../Style/remark.css">
+    <link rel="stylesheet" href="../../Style/style.css">
+    <link rel="stylesheet" href="../components/style/Header.css">
+    <link rel="stylesheet" href="../../Style/Remark.css">
     <title>Remarks</title>
 </head>
 <body>
-    <nav class="nav_bar">
-        <div class="logo">
-            <img src="../../Images/Must_Logo.png" width="60px" alt="" srcset="">
-            <h4 class="logoTitle">
-                Maintenance Portal
-            </h4>
-        </div>
-
-        <div class="user">
-            <h4>Akuzike Nchembe</h4>
-            <h4>Student</h4>
-        </div>
-
-        <div class="links">
-            <a class="navLink" href="./index.php">Dashboard</a>
-            <a class="navLink" href="./Faults.php">Faults</a>
-            <a class="navLink" href="./Report.php">Reports</a>
-            
-        </div>
-    </nav>
+   <?php require"../components/Header.php"?>
     <div class="remarkside">
         <div class="remarkSideTab">
             <h5>Remarks</h5>

@@ -1,7 +1,4 @@
-<?php
-    require "../core/database.php";
-    
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,34 +8,12 @@
     <link rel="stylesheet" href="../../Style/style.css">
     <link rel="stylesheet" href="../../Style/Remarks.css">
     <link rel="stylesheet" href="../../Style/responsive.css">
-    <script src="../../javascript/app.js" defer></script>
+    <link rel="stylesheet" href="../components/style/Header.css">
     <script src="../../Chart.js-3.6.2/package/dist/chart.js"></script>
     <title>Dashboard-admin</title>
 </head>
 <body id="body">
-    <nav class="navBar">
-
-        <div class="Logo">
-            <img src="../../Images/Must_Logo.png" width="40px">
-            <div class="LogoTitle">
-                <h2>Maintenance Portal</h2>
-               <div>
-                   <h4>Akuzike Nchembe</h4>
-                   <h4>Adminstrator</h4>  
-               </div>
-                
-            </div>
-            
-        </div>
-        
-        <div class="navLinks">
-            <a class="navLink" href="./Faults.php">Faults</a>
-            <a class="navLink" href="./Remarks.php">Remarks</a>
-            <a class="navLink" href="./Report.php">Reports</a>
-
-        </div>
-
-    </nav>
+    <?php require "../components/Header.php";?>
     
     <div class="mainContent">
          <!--Left side panel-->
@@ -155,7 +130,7 @@
                         <button class="dashboardBtn">Unassigned Faults</button>
                         <button class="dashboardBtn">Unresolved Faults</button>
                         <button class="dashboardBtn">Generate Report</button>
-                        <button class="dashboardBtn" onclick="navigate('./Remarks.php')">Remarks</button>
+                        
                     </div>
                 </div>
 
@@ -331,6 +306,6 @@
         </div>
         
     </div>
-
+    <script src="../../javascript/app.js" defer></script>
 </body>
 </html>

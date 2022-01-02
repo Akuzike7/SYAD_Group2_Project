@@ -1,8 +1,87 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+.ListFaults{
+    
+    width: 98%;
+    margin: 0 10px;
+    font-size: small;
+    text-align: center;
+    border-collapse: collapse;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow-y: auto;
+    
 }
+
+.ListFaults tr th{ 
+    position: sticky;
+    top: 30px;
+    font-size: smaller;
+    user-select: none;
+    box-sizing: border-box;
+    
+}
+
+
+#header{
+    position: sticky;
+    top: 30px;
+}
+#header ::after{
+    content: "";
+    width: 100%;
+    height:1px;
+    position: absolute;
+    top: 33px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(64, 137, 233);
+}
+
+.ListFaults tr{
+    width: 100%;
+    user-select: none;
+    
+}
+
+.ListFaults #tableRow:hover{
+    background-color: rgba(64, 137, 233, 0.6);
+}
+
+.ListFaults td:hover{
+    cursor: default;
+}
+
+#selectAll{
+    display: none;
+}
+#select{
+    display: none;
+}
+
+
+.ListFaults td ,th {
+    padding: 10px;
+    user-select:none;
+}
+
+.ListFaults td{
+    font-size: smaller;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
+    color: rgb(44, 43, 43);
+}
+.ListFaults caption{
+    color: white;
+    background-color: rgb(64, 137, 233);
+    padding: 8px;
+}
+.ListFaults tr:nth-child(even) {
+    background-color: #eee;   
+}
+
+
+.ListFaults tr:nth-child(odd) {
+    background-color: #fff; 
+}
+
 /*Adding a fault styles */
 .addForm{
     width: 600px;
@@ -19,12 +98,24 @@
 }
 
 .addTable{
-    display: flex;
+    display: none;
+    width: 100%;
+    border: 1px gray solid;
 }
-.formheader{
-    display: flex;
-    justify-content: space-between;
+.tableRow{
+    background-color: #eee;
+    text-align:center;
 }
+#TableHeader{
+    width: 100%;
+    background-color: rgb(64, 137, 233);
+}
+#TableHeader th{
+    font-size: smaller;
+    color: white;
+    padding: 3px; 
+}
+
 #addBtn{
     background-color: white;
     border: 1px rgb(64, 137, 233) solid;
@@ -56,6 +147,8 @@
     transform: translate(-50%,-50%);
     padding: 8px;
 }
+
+/*Assigning fault styles*/
 .assignForm{
     width: 600px;
     display: none;
@@ -66,6 +159,13 @@
     left: 50%;
     transform: translate(-50%,-50%);
     padding: 8px;
+}
+.assignTable{
+    width: 100%;
+    border: 1px gray solid;
+}
+.assignForm input{
+    display: block;
 }
 
 
@@ -82,7 +182,7 @@
     background-color: #ccc;
 }
 .close:hover{
-    background-color: red;
+    background-color: rgb(228, 46, 46);
     color: white;
 }
 
@@ -95,6 +195,18 @@
     padding: 5px;
 }
 #category:focus{
+    border-bottom: 1px rgb(64, 137, 233) solid;
+}
+
+#technician{
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px #ccc solid;
+    outline: none;
+    padding: 5px;
+}
+#technician:focus{
     border-bottom: 1px rgb(64, 137, 233) solid;
 }
 
@@ -162,6 +274,33 @@
     background-color: white;
     color: rgb(64, 137, 233);
     outline: 1px rgb(64, 137, 233) solid;
+    cursor: pointer;
+}
+
+.formBtn:disabled{
+    opacity: 0.5;
+    cursor: default;
+}
+
+#CancelBtn{
+    background-color: #ccc;
+    color: black;
+    outline: 1px #ccc solid;
+}
+#CancelBtn:hover{
+    background-color: gray;
+    color: black;
+    outline: 1px gray solid;
+}
+#deleteFaultBtn{
+    background-color: rgb(238, 125, 125);
+    color: white;
+    outline: 1px rgb(238, 125, 125) solid;
+}
+#deleteFaultBtn:hover{
+    background-color: red;
+    color: white;
+    outline: 1px red solid;
 }
 
 
