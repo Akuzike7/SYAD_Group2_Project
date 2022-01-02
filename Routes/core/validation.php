@@ -23,8 +23,8 @@ class validation{
 
         public function ValidateLogin($login)
         {
-            require "database.php";
-            require "user.php";
+            require_once "database.php";
+            require_once "user.php";
 
             //login validation
             if($login) {
@@ -134,7 +134,7 @@ class validation{
 
                 $row = $data->getUser($this->email);
 
-                require "database.php";
+                require_once "database.php";
 
                 //setting the user
                 session_start();

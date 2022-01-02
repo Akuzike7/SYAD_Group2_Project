@@ -12,6 +12,7 @@ class database{
     //checking database connection
     public function checkConnection(){
         $this->connection = new mysqli($this->dbserver,$this->dbusername,$this->dbpassword,$this->dbname);
+        
         if(!$this->connection){
             return die(mysqli_error($this->connection));
         }

@@ -32,11 +32,11 @@ class faults extends database{
        
         $this->query = "SELECT id FROM fault_category WHERE Category = '$category';";
         $category_id = mysqli_query($this->connection,$this->query);
-        echo "$category_id";
         $this->query = "INSERT INTO faults(`category_id`,`description`,`location`,`phone`,`user_id`)
                         VALUES('$category_id','$description','$location','$phone','$user')";
                         
         $result = mysqli_query($this->connection,$this->query);
+        
         
         if($result){
             return $result;
