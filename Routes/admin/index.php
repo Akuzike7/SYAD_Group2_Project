@@ -13,7 +13,7 @@
     <title>Dashboard-admin</title>
 </head>
 <body id="body">
-    <?php require "../components/Header.php";?>
+    <?php require_once "../components/Header.php";?>
     
     <div class="mainContent">
          <!--Left side panel-->
@@ -100,7 +100,7 @@
                
             </div>
 
-            <button class="LogoutBtn" onclick="navigate('../Login.php')">
+            <button class="LogoutBtn" onclick="navigate('../index.php')">
                 Logout
             </button>
             

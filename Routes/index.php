@@ -1,5 +1,5 @@
 <?php
-    require "./core/validation.php";
+    require_once "./core/validation.php";
     
     $ResetPassword_directory = './Reset.php';
     $valid = new validation();
