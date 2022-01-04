@@ -1,8 +1,8 @@
 <?php
     require "./core/validation.php";
-    $Login_directory = "./Login.php";  
+    $Login_directory = "index.php";  
     $valid = new validation();
-    $form = $valid->Validate(false);
+    $form = $valid->validateResetPassword();
    
 ?>
 <!DOCTYPE html>

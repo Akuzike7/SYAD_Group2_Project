@@ -10,8 +10,8 @@
     <title>Faults</title>
 </head>
 <body>
-   <?php require_once"../components/Header.php" ?>
-   <?php require_once"../core/faults.php"?>
+   <?php require_once "../components/Header.php" ?>
+   <?php require_once "../admin/faults.php"?>
     
     <div class="mainContent">
        
@@ -103,10 +103,10 @@
         <!--Center where faults are listed--> 
         
             <div class="faults">
-                    <?php require"../components/AddFault.php"?>
-                    <?php require"../components/AssignFault.php"?>
-                    <?php require"../components/UpdateFault.php"?>
-                    <?php require"../components/DeleteFault.php"?>
+                    <?php require "../components/AddFault.php"?>
+                    <?php require "../components/AssignFault.php"?>
+                    <?php require "../components/UpdateFault.php"?>
+                    <?php require "../components/DeleteFault.php"?>
                       
                     <table class="ListFaults">
 

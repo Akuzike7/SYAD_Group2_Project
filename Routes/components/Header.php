@@ -10,14 +10,14 @@
                        <?php
                        session_start();
                             $user = $_SESSION["name"];
+                            $roleName = $_SESSION["roleName"];
                             echo "$user";
                        ?>
                    </h4>
                    <h4>
                        <?php
                            
-                            $roleName = $_SESSION["roleName"];
-                            echo "$roleName";
+                             echo "$roleName";
                             
                        ?>
                     </h4>  

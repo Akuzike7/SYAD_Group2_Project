@@ -37,10 +37,10 @@ class validation{
                 }
 
                 if(isset($_POST['Email']) && isset($_POST['Password'])){
-
                     $this->email = $this->Sanitize($_POST['Email']);
                     $this->password = $this->Sanitize($_POST['Password']);
                 }
+                
 
                 if(empty($this->errors)){
                    
@@ -52,17 +52,26 @@ class validation{
                    $row = $data->getUser($this->email);
 
                    //setting the user
-                   session_start();
-                    $_SESSION["user_id"] = $row["id"];
-                    $_SESSION["email"] = $row["email"];
-                    $_SESSION["password"] = $row["password"];
-                    $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
-                    $_SESSION["role"] = $row["role"];
-                    $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
-                    print_r($_SESSION["roleName"]);
+                   if(isset($row["password"])){
+                       session_start();
+                       $_SESSION["user_id"] = $row["id"];
+                       $_SESSION["email"] = $row["email"];
+                       $_SESSION["password"] = $row["password"];
+                       $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
+                       $_SESSION["role"] = $row["role"];
+                       $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
+
+                   }
+                   else{
+                       header("Location: \SYAD_Group2_Project\Routes\index.php");
+                       
+                   }
+                   
 
                    //navigating to dashboard based on user role
-                   if($this->password == $row["password"]){
+                   if($this->password == $row["password"]){ 
+
+
                        if($_SESSION["role"] == 1){
                             return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
                        }
@@ -94,7 +103,7 @@ class validation{
             //reset password validation
             if(empty($_POST['Email']) || !isset($_POST['Email'])) {
                 $this->errors["email"] = "Email is required ";
-                exit();
+               
             }
 
             
@@ -141,8 +150,9 @@ class validation{
                 $_SESSION["user_id"] = $row["id"];
                 $_SESSION["email"] = $row["email"];
                 $_SESSION["password"] = $row["password"];
-                $_SESSION["firstname"] = $row["firstname"] ." ". $row["lastname"];
+                $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
                 $_SESSION["role"] = $row["role"];
+                $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
 
                 //navigating to dashboard based on user role
                 if($this->password == $row["password"]){
@@ -162,6 +172,10 @@ class validation{
             }
         }
 
+        public function validateRegister(){
+
+        }
+        
         public function val()
         {
             if(empty($this->errors)) {

@@ -7,6 +7,7 @@
     $description = $_POST["description"];
     $location = $_POST["location"];
     $phone = $_POST["Phone"];
+    session_start();
     $user = $_SESSION["user_id"];
 
     if(!empty($category) && !empty($description) && !empty($location) && !empty($phone)){

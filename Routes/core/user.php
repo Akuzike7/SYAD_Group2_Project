@@ -45,7 +45,7 @@ class user extends database{
         $result = mysqli_query($this->connection,$this->query);
 
         if($result){
-
+            $row = mysqli_fetch_assoc($result);
             return $result;
         }
         

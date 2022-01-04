@@ -128,17 +128,16 @@ form{
     display: flex;
     justify-content: center;
 }
-
-.footer{
+.footerHolder{
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
     width: 320px;
     margin: auto;
     margin-top: 10px;
     padding: 0 15px;
-    
 }
+
 
 .footer a{
     color: rgb(64, 137, 233);
