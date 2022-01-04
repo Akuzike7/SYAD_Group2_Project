@@ -12,7 +12,7 @@ class faults extends database{
    
        try{
            $result->execute(["table"=>$table,"table2"=>$table2,]);
-           $row = $result->fetchAll();
+           $row = $result->fetchAll(PDO::FETCH_ASSOC);
            return $row;
 
        }
@@ -24,21 +24,7 @@ class faults extends database{
        
    }
    
-   //getting faults reported by specific user
-   public function getUserFaults($table,$user_id){
-       $this->query = $this->checkConnection()->prepare("SELECT * FROM :table WHERE user_id = :user_id;");
-       $result = $this->query;
-   
-       try{
-            $result->execute(["table"=>$table,"user_id"=>$user_id]);
-            $row = $result->fetchAll();
-            return $row;
-       }
-       catch(PDOException $e){
-            return "Failed to user faults ".$e->getMessage();
-       }
-        
-   }
+
 
    //inserting fault reported by specific user
    public function reportFault($category,$description,$location,$phone,$user){
@@ -59,10 +45,7 @@ class faults extends database{
         catch(PDOException $e){
             return "Failed to Report fault ".$e->getMessage();
         }
-
-        
                         
-       
         
         
    }
@@ -106,19 +89,6 @@ class faults extends database{
    }
 
 
-   //assigning technician
-   public function assignTechnician($id,$technician){
-        $this->query = $this->checkConnection()->prepare("INSERT INTO fault_Technician(`fault_id`,`technician_id`) VALUES(:id,:technician);");
-        $result = $this->query;
-            
-       try{
-            $result->execute(["id"=>$id,"technician"=>$technician]);
-            return true;
-       }
-       catch(PDOException $e){
-            return "Failed to assign technician ".$e->getMessage();
-       }
-        
-   }
+
 }
 

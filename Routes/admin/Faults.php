@@ -1,5 +1,6 @@
 <?php
     require "../components/AutoLoader.php";
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,11 +129,13 @@
                             </tr>
                             <?php 
                                 $faults = new faults;
+                                $user = new user;
                                 $rows = $faults->getFaults();
                             ?>
                             <?php foreach($rows as $row):?>
                             <?php
-
+                                $name = $row["firstname"]." ".$row["lastname"];
+                                $tech = $user->getUserName($rows["a.id"]);
                             ?>
                             <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx"></td>
@@ -142,7 +145,7 @@
                                 <td><?php echo $row["description"]?></td>
                                 <td><?php echo $row["location"]?></td>
                                 <td><?php echo $row["technician"]?></td>
-                                <td><?php echo $row["firstname"]." ".$row["lastname"]?></td>
+                                <td><?php echo $name?></td>
                                 <td><?php echo $row["phone"]?></td>
                                 <td><?php echo $row["Status"]?></td>
                             </tr>

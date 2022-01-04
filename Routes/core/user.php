@@ -27,6 +27,24 @@ class user extends database{
         
     }
 
+    //getting userName
+    public function getUserName($id){
+        $this->query = $this->checkConnection()->prepare("SELECT * FROM users WHERE id = :id;");
+        $result = $this->query;
+        
+        try{
+            $result->execute(["id"=>$id]);
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            return $row;
+
+        }
+        catch(PDOException $e){
+            return "Failed to get username ".$e->getMessage();
+        }
+        
+        
+    }
+
     //updating user password
     public function updateUser($email,$password){
         $this->query = $this->checkConnection()->prepare("UPDATE users SET password = :password WHERE email= :email;");
