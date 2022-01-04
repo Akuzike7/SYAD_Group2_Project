@@ -1,5 +1,6 @@
 <?php
     require "components/AutoLoader.php";
+    
     $Login_directory = "index.php";  
     $valid = new validation();
     $form = $valid->validateReset();

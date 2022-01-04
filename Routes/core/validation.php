@@ -48,7 +48,7 @@ class validation{
                    
 
                    $data = new user;
-                   echo $data->checkConnection();
+                   $data->checkConnection();
                    $row = $data->getUser($this->email);
 
                    //setting the user

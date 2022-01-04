@@ -3,89 +3,122 @@
 class faults extends database{
 
     //getting all faults
-    public function getFaults($table){
-       $this->query = "SELECT * FROM $table;";
-       $result = mysqli_query($this->connection,$this->query);
+    public function getFaults(){
+       $table = "faults";
+       $table2 = "users";
+       $table3 = "fault_technician";
+       $this->query = $this->checkConnection()->prepare("SELECT a.*, firstname,lastname, FROM a.:table,b.:table2 WHERE a.user_id = b.id;");
+       $result = $this->query;
    
-       if($result){
-           $row = mysqli_fetch_assoc($result);
+       try{
+           $result->execute(["table"=>$table,"table2"=>$table2,]);
+           $row = $result->fetchAll();
            return $row;
+
        }
+       catch(PDOException $e){
+            return "Failed to retrive faults".$e->getMessage();
+       }
+       
    
-       return die(mysqli_error($this->connection));
+       
    }
    
    //getting faults reported by specific user
    public function getUserFaults($table,$user_id){
-       $this->query = "SELECT * FROM '$table' WHERE user_id = '$user_id';";
-       $result = mysqli_query($this->connection,$this->query);
+       $this->query = $this->checkConnection()->prepare("SELECT * FROM :table WHERE user_id = :user_id;");
+       $result = $this->query;
    
-       if($result){
-           return $result;
+       try{
+            $result->execute(["table"=>$table,"user_id"=>$user_id]);
+            $row = $result->fetchAll();
+            return $row;
        }
-   
-       return die(mysqli_error($this->connection));
+       catch(PDOException $e){
+            return "Failed to user faults ".$e->getMessage();
+       }
+        
    }
 
    //inserting fault reported by specific user
    public function reportFault($category,$description,$location,$phone,$user){
        
-        $this->query = "SELECT id FROM fault_category WHERE Category = '$category';";
-        $category_id = mysqli_query($this->connection,$this->query);
+        $this->query = $this->checkConnection()->prepare("SELECT id FROM fault_category WHERE Category = :category;");
+        $category_id = $this->query;
 
-        $this->query = "INSERT INTO faults(`category_id`,`description`,`location`,`phone`,`user_id`)
-                        VALUES('$category_id','$description','$location','$phone','$user')";
+        try{
+            $category_id->execute(["category" =>$category]);
+            $cat_id = $category_id->fetch(PDO::FETCH_ASSOC);
+
+            $this->query = $this->checkConnection()->prepare("INSERT INTO faults(`category_id`,`description`,`location`,`phone`,`user_id`)
+                        VALUES(:category_id,:description,:location,:phone,:user_id)");
+            $result = $this->query;
+            $result->execute(["category_id"=>$cat_id["id"],"description"=>$description,"location"=>$location,"phone"=>$phone,"user_id"=>$user]);          
+            return header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Faults.php ");        
+        }
+        catch(PDOException $e){
+            return "Failed to Report fault ".$e->getMessage();
+        }
+
+        
                         
-        mysqli_query($this->connection,$this->query);
+       
         
         
    }
 
    //updating fault reported by specific user
    public function updateFault($id,$category,$description,$location,$phone,$user){
-        $this->query = "SELECT id FROM fault_category WHERE Category = '$category';";
-        $category_id = mysqli_query($this->connection,$this->query);
+        $this->query = $this->checkConnection()->prepare("SELECT id FROM fault_category WHERE Category = :category;");
+        $category_id = $this->query;
+        
+        try{
+            $category_id->execute(["category"=>$category]);
+            $cat_id = $category_id->fetch(PDO::FETCH_ASSOC);
 
-        $this->query = "UPDATE faults SET category_id = '$category_id', SET description = '$description', SET location = '$location',
-                        SET phone = '$phone', SET user_id = '$user' WHERE id = '$id')";
+            $this->query = $this->checkConnection()->prepare("UPDATE faults SET category_id = :category_id, SET description = :description, SET location = :location,
+                        SET phone = :phone, SET user_id = :user WHERE id = :id)");
                         
-        $result = mysqli_query($this->connection,$this->query);
-        echo "$category_id,$description,$location,$phone,$user";
-        if($result){
-            return $result;
+            $result = $this->query;
+            $result->execute(["category_id"=>$cat_id["id"],"description"=>$description,"location"=>$location,"phone"=>$phone,"user"=>$user,"id"=>$id]);
+            return true;
+        }
+        catch(PDOException $e){
+            return "Failed to update fault ".$e->getMessage();
         }
 
-        return die(mysqli_error(($this->connection)));
+        
    }
 
 
    //deleting fault reported by specific user
    public function deleteFault($id){
-        $this->query = "DELETE FROM faults WHERE id = '$id';";
-            
+        $this->query = $this->checkConnection()->prepare("DELETE FROM faults WHERE id = :id;");
+        $result = $this->query;    
                         
-        $result = mysqli_query($this->connection,$this->query);
-
-        if($result){
-            return $result;
+        try{
+            $result->execute(["id"=>$id]);
+            return true;
         }
-
-        return die(mysqli_error(($this->connection)));
+        catch(PDOException $e){
+            "Failed to delete fault ".$e->getMessage();
+        }
    }
 
 
    //assigning technician
    public function assignTechnician($id,$technician){
-        $this->query = "INSERT INTO fault_Technician(`fault_id`,`technician_id`) VALUES('$id','$technician');";
+        $this->query = $this->checkConnection()->prepare("INSERT INTO fault_Technician(`fault_id`,`technician_id`) VALUES(:id,:technician);");
+        $result = $this->query;
             
+       try{
+            $result->execute(["id"=>$id,"technician"=>$technician]);
+            return true;
+       }
+       catch(PDOException $e){
+            return "Failed to assign technician ".$e->getMessage();
+       }
         
-        $result = mysqli_query($this->connection,$this->query);
-
-        if($result){
-            return $result;
-        }
-
-        return die(mysqli_error(($this->connection)));
    }
 }
 

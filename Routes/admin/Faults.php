@@ -126,22 +126,28 @@
                                 <th>Phone</th>
                                 <th>Status</th>
                             </tr>
-                            <?php for($n = 0; $n < 200;$n++):?>
-                        
+                            <?php 
+                                $faults = new faults;
+                                $rows = $faults->getFaults();
+                            ?>
+                            <?php foreach($rows as $row):?>
+                            <?php
+
+                            ?>
                             <tr id="tableRow">
                                 <td id="select"><input type="checkbox" name="selectionBx"></td>
-                                <td>1</td>
-                                <td>6-Dec-2021</td>
-                                <td>Plumbing</td>
-                                <td>Broken urinal</td>
-                                <td>Hall 3 Floor 2</td>
-                                <td>Tech</td>
-                                <td>Akuzike Nchembe</td>
-                                <td>0882888136</td>
-                                <td>pending</td>
+                                <td><?php echo $row["id"]?></td>
+                                <td><?php echo $row["Date_Reported"]?></td>
+                                <td><?php echo $row["category"]?></td>
+                                <td><?php echo $row["description"]?></td>
+                                <td><?php echo $row["location"]?></td>
+                                <td><?php echo $row["technician"]?></td>
+                                <td><?php echo $row["firstname"]." ".$row["lastname"]?></td>
+                                <td><?php echo $row["phone"]?></td>
+                                <td><?php echo $row["Status"]?></td>
                             </tr>
 
-                            <?php endfor?>
+                            <?php endforeach?>
                             
                        
                       
