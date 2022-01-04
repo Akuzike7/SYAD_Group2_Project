@@ -110,6 +110,7 @@ class validation{
 
             
         }
+        
 
         public function validateResetPassword(){
             
@@ -173,7 +174,34 @@ class validation{
         }
 
         public function validateRegister(){
+            if(empty($_POST['Fname']) || !isset($_POST['Fname'])) {
+                $this->errors["fname"] = "firstname is required ";
+            }
+            if(empty($_POST['Lname']) || !isset($_POST['Lname'])) {
+                $this->errors["lname"] = "Lastname is required ";
+            }
+            if(empty($_POST['Email']) || !isset($_POST['Email'])) {
+                $this->errors["email"] = "Email is required ";
+            }
 
+            if(empty($_POST['Password']) || !isset($_POST['Password'])) {
+                $this->errors["password"] = "Password is required ";
+            }
+
+            if(empty($_POST['CPassword']) || !isset($_POST['CPassword'])) {
+                $this->errors['cpassword'] = "Confirm Password is required ";
+            }
+
+            if(!($this->password == $this->cpassword)){
+                $this->errors['mismatch'] = "password and confirm password do not match";
+            }
+
+
+            if(isset($_POST['Email']) && isset($_POST['Password'])){
+                $this->email = $this->Sanitize($_POST['Email']);
+                $this->password = $this->Sanitize($_POST['Password']);
+            }
+            
         }
         
         public function val()
