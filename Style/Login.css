@@ -138,6 +138,13 @@ form{
     padding: 0 15px;
 }
 
+.footer{
+    display: flex;
+    
+    align-items: center;
+   
+    
+}
 
 .footer a{
     color: rgb(64, 137, 233);
