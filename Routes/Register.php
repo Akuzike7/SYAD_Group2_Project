@@ -92,7 +92,7 @@
             <?php endif; ?>
 
             <div class="LoginBtn" >
-                <input type="submit" name="submit" value="Register" id="RegisterBtn">
+                <input type="submit" name="submit" value="Register" id="LoginBtn">
             </div>
 
             <div class="footer">

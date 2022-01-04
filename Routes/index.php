@@ -2,7 +2,7 @@
     require_once "./core/validation.php";
     
     $ResetPassword_directory = 'Reset.php';
-    $Register_directoryv = 'Register.php';
+    $Register_directory = 'Register.php';
     $valid = new validation();
     
     $form = $valid->ValidateLogin(true);
@@ -86,7 +86,7 @@
                      <img src="../Images/registration_48px.png" onclick="navigate('<?php echo $Register_directory ?>')" width="20px">
                  </div>
              </div>
-             
+
         </form>
     </div>
     
