@@ -12,12 +12,13 @@
                             $user = $_SESSION["name"];
                             $roleName = $_SESSION["roleName"];
                             echo "$user";
+                          
                        ?>
                    </h4>
                    <h4>
                        <?php
                            
-                             echo "$roleName";
+                            // echo "$roleName";
                             
                        ?>
                     </h4>  

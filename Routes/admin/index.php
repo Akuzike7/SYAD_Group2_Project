@@ -27,7 +27,7 @@
  
                     <div class="tileStat">
                         <div class="tileItem">
-                            <img src="../../Images/analytics_48px.png" width="20px" alt="" srcset="">
+                            <img src="../../Images/graph_report_48px.png" width="20px" alt="" srcset="">
                             <h4>Reported</h4>
                         </div>
                         <h4>25</h4>
@@ -43,14 +43,14 @@
                
                     <div class="tileStat">
                         <div class="tileItem">
-                            <img src="../../Images/maintenance_48px.png" width="20px" alt="" srcset="">
+                            <img src="../../Images/task_completed_48px.png" width="20px" alt="" srcset="">
                             <h4>Resolved</h4>
                          </div>
                     <h4>9</h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
-                            <img src="../../Images/maintenance_48px.png" width="20px" alt="" srcset="">
+                            <img src="../../Images/work_authorisation_48px.png" width="20px" alt="" srcset="">
                             <h4>Resolved Today</h4>
                          </div>
                     <h4>3</h4>

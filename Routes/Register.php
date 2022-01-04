@@ -32,13 +32,13 @@
             </div>
             
             <div class="fields">
-                <label for="fname">firstname</label>
-                <input type="text" name="fname" id="fname" placeholder="firstname" required>
+                <label for="fname">Firstname</label>
+                <input type="text" name="fname" id="Fname" placeholder="firstname" required>
             </div>
 
             <div class="fields">
-                <label for="mail">lastname</label>
-                <input type="text" name="lname" id="lname" placeholder="lastname" required>
+                <label for="lname">Lastname</label>
+                <input type="text" name="lname" id="Lname" placeholder="lastname" required>
             </div>
 
             <div class="fields">

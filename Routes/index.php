@@ -2,7 +2,7 @@
     require_once "./core/validation.php";
     
     $ResetPassword_directory = 'Reset.php';
-    $Register_directory = 'Register.php';
+    $Register_directory = './Register.php';
     $valid = new validation();
     
     $form = $valid->ValidateLogin(true);
