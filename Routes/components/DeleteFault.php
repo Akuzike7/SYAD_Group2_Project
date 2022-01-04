@@ -1,7 +1,7 @@
 <form class="deleteForm" action="./faultHandler.php" method="POST" >
         <button class="close" id="close4">&times;</button>
         <h3 id="title">Delete Faults</h3>
-        <table id="assignTable">
+        <table id="deleteTable">
             <tr id="header">
                 <th>Id</th>
                 <th>Category</th>

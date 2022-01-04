@@ -82,7 +82,7 @@ form{
     width: 240px;
 }
 
-#password:focus,#cpassword:focus,#mail:focus,#fname:focus,#lname:focus{
+#password:focus,#cpassword:focus,#mail:focus,#Fname:focus,#Lname:focus{
     outline: none;
     border-color: rgb(64, 137, 233);
 }
@@ -103,8 +103,7 @@ form{
 .footerHolder{
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
-    width: 320px;
+    width: 260px;
     margin: auto;
     margin-top: 10px;
     padding: 0 15px;
@@ -112,7 +111,7 @@ form{
 
 .footer{
     display: flex;
-    
+    justify-content: flex-end;
     align-items: center;
    
     

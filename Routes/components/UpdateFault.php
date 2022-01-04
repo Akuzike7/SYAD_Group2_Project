@@ -2,7 +2,7 @@
 <button class="close" id="close">&times;</button>
             <h3 id="title">Update Fault</h3>
 
-            <table class="addTable">
+            <table class="updateTable">
                     <tr class="formHeader">
                         <th>Category</th>
                         <th>Description</th>

@@ -78,12 +78,12 @@
 
              <div class="footerHolder">
                  <div class="footer">
-                     <a href="<?php echo $ResetPassword_directory ?>">Forgot Password?</a>
-                     <img src="../Images/forgot_password_48px.png" onclick="navigate('<?php echo $ResetPassword_directory ?>')" width="20px">
+                     <a href="<?php echo $Register_directory ?>">Register</a>
+                     <img src="../Images/registration_48px.png" onclick="navigate('<?php echo $Register_directory ?>')" width="20px">
                  </div>
                  <div class="footer">
-                     <a href="<?php echo $ResetPassword_directory ?>">Register</a>
-                     <img src="../Images/registration_48px.png" onclick="navigate('<?php echo $Register_directory ?>')" width="20px">
+                     <a href="<?php echo $ResetPassword_directory ?>">Forgot Password?</a>
+                     <img src="../Images/forgot_password_48px.png" onclick="navigate('<?php echo $ResetPassword_directory ?>')" width="20px">
                  </div>
              </div>
 
