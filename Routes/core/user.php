@@ -41,12 +41,12 @@ class user extends database{
 
 
     public  function getRole($id){
-        $this->query = "SELECT role FROM roles WHERE id='$id';";
+        $this->query = "SELECT role FROM roles WHERE id = '$id';";
         $result = mysqli_query($this->connection,$this->query);
 
         if($result){
             $row = mysqli_fetch_assoc($result);
-            return $result;
+            return $row;
         }
         
         return die(mysqli_error($this->connection));

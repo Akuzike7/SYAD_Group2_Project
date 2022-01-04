@@ -1,3 +1,6 @@
+<?php
+    require "../components/AutoLoader.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,8 @@
         <div class="remarkSideTab">
             <h5>Remarks</h5>
         </div>
-        <div class="remark">
+        <?php for($n=0;$n < 20;$n++):?>
+        <div class="remark" id="<?php $n?>">
             <div class="remarkDetail">
                 <div class="RFid">
                     <h4>R1</h4>
@@ -29,6 +33,7 @@
                 <h5>9:23 am</h5>
             </div>
         </div>
+        <?php endfor?>
     </div>
     <div class="remarkmain">
         <div class="remarkTitle">

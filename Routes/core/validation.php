@@ -183,6 +183,9 @@ class validation{
             if(empty($_POST['Email']) || !isset($_POST['Email'])) {
                 $this->errors["email"] = "Email is required ";
             }
+            if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)) {
+                $this->errors["email2"] = "Invalid email format"; 
+            }
 
             if(empty($_POST['Password']) || !isset($_POST['Password'])) {
                 $this->errors["password"] = "Password is required ";

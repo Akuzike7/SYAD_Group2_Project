@@ -1,16 +1,19 @@
 <?php
-    require_once "./core/validation.php";
+    require "components/AutoLoader.php";
     
     $ResetPassword_directory = 'Reset.php';
     $Register_directory = './Register.php';
-    $valid = new validation();
-    
+
+    $valid = new validation;
     $form = $valid->ValidateLogin(true);
-    
+
     if(!isset($form)){
         $valid->errors["creditional"] = "Incorrect creditionals";
         
     }
+    
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">

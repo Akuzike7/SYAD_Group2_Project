@@ -1,5 +1,5 @@
 <?php
-    require_once "./core/validation.php";
+    require "components/AutoLoader.php";
     
     $Login_directory = 'index.php';
     $valid = new validation();
@@ -50,6 +50,15 @@
             <div class="error">
                 <?php if(array_key_exists("email",$valid->errors)):?>
                     <p style="margin:0 0 0 5px"><?php echo $valid->errors["email"]; ?></p>
+                    <img src="../Images/error_48px.png" width="14px" alt="" srcset="">
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
+            <?php if(!$valid->val() && isset($_POST['submit'])): ?>
+            <div class="error">
+                <?php if(array_key_exists("email2",$valid->errors)):?>
+                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["email2"]; ?></p>
                     <img src="../Images/error_48px.png" width="14px" alt="" srcset="">
                 <?php endif; ?>
             </div>

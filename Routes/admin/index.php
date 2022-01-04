@@ -1,4 +1,14 @@
-
+<?php
+    require "../components/AutoLoader.php";
+    
+    
+    if(isset($_POST['logout'])){
+        echo "it works";
+        session_unset();
+        session_destroy();
+        header("Location:\SYAD_Group2_Project\Routes\index.php ");
+    }
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,10 +109,12 @@
                </div>
                
             </div>
+            <form method="POST" class="LogoutForm" >
+                <button class="LogoutBtn" type="submit" name="logout" style="width: 100%;">
+                    Logout
+                </button>
 
-            <button class="LogoutBtn" onclick="navigate('../index.php')">
-                Logout
-            </button>
+            </form>
             
          </div>    
 
