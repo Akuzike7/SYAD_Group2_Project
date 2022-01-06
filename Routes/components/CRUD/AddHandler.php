@@ -16,4 +16,5 @@
         $fault = new faults;
         $fault->reportFault($category,$description,$location,$phone,$user);
         
+        
     }

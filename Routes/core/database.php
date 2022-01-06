@@ -16,7 +16,7 @@ class database{
       
         $this->dbserver = 'localhost';
         $this->dbusername = 'root';
-        $this->dbpassword = 'pa55word';
+        $this->dbpassword = '';
         $this->dbname = 'maintenance-portal';
         $this->charset = 'utf8mb4';
         

@@ -21,7 +21,21 @@
        
         <!--Left side panel-->
         <div class="LsideFault">
-            
+          <?php
+            $faultsStats = new faults;
+            $totalReported = $faultsStats->sumFaultsReported();
+            $totalResolved = $faultsStats->sumFaultsResolved();
+            $totalReportedToday = $faultsStats->sumFaultsReportedToday();
+            $totalResolvedToday = $faultsStats->sumFaultsResolvedToday();
+
+            $totalPlumbingFaults = $faultsStats->sumFaultsReportedByCategory(1);
+            $totalElectronicFaults = $faultsStats->sumFaultsReportedByCategory(2);
+            $totalGeneralFaults = $faultsStats->sumFaultsReportedByCategory(3);
+            $totalWeldingFaults = $faultsStats->sumFaultsReportedByCategory(4);
+            $totalCarpentryFaults = $faultsStats->sumFaultsReportedByCategory(5);
+
+           
+          ?>  
            <div class="tileL">
 
                <h4 class="tileTitle">Total Faults</h4>
@@ -33,7 +47,7 @@
                            <img src="../../Images/graph_report_48px.png" width="20px" alt="" srcset="">
                            <h4>Reported</h4>
                        </div>
-                       <h4>25</h4>
+                       <h4><?php echo $totalReported[0] ?></h4>
                    </div>
                    
                    <div class="tileStat">
@@ -41,7 +55,7 @@
                            <img src="../../Images/analytics_48px.png" width="20px" alt="" srcset="">
                            <h4>Reported Today</h4>
                        </div>
-                       <h4>13</h4>
+                       <h4><?php echo $totalReportedToday[0] ?></h4>
                    </div>
               
                    <div class="tileStat">
@@ -49,14 +63,14 @@
                            <img src="../../Images/task_completed_48px.png" width="20px" alt="" srcset="">
                            <h4>Resolved</h4>
                         </div>
-                   <h4>9</h4>
+                   <h4><?php echo $totalResolved[0] ?></h4>
                    </div>
                    <div class="tileStat">
                        <div class="tileItem">
                            <img src="../../Images/work_authorisation_48px.png" width="20px" alt="" srcset="">
                            <h4>Resolved Today</h4>
                         </div>
-                   <h4>3</h4>
+                   <h4><?php echo $totalResolvedToday[0] ?></h4>
                    </div>
                </div>
            </div>
@@ -72,7 +86,7 @@
                             <img src="../../Images/pipelines_24px.png" width="20px" alt="" srcset="">
                             <h4>Plummbing</h4>
                         </div>
-                        <h4>17</h4>
+                        <h4><?php echo $totalPlumbingFaults[0] ?></h4>
                     </div> 
                     
                     <div class="tileStat">
@@ -80,7 +94,7 @@
                             <img src="../../Images/voltage_24px.png" width="20px" alt="" srcset="">
                             <h4>Electronic</h4>
                         </div>
-                        <h4>9</h4>
+                        <h4><?php echo $totalElectronicFaults[0] ?></h4>
                     </div>
                 
                   <div class="tileStat">
@@ -88,7 +102,7 @@
                           <img src="../../Images/welder_shield_24px.png" width="20px" alt="" srcset="">
                           <h4>Welding</h4>
                       </div>
-                      <h4>28</h4>
+                      <h4><?php echo $totalWeldingFaults[0] ?></h4>
                   </div>
 
                   <div class="tileStat">
@@ -96,7 +110,15 @@
                           <img src="../../Images/construction_carpenter_ruler_24px.png" width="20px" alt="" srcset="">
                           <h4>Carpentry</h4>
                       </div>
-                      <h4>4</h4>
+                      <h4><?php echo $totalCarpentryFaults[0] ?></h4>
+                  </div>
+
+                  <div class="tileStat">
+                      <div class="tileItem">
+                          <img src="../../Images/wrench_48px.png" width="20px" alt="" srcset="">
+                          <h4>General</h4>
+                      </div>
+                      <h4><?php echo $totalGeneralFaults[0] ?></h4>
                   </div>
               </div>
                
@@ -129,29 +151,36 @@
                             </tr>
                             <?php 
                                 $faults = new faults;
-                                $user = new user;
                                 $rows = $faults->getFaults();
+                                
                             ?>
-                            <?php foreach($rows as $row):?>
+                            <?php if($rows):?>
+                            <?php foreach($rows[0] as $row):?>
                             <?php
                                 $name = $row["firstname"]." ".$row["lastname"];
-                                $tech = $user->getUserName($rows["a.id"]);
                             ?>
                             <tr id="tableRow">
-                                <td id="select"><input type="checkbox" name="selectionBx"></td>
-                                <td><?php echo $row["id"]?></td>
-                                <td><?php echo $row["Date_Reported"]?></td>
-                                <td><?php echo $row["category"]?></td>
+                                <td id="select"><input type="checkbox" name="selectionBx" id="<?php echo $row["fid"]?>"></td>
+                                <td><?php echo $row["fid"]?></td>
+                                <td><?php echo $row["date_created"]?></td>
+                                <td><?php echo $row["Category"]?></td>
                                 <td><?php echo $row["description"]?></td>
                                 <td><?php echo $row["location"]?></td>
-                                <td><?php echo $row["technician"]?></td>
+                                <td><?php
+                                        foreach($rows[1] as $row2){
+                                            if($row["id"] == $row2["id"]){
+                                                echo $row2["firstname"]." ".$row2["lastname"];
+                                            }
+                                        }
+                                 ?>
+                                </td>
                                 <td><?php echo $name?></td>
                                 <td><?php echo $row["phone"]?></td>
                                 <td><?php echo $row["Status"]?></td>
                             </tr>
 
                             <?php endforeach?>
-                            
+                            <?php endif?>
                        
                       
     

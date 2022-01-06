@@ -28,6 +28,34 @@
     <div class="mainContent">
          <!--Left side panel-->
          <div class="LeftPanel">
+
+         <?php
+            $faultsStats = new faults;
+            $totalReported = $faultsStats->sumFaultsReported();
+            $totalResolved = $faultsStats->sumFaultsResolved();
+            $totalReportedToday = $faultsStats->sumFaultsReportedToday();
+            $totalResolvedToday = $faultsStats->sumFaultsResolvedToday();
+
+            $totalPlumbingFaults = $faultsStats->sumFaultsReportedByCategory(1);
+            $totalElectronicFaults = $faultsStats->sumFaultsReportedByCategory(2);
+            $totalGeneralFaults = $faultsStats->sumFaultsReportedByCategory(3);
+            $totalWeldingFaults = $faultsStats->sumFaultsReportedByCategory(4);
+            $totalCarpentryFaults = $faultsStats->sumFaultsReportedByCategory(5);
+
+            $userStats = new user;
+            $totalAdminstrators = $userStats->sumUsers(1);
+            $totalStudents = $userStats->sumUsers(2); 
+            $totalLectures = $userStats->sumUsers(3);
+            $totalTechnicians = $userStats->sumUsers(4);
+
+            $userFaultsStats = new UserFault;
+            $totalAdminstratorsFaults = $userFaultsStats->sumUserFaults(1);
+            $totalStudentsFaults = $userFaultsStats->sumUserFaults(2); 
+            $totalLecturesFaults = $userFaultsStats->sumUserFaults(3);
+            $totalTechniciansFaults = $userFaultsStats->sumUserFaults(4);
+            
+           
+          ?> 
             
             <div class="tileL">
  
@@ -40,7 +68,7 @@
                             <img src="../../Images/graph_report_48px.png" width="20px" alt="" srcset="">
                             <h4>Reported</h4>
                         </div>
-                        <h4>25</h4>
+                        <h4><?php echo $totalReported[0] ?></h4>
                     </div>
                     
                     <div class="tileStat">
@@ -48,7 +76,7 @@
                             <img src="../../Images/analytics_48px.png" width="20px" alt="" srcset="">
                             <h4>Reported Today</h4>
                         </div>
-                        <h4>13</h4>
+                        <h4><?php echo $totalReportedToday[0] ?></h4>
                     </div>
                
                     <div class="tileStat">
@@ -56,14 +84,14 @@
                             <img src="../../Images/task_completed_48px.png" width="20px" alt="" srcset="">
                             <h4>Resolved</h4>
                          </div>
-                    <h4>9</h4>
+                        <h4><?php echo $totalResolved[0] ?></h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
                             <img src="../../Images/work_authorisation_48px.png" width="20px" alt="" srcset="">
                             <h4>Resolved Today</h4>
                          </div>
-                    <h4>3</h4>
+                        <h4><?php echo $totalResolvedToday[0] ?></h4>
                     </div>
                 </div>
             </div>
@@ -79,7 +107,7 @@
                              <img src="../../Images/pipelines_24px.png" width="20px" alt="" srcset="">
                              <h4>Plummbing</h4>
                          </div>
-                         <h4>9</h4>
+                         <h4><?php echo $totalPlumbingFaults[0] ?></h4>
                      </div> 
                      
                      <div class="tileStat">
@@ -87,7 +115,7 @@
                              <img src="../../Images/voltage_24px.png" width="20px" alt="" srcset="">
                              <h4>Electronic</h4>
                          </div>
-                         <h4>12</h4>
+                         <h4><?php echo $totalElectronicFaults[0] ?></h4>
                      </div>
                  
                    <div class="tileStat">
@@ -95,7 +123,7 @@
                            <img src="../../Images/welder_shield_24px.png" width="20px" alt="" srcset="">
                            <h4>Wielding</h4>
                        </div>
-                       <h4>15</h4>
+                       <h4><?php echo $totalWeldingFaults[0] ?></h4>
                    </div>
  
                    <div class="tileStat">
@@ -103,8 +131,16 @@
                            <img src="../../Images/construction_carpenter_ruler_24px.png" width="20px" alt="" srcset="">
                            <h4>Carpentry</h4>
                        </div>
-                       <h4>3</h4>
+                       <h4><?php echo $totalCarpentryFaults[0] ?></h4>
                    </div>
+
+                   <div class="tileStat">
+                      <div class="tileItem">
+                          <img src="../../Images/wrench_48px.png" width="20px" alt="" srcset="">
+                          <h4>General</h4>
+                      </div>
+                      <h4><?php echo $totalGeneralFaults[0] ?></h4>
+                  </div>
                   
                </div>
                
@@ -254,28 +290,28 @@
                             <img src="../../Images/student_male_48px.png" width="20px" alt="" srcset="">
                             <h4>Students</h4>
                         </div>
-                        <h4>1500</h4>
+                        <h4><?php echo $totalStudents[0] ?></h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
                             <img src="../../Images/workers_48px.png" width="20px" alt="" srcset="">
                             <h4>Technicians</h4>
                         </div>
-                        <h4>250</h4>
+                        <h4><?php echo $totalTechnicians[0] ?></h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
                             <img src="../../Images/lecturer_48px.png" width="20px" alt="" srcset="">
                             <h4>Lecturers</h4>
                         </div>
-                        <h4>50</h4>
+                        <h4><?php echo $totalLectures[0] ?></h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
                             <img src="../../Images/administrator_male_48px.png" width="20px" alt="" srcset="">
                             <h4>Adminstrators</h4>
                         </div>
-                        <h4>3</h4>
+                        <h4><?php echo $totalAdminstrators[0] ?></h4>
                     </div>
               </div>
             </div>
@@ -290,28 +326,28 @@
                             <img src="../../Images/student_male_48px.png" width="20px" alt="" srcset="">
                             <h4>Students</h4>
                         </div>
-                        <h4>150</h4>
+                        <h4><?php echo $totalStudentsFaults[0]?></h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
                             <img src="../../Images/workers_48px.png" width="20px" alt="" srcset="">
                             <h4>Technicians</h4>
                         </div>
-                        <h4>50</h4>
+                        <h4><?php echo $totalTechniciansFaults[0]?></h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
                             <img src="../../Images/lecturer_48px.png" width="20px" alt="" srcset="">
                             <h4>Lecturers</h4>
                         </div>
-                        <h4>30</h4>
+                        <h4><?php echo $totalLecturesFaults[0]?></h4>
                     </div>
                     <div class="tileStat">
                         <div class="tileItem">
                             <img src="../../Images/administrator_male_48px.png" width="20px" alt="" srcset="">
                             <h4>Adminstrators</h4>
                         </div>
-                        <h4>39</h4>
+                        <h4><?php echo $totalAdminstratorsFaults[0]?></h4>
                     </div>
               </div>
             </div>

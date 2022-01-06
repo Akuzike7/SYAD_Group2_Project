@@ -3,11 +3,13 @@
 spl_autoload_register('myAutoLoader');
 
 function myAutoLoader($className){
-    $path = "../core/";
-    $extension = ".php";
-    $fullpath = $path . $className . $extension;
+    
+        $path = "../core/";
+        $extension = ".php";
+        $fullpath = $path . $className . $extension;
+    
+        require_once $fullpath;
 
-    require_once $fullpath;
 }
 
 ?>

@@ -7,17 +7,24 @@ class faults extends database{
        $table = "faults";
        $table2 = "users";
        $table3 = "fault_technician";
-       $this->query = $this->checkConnection()->prepare("SELECT a.*, firstname,lastname, FROM a.:table,b.:table2 WHERE a.user_id = b.id;");
+       $table4 = "fault_category";
+       $this->query = $this->checkConnection()->prepare("SELECT *,faults.id as fid FROM faults INNER JOIN users ON  users.id = faults.user_id  INNER JOIN fault_category ON fault_category.id = faults.category_id;");
        $result = $this->query;
    
        try{
-           $result->execute(["table"=>$table,"table2"=>$table2,]);
+           $result->execute();
            $row = $result->fetchAll(PDO::FETCH_ASSOC);
-           return $row;
+
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,faults.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $result->execute();
+           $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+           
+           $faults = [$row,$row2];
+           return $faults;
 
        }
        catch(PDOException $e){
-            return "Failed to retrive faults".$e->getMessage();
+            return false;
        }
        
    
@@ -88,6 +95,80 @@ class faults extends database{
         }
    }
 
+   //getting number of faults reported
+   public function sumFaultsReported(){
+       $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults");
+       $result = $this->query;
+
+       try{
+           $result->execute();
+           $result = $result->fetch();
+           return $result;
+       }
+       catch(PDOException $e){
+            "Failed to get number of faults ".$e->getMessage();
+       }
+   }
+
+   //getting number of faults reported today
+   public function sumFaultsReportedToday(){
+       $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE DATE(date_created) = CURRENT_DATE()");
+       $result = $this->query;
+
+       try{
+           $result->execute();
+           $result = $result->fetch();
+           return $result;
+       }
+       catch(PDOException $e){
+            "Failed to get number of faults ".$e->getMessage();
+       }
+   }
+
+   //getting number of faults resolved
+   public function sumFaultsResolved(){
+       $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE Status = 'Done'");
+       $result = $this->query;
+
+       try{
+           $result->execute();
+           $result = $result->fetch();
+           return $result;
+       }
+       catch(PDOException $e){
+            "Failed to get number of faults ".$e->getMessage();
+       }
+   }
+
+   //getting number of faults resolved today
+   public function sumFaultsResolvedToday(){
+       $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE Status = 'Done' AND DATE(date_created) = CURRENT_DATE()");
+       $result = $this->query;
+
+       try{
+           $result->execute();
+           $result = $result->fetch();
+           return $result;
+       }
+       catch(PDOException $e){
+            "Failed to get number of faults ".$e->getMessage();
+       }
+   }
+
+   //getting number of faults reported
+   public function sumFaultsReportedByCategory($category_id){
+    $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE category_id=:id");
+    $result = $this->query;
+
+    try{
+        $result->execute(["id"=>$category_id]);
+        $result = $result->fetch();
+        return $result;
+    }
+    catch(PDOException $e){
+         "Failed to get number of faults ".$e->getMessage();
+    }
+}
 
 
 }

@@ -1,5 +1,5 @@
 <?php
-    require "components/AutoLoader.php";
+    require "core/validation.php";
     
     $ResetPassword_directory = 'Reset.php';
     $Register_directory = './Register.php';

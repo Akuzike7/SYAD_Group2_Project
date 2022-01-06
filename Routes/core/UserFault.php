@@ -5,14 +5,30 @@ class UserFault extends database{
     private $technician;
     private $fault;
 
-    //getting faults reported by specific user
-   public function getUserFaults($table,$user_id){
-    $this->query = $this->checkConnection()->prepare("SELECT * FROM :table WHERE user_id = :user_id;");
+    //getting sum of faults reported by specific user
+   public function sumUserFaults($user_id){
+    $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE user_id = :user_id;");
     $result = $this->query;
 
     try{
-         $result->execute(["table"=>$table,"user_id"=>$user_id]);
-         $row = $result->fetchAll();
+         $result->execute(["user_id"=>$user_id]);
+         $row = $result->fetch();
+         return $row;
+    }
+    catch(PDOException $e){
+         return "Failed to user faults ".$e->getMessage();
+    }
+     
+}
+
+    //getting faults reported by specific user
+   public function getUserFaults($user_id){
+    $this->query = $this->checkConnection()->prepare("SELECT * FROM faults WHERE user_id = :user_id;");
+    $result = $this->query;
+
+    try{
+         $result->execute(["user_id"=>$user_id]);
+         $row = $result->fetchAll(PDO::FETCH_ASSOC);
          return $row;
     }
     catch(PDOException $e){

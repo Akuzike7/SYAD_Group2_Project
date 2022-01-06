@@ -59,7 +59,7 @@ class user extends database{
         }
     }
 
-
+    //deleting user
     public function deleteUser($email){
         $this->query = $this->checkConnection()->prepare("DELETE users WHERE email= :email;");
         $result = $this->query;
@@ -73,7 +73,7 @@ class user extends database{
         }
     }
 
-
+    //getting role of user
     public  function getRole($id){
         $this->query = $this->checkConnection()->prepare("SELECT role FROM roles WHERE id = :id;");
         $result = $this->query;
@@ -89,6 +89,22 @@ class user extends database{
         
         
 
+    }
+
+    //getting number of users of different roles
+    public function sumUsers($user){
+        $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM users WHERE role_id = :id;");
+        $result = $this->query;
+        
+        try{
+            $result->execute(["id"=>$user]);
+            $row = $result->fetch();
+            return $row;
+
+        }
+        catch(PDOException $e){
+            return "Failed to get username ".$e->getMessage();
+        }
     }
     
 }

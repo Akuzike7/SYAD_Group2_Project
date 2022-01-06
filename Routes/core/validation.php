@@ -58,7 +58,7 @@ class validation{
                        $_SESSION["email"] = $row["email"];
                        $_SESSION["password"] = $row["password"];
                        $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
-                       $_SESSION["role"] = $row["role"];
+                       $_SESSION["role"] = $row["role_id"];
                        $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
 
                    }
