@@ -100,7 +100,7 @@
 .addTable{
     display: none;
     width: 100%;
-    border: 1px gray solid;
+    
 }
 .tableRow{
     background-color: #eee;
@@ -133,6 +133,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     padding: 8px;
+    z-index: 1;
 }
 
 /*Deleting a fault styles*/
@@ -146,6 +147,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     padding: 8px;
+    z-index: 1;
 }
 
 /*Assigning fault styles*/
@@ -159,13 +161,15 @@
     left: 50%;
     transform: translate(-50%,-50%);
     padding: 8px;
+    z-index: 1;
 }
 .assignTable{
     width: 100%;
-    border: 1px gray solid;
+   
 }
+
 .assignForm input{
-    display: block;
+    display: none;
 }
 
 
@@ -302,6 +306,5 @@
     color: white;
     outline: 1px red solid;
 }
-
 
 

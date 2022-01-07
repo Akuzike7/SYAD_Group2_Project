@@ -4,6 +4,7 @@ const tableRows = document.querySelectorAll("tr");
 const RowsCheckBox = document.querySelectorAll("#select");
 const RowsCheckBoxAll = document.querySelectorAll("#selectAll");
 let state = false;
+let active =[];
 
 tableRows.forEach((row) => {
     
@@ -33,16 +34,19 @@ tableRows.forEach((row) => {
     
 });
 
+
+
 const SelectAll = document.querySelector('#selectRadio');
 
 SelectAll.addEventListener('click', () => {
-    const checkBoxes = document.querySelectorAll("tr td input");
+   const checkBoxes = document.querySelectorAll("tr td input");
    
     checkBoxes.forEach((checkbox) => {
 
         checkbox.addEventListener('click', () => {
             
             if(checkbox.checked == false) {
+
                 SelectAll.checked = false;   
             }
             
@@ -50,6 +54,7 @@ SelectAll.addEventListener('click', () => {
 
         if(SelectAll.checked) {
             checkbox.checked = true;
+            
 
             const updatebtn = document.getElementById("update");
             updatebtn.removeAttribute("disabled");
@@ -63,17 +68,60 @@ SelectAll.addEventListener('click', () => {
         } else {
             checkbox.checked = false;
 
-            const updatebtn = document.getElementById("update");
-            updatebtn.setAttribute("disabled",true);
+            if(active.length > 1){
+                const updatebtn = document.getElementById("update");
+                updatebtn.setAttribute("disabled",true);
+    
+                const assignbtn = document.getElementById("assignTech");
+                assignbtn.setAttribute("disabled",true);
+    
+                const deletebtn = document.getElementById("delete");
+                deletebtn.setAttribute("disabled",true);
 
-            const assignbtn = document.getElementById("assignTech");
-            assignbtn.setAttribute("disabled",true);
+            }
 
-            const deletebtn = document.getElementById("delete");
-            deletebtn.setAttribute("disabled",true);
               
         }
 
+        
+    })
+})
+
+const checkBoxes = document.querySelectorAll("tr td input");
+
+
+checkBoxes.forEach((checkbox) => {
+    
+    checkbox.addEventListener('change',() => {
+        if(checkbox.checked == true){
+            active.push(checkbox.id);
+            
+            const updatebtn = document.getElementById("update");
+            updatebtn.removeAttribute("disabled");
+
+            const assignbtn = document.getElementById("assignTech");
+            assignbtn.removeAttribute("disabled");
+
+            const deletebtn = document.getElementById("delete");
+            deletebtn.removeAttribute("disabled");
+        }
+        else{
+            active = active.filter(e => e !== checkbox.id);
+
+            if(active.length == 0){
+                const updatebtn = document.getElementById("update");
+                updatebtn.setAttribute("disabled",true);
+
+                const assignbtn = document.getElementById("assignTech");
+                assignbtn.setAttribute("disabled",true);
+
+                const deletebtn = document.getElementById("delete");
+                deletebtn.setAttribute("disabled",true);
+            }
+        }
+        
+
+        
         
     })
 })
@@ -189,12 +237,9 @@ assign.addEventListener("click",() =>{
     assignFault_form.style.display = "block";
 
     let table = document.querySelectorAll(".ListFaults tr");
-    let checkboxAll = document.getElementById("selectAll");
-    let checkboxes = document.querySelectorAll("select");
     
-    if(checkboxAll.firstElementChild.checked == true){
-        const assignTable = document.querySelector("#assignTable");
-        assignTable.style.display = "table";
+    const assignTable = document.querySelector(".assignTable");
+    assignTable.style.display = "table";
 
         
         
@@ -202,57 +247,89 @@ assign.addEventListener("click",() =>{
             let row = document.createElement("tr");
             row.style.fontSize = "smaller";
             row.className = "tableRow";
-            
-            console.log(element);
+             
+            let el = element.firstElementChild.firstChild;
+            const tbody = document.querySelector(".assignTable");
             
 
-            if(!table.firstElementChild){
-                /*item.forEach((tem) =>{
-                    let data = document.createElement("td");
-                    data.value = element.value;
-                
-                    if(element.name == "category"){
-                        data.style.order = "1";
-                        data.textContent = data.value;
-                    }
-                    if(element.name == "description"){
-                        data.style.order = "2";
-                        data.textContent = data.value;
-                    }
-                    if(element.name == "location"){
-                        data.style.order = "3";
-                        data.textContent = data.value;
-                    }
-                    if(element.name == "Phone"){
-                        data.style.order = "4";
-                        data.textContent = data.value;
-                    }
-                    row.appendChild(data);
-                });*/
+                if(table[0].firstElementChild.firstElementChild !== el){
 
-                const tbody = document.querySelector("#assignTable");
-                tbody.appendChild(row);
-            }
+                    if(element.firstElementChild.firstElementChild.checked == true){
+        
+                            let id = document.createElement("td");
+                            let category = document.createElement("td");
+                            let description = document.createElement("td");
+                            let location = document.createElement("td");
+
+                            let child = element.firstElementChild.nextElementSibling;
+                            id.textContent = child.innerHTML;
+                            row.appendChild(id);
+                           
+                            category.textContent = child.nextElementSibling.nextElementSibling.innerHTML;
+                            row.appendChild(category);
+                            
+                            description.textContent = child.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML;
+                            row.appendChild(description);
+
+                            location.textContent = child.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML;
+                            row.appendChild(location);
+
+                            tbody.appendChild(row);
+                            
+                            let array = document.getElementById("list_id");
+                            array.value = array.value +" "+id.textContent;
+                            
+                        
+
+                    }
+
+
                     
-                
-        })
+                    
+                    
+                }
+                        
+                    
+            })
 
-     }
-       
-    })
+     })
     
-     
+ const assignFaultBtn = document.getElementById("assignFaultBtn");
+ 
+ assignFaultBtn.addEventListener("click",() =>{
+    let form = document.querySelector(".assignForm");
+    form.submit();
+ })
            
    
 
 const closebtn4 = document.getElementById("close4");
 
 closebtn4.addEventListener("click",() =>{
+    const tableRows = document.querySelectorAll(".tableRow");
+
+    tableRows.forEach((row) => {
+        row.remove();
+    })
+
+    const List_ids = document.getElementById("list_id");
+    List_ids.value = "";
+
     assignFault_form.style.display = "none";
 })
 
 const cancelBtn1 = document.getElementById("CancelBtn");
 
 cancelBtn1.addEventListener("click",() =>{
+    const tableRows = document.querySelectorAll(".tableRow");
+
+    tableRows.forEach((row) => {
+        row.remove();
+    })
+    
+    const List_ids = document.getElementById("list_id");
+    List_ids.value = "";
+
     assignFault_form.style.display = "none";
 })
+

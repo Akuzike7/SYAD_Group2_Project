@@ -1,9 +1,21 @@
 <?php
+    require_once "../../core/database.php";
+    require_once "../../core/UserFault.php";
+
+
     $technician = $_POST["technician"];
-    $id = $_POST["id"];
+    $ids = explode(" ",$_POST["list_id"]);
 
     if(!empty($technician)){
-        $fault = new faults;
-        $fault->reportFault($category,$description,$location,$phone,$user);
+        $fault = new UserFault;
+
+        foreach($ids as $id){
+            $fault->assignTechnician($id,$technician);
+
+        }
+
+        
         
     }
+
+    return header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Faults.php");

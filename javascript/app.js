@@ -12,4 +12,13 @@ function navigate(route){
 
 
 
+const btn1 = document.getElementById("Unassigned-faults");
+const btn2 = document.getElementById("Unresolved_faults");
 
+btn1.addEventListener("click",() => {
+    navigate("../Routes/admin/Faults.php");
+})
+
+btn2.addEventListener("click",() => {
+    navigate("../Routes/admin/Faults.php");
+})

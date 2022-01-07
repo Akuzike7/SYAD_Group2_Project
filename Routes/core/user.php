@@ -106,5 +106,21 @@ class user extends database{
             return "Failed to get username ".$e->getMessage();
         }
     }
+
+    //getting all of users of different roles
+    public function getRoleUsers($role){
+        $this->query = $this->checkConnection()->prepare("SELECT * FROM users WHERE role_id = :id;");
+        $result = $this->query;
+        
+        try{
+            $result->execute(["id"=>$role]);
+            $row = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $row;
+
+        }
+        catch(PDOException $e){
+            return "Failed to get username ".$e->getMessage();
+        }
+    }
     
 }

@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="../../Style/responsive.css">
     <link rel="stylesheet" href="../components/style/Header.css">
     <script src="../../Chart.js-3.6.2/package/dist/chart.js"></script>
+    <script src="../../javascript/jquery-3.6.0.min.js"></script>
+
     <title>Dashboard-admin</title>
 </head>
 <body id="body">
@@ -156,9 +158,8 @@
 
         <div class="CenterPanel">
             <div class="CRight">
-
-                <div class="notifications">
-                    <h4 class="tileTitle">Notifications</h4>
+            <div class="notifications">
+                    <h4 class="tileTitle">Dashboard</h4>
 
                     <div class="tileStat">
                         <div class="tileItem">
@@ -175,12 +176,13 @@
                         <h4>9</h4>
                     </div> 
                     <div class="dashBtns">
-                        <button class="dashboardBtn">Unassigned Faults</button>
-                        <button class="dashboardBtn">Unresolved Faults</button>
+                        <button class="dashboardBtn" id="Unassigned_faults">Unassigned Faults</button>
+                        <button class="dashboardBtn" id="Unresolved_faults">Unresolved Faults</button>
                         <button class="dashboardBtn">Generate Report</button>
                         
                     </div>
                 </div>
+                
 
                 <div class="LineChart">
                     <canvas id="myChart2" ></canvas>
@@ -226,6 +228,30 @@
                    </div>
             </div>
             <div class="CLeft">
+            <div class="notifications">
+                    <h4 class="tileTitle">Notifications</h4>
+
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/online_maintenance_portal_48px.png" width="20px" alt="" srcset="">
+                            <h4>Remarks</h4>
+                        </div>
+                        <h4>9</h4>
+                    </div> 
+                    <div class="tileStat">
+                        <div class="tileItem">
+                            <img src="../../Images/error_48px.png" width="20px" alt="" srcset="">
+                            <h4>Faults not resolved in 24hrs</h4>
+                        </div>
+                        <h4>9</h4>
+                    </div> 
+                    <div class="dashBtns">
+                        <button class="dashboardBtn" id="Unassigned_faults">Unassigned Faults</button>
+                        <button class="dashboardBtn" id="Unresolved_faults">Unresolved Faults</button>
+                        <button class="dashboardBtn">Generate Report</button>
+                        
+                    </div>
+                </div>
                 <div class="Barchart">
                     <canvas id="myChart" ></canvas>
                     <script>

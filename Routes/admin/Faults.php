@@ -11,6 +11,37 @@
     <link rel="stylesheet" href="../components/style/Header.css">
     <link rel="stylesheet" href="../../Style/style.css">
     <link rel="stylesheet" href="../../Style/Fault_Form.css">
+    <script src="../../javascript/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $("#Unassigned-faults").click(() =>{
+                $(".faults").load("../components/TableAutoLoad.php",{
+                    action : '1'
+                });
+            });
+            $("#Resolved-faults").click(() =>{
+                $(".faults").load("../components/TableAutoLoad.php",{
+                    action : '2'
+                });
+            });
+            $("#Unresolved-faults").click(() =>{
+                $(".faults").load("../components/TableAutoLoad.php",{
+                    action : '3'
+                });
+            });
+            $("#Remarked-faults").click(() =>{
+                $(".faults").load("../components/TableAutoLoad.php",{
+                    action : '4'
+                });
+            });
+            $("#All-faults").click(() =>{
+                $(".faults").load("../components/TableAutoLoad.php",{
+                    action : '5'
+                }); 
+            });
+           
+        })
+    </script>
     <title>Faults</title>
 </head>
 <body>
@@ -151,32 +182,34 @@
                             </tr>
                             <?php 
                                 $faults = new faults;
-                                $rows = $faults->getFaults();
-                                
+                                $Tables = $faults->getFaults();
+                               
                             ?>
-                            <?php if($rows):?>
-                            <?php foreach($rows[0] as $row):?>
-                            <?php
-                                $name = $row["firstname"]." ".$row["lastname"];
-                            ?>
+                            <?php if($Tables):?>
+                               
+                            <?php foreach($Tables[0] as $row):?>
+                            
                             <tr id="tableRow">
-                                <td id="select"><input type="checkbox" name="selectionBx" id="<?php echo $row["fid"]?>"></td>
-                                <td><?php echo $row["fid"]?></td>
+                                <td id="select"><input type="checkbox" name="selectionBx" id="<?php echo $row["id"]?>"></td>
+                                <td><?php echo $row["id"]?></td>
                                 <td><?php echo $row["date_created"]?></td>
-                                <td><?php echo $row["Category"]?></td>
+                                <td><?php echo $row["category"]?></td>
                                 <td><?php echo $row["description"]?></td>
                                 <td><?php echo $row["location"]?></td>
                                 <td><?php
-                                        foreach($rows[1] as $row2){
+                                        foreach($Tables[1] as $row2){
                                             if($row["id"] == $row2["id"]){
                                                 echo $row2["firstname"]." ".$row2["lastname"];
                                             }
                                         }
                                  ?>
                                 </td>
+                                <?php
+                                     $name = $row["firstname"]." ".$row["lastname"];
+                                ?>
                                 <td><?php echo $name?></td>
                                 <td><?php echo $row["phone"]?></td>
-                                <td><?php echo $row["Status"]?></td>
+                                <td><?php echo $row["status"]?></td>
                             </tr>
 
                             <?php endforeach?>
@@ -237,7 +270,7 @@
                     <img src="../../Images/request_service_48px.png" width="24px" >
                 </button>
 
-                <button class="navLink" id="Remarked-faults">All Faults
+                <button class="navLink" id="All-faults">All Faults
                     <img src="../../Images/maintenance_48px.png" width="24px" >
                 </button>
 

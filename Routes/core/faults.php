@@ -4,18 +4,160 @@ class faults extends database{
 
     //getting all faults
     public function getFaults(){
-       $table = "faults";
-       $table2 = "users";
-       $table3 = "fault_technician";
-       $table4 = "fault_category";
-       $this->query = $this->checkConnection()->prepare("SELECT *,faults.id as fid FROM faults INNER JOIN users ON  users.id = faults.user_id  INNER JOIN fault_category ON fault_category.id = faults.category_id;");
+       
+       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
+       INNER JOIN users ON  users.id = faults.user_id
+       INNER JOIN fault_category ON fault_category.id = faults.category_id;");
        $result = $this->query;
    
        try{
            $result->execute();
            $row = $result->fetchAll(PDO::FETCH_ASSOC);
 
-           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,faults.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users
+           INNER JOIN fault_technician ON  users.id = fault_technician.technician_id
+           INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $result = $this->query;
+           $result->execute();
+           $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+           
+           $faults = [$row,$row2];
+           return $faults;
+
+       }
+       catch(PDOException $e){
+            return false;
+       }
+       
+   
+       
+   }
+
+    //getting all unassigned faults
+    public function getUnassignedFaults(){
+       
+       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
+       INNER JOIN users ON  users.id = faults.user_id
+       INNER JOIN fault_category ON fault_category.id = faults.category_id
+       INNER JOIN fault_technician ON fault_technician.fault_id != faults.id;");
+       $result = $this->query;
+   
+       try{
+           $result->execute();
+           $row = $result->fetchAll(PDO::FETCH_ASSOC);
+
+           
+           return $row;
+
+       }
+       catch(PDOException $e){
+            return false;
+       }
+       
+   
+       
+   }
+
+    //getting all assigned faults
+    public function getAssignedFaults(){
+       
+       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
+       INNER JOIN users ON  users.id = faults.user_id  
+       INNER JOIN fault_category ON fault_category.id = faults.category_id
+       INNER JOIN fault_technician ON fault_technician.fault_id = faults.id;");
+       $result = $this->query;
+   
+       try{
+           $result->execute();
+           $row = $result->fetchAll(PDO::FETCH_ASSOC);
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $result = $this->query;
+           $result->execute();
+           $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+           
+           $faults = [$row,$row2];
+           return $faults;
+
+       }
+       catch(PDOException $e){
+            return false;
+       }
+       
+   
+       
+   }
+
+    //getting all Resolved faults
+    public function getResolvedFaults(){
+       
+       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
+       INNER JOIN users ON  users.id = faults.user_id  
+       INNER JOIN fault_category ON fault_category.id = faults.category_id
+       INNER JOIN fault_technician ON fault_technician.fault_id = faults.id WHERE faults.status = 'Done';");
+       $result = $this->query;
+   
+       try{
+           $result->execute();
+           $row = $result->fetchAll(PDO::FETCH_ASSOC);
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $result = $this->query;
+           $result->execute();
+           $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+           
+           $faults = [$row,$row2];
+           return $faults;
+
+       }
+       catch(PDOException $e){
+            return false;
+       }
+       
+   
+       
+   }
+
+    //getting all Unresolved faults
+    public function getUnresolvedFaults(){
+       
+       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
+       INNER JOIN users ON  users.id = faults.user_id  
+       INNER JOIN fault_category ON fault_category.id = faults.category_id WHERE faults.status != 'Done';");
+       $result = $this->query;
+   
+       try{
+           $result->execute();
+           $row = $result->fetchAll(PDO::FETCH_ASSOC);
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $result = $this->query;
+           $result->execute();
+           $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+           
+           $faults = [$row,$row2];
+           return $faults;
+
+       }
+       catch(PDOException $e){
+            return false;
+       }
+       
+   
+       
+   }
+
+    //getting all Unresolved faults
+    public function getRemarkedFaults(){
+       
+       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
+       INNER JOIN users ON  users.id = faults.user_id  
+       INNER JOIN fault_category ON fault_category.id = faults.category_id
+       INNER JOIN remarks ON remarks.fault_id = faults.id WHERE faults.status != 'Done';");
+       $result = $this->query;
+   
+       try{
+           $result->execute();
+           $row = $result->fetchAll(PDO::FETCH_ASSOC);
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $result = $this->query;
            $result->execute();
            $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
            
