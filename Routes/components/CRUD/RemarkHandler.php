@@ -11,9 +11,9 @@
         $user_id = $remarkId[0];
         $fault_id = $remarkId[1];
         
-        print_r($user_id);
         
         $remark->makeRemark($user_id,$fault_id,$remarks);
+        
         
     }
     catch(Exception $e){

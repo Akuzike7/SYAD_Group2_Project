@@ -3,6 +3,9 @@
     <script>
         <?php 
             session_start();
+            if(!isset($_SESSION["user_id"])){
+                return header("Location: \SYAD_GROUP2_PROJECT\Routes\index.php");
+            }
             $user_id = $_SESSION["user_id"];
         ?>
          sessionStorage.setItem("username",+<?php echo $user_id?>)

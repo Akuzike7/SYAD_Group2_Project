@@ -7,7 +7,8 @@ class remark extends database{
             $this->query = $this->checkConnection()->prepare("INSERT INTO remarks(`user_id`,`fault_id`,`remark`)
                         VALUES(:user_id,:fault_id,:remark)");
             $result = $this->query;
-            $result->execute(["user_id"=>$user_id,"fault_id"=>$fault_id,"remark"=>$remark]);          
+            $result->execute(["user_id"=>$user_id,"fault_id"=>$fault_id,"remark"=>$remark]); 
+                     
             return header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Remarks.php ");        
         }
         catch(PDOException $e){

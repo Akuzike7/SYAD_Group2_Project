@@ -129,11 +129,11 @@ class UserFault extends database{
      $result = $this->query;
  
      try{
-         $result->execute();
+         $result->execute(["user_id" => $user_id]);
          $row = $result->fetchAll(PDO::FETCH_ASSOC);
          $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.fault_id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
          $result = $this->query;
-         $result->execute(["user_id" =>$user_id]);
+         $result->execute();
          $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
          
          $faults = [$row,$row2];

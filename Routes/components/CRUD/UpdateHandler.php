@@ -16,6 +16,6 @@
         
 
         $fault = new faults();
-        $fault->updateFault($id,$category,$description,$location,$user,$status);
+        $fault->updateFault($id,$category,$description,$location,$status);
         
     }

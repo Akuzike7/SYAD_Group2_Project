@@ -3,7 +3,7 @@
     
     
     if(isset($_POST['logout'])){
-        echo "it works";
+    
         session_unset();
         session_destroy();
         header("Location:\SYAD_Group2_Project\Routes\index.php ");
@@ -47,10 +47,61 @@
 
             $categoryMonthlyFaults;
 
-            for($n=1;$n <= 5;$n++){
-                $total = $faultsStats->sumCurrentMonthCategoryFaults($n);
-                $categoryMonthlyFaults[$n-1] = $total[0];
-            }
+            
+            $categoryMonthlyFaults = $faultsStats->sumCurrentMonthCategoryFaults(1);
+            $months["plumbing"]  = $categoryMonthlyFaults["month"];
+
+            $categoryMonthlyFaults = $faultsStats->sumCurrentMonthCategoryFaults(2);
+            $months["electronic"]  = $categoryMonthlyFaults["month"];
+
+            $categoryMonthlyFaults = $faultsStats->sumCurrentMonthCategoryFaults(3);
+            $months["general"]  = $categoryMonthlyFaults["month"];
+
+            $categoryMonthlyFaults = $faultsStats->sumCurrentMonthCategoryFaults(4);
+            $months["welding"]  = $categoryMonthlyFaults["month"];
+
+            $categoryMonthlyFaults = $faultsStats->sumCurrentMonthCategoryFaults(5);
+            $months["carpentry"]  = $categoryMonthlyFaults["month"];
+               
+                
+         
+            $currentMonth = $faultsStats->getCurrentMonth();
+            
+            $monthlyFault = $faultsStats->sumMonthlyFaults(1);
+            $monthy["january"] = $monthlyFault["month"];
+            
+            $monthlyFault = $faultsStats->sumMonthlyFaults(2);
+            $monthy["february"] = $monthlyFault["month"];
+
+            $monthlyFault = $faultsStats->sumMonthlyFaults(3);
+            $monthy["march"] = $monthlyFault["month"];
+
+            $monthlyFault = $faultsStats->sumMonthlyFaults(4);
+            $monthy["april"] = $monthlyFault["month"];
+
+            $monthlyFault = $faultsStats->sumMonthlyFaults(5);
+            $monthy["may"] = $monthlyFault["month"];
+
+            $monthlyFault["june"] = $faultsStats->sumMonthlyFaults(6);
+            $monthy["june"] = $monthlyFault["month"];
+
+            $monthlyFaults = $faultsStats->sumMonthlyFaults(7);
+            $monthy["july"] = $monthlyFault["month"];
+
+            $monthlyFault = $faultsStats->sumMonthlyFaults(8);
+            $monthy["august"] = $monthlyFault["month"];
+
+            $monthlyFault = $faultsStats->sumMonthlyFaults(9);
+            $monthy["september"] = $monthlyFault["month"];
+
+            $monthlyFault = $faultsStats->sumMonthlyFaults(10);
+            $monthy["october"] = $monthlyFault["month"];
+
+            $monthlyFault= $faultsStats->sumMonthlyFaults(11);
+            $monthy["november"] = $monthlyFault["month"];
+
+            $monthlyFault = $faultsStats->sumMonthlyFaults(12);
+            $monthy["december"] = $monthlyFault["month"];
             
 
             $userStats = new user;
@@ -64,6 +115,8 @@
             $totalStudentsFaults = $userFaultsStats->sumUserFaults(2); 
             $totalLecturesFaults = $userFaultsStats->sumUserFaults(3);
             $totalTechniciansFaults = $userFaultsStats->sumUserFaults(4);
+
+            
             
            
           ?> 
@@ -184,26 +237,22 @@
                         </div>
                         <h4>9</h4>
                     </div> 
-                    <div class="dashBtns">
-                        <button class="dashboardBtn" id="Unassigned_faults">Unassigned Faults</button>
-                        <button class="dashboardBtn" id="Unresolved_faults">Unresolved Faults</button>
-                        <button class="dashboardBtn">Generate Report</button>
-                        
-                    </div>
+                   
                 </div>
                 
 
                 <div class="LineChart">
                     <canvas id="myChart2" ></canvas>
                     <script>
-        
+                       let months = <?php  echo $monthy = json_encode($monthy)?>;
+                       
                         //setup
                         const data2 ={
                             labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
                                     datasets:[
                                         { 
                                             label:"Faults Reported Monthly",
-                                            data:[4,5,3,9,5,6,2,9,15,25,11,23],
+                                            data:[months["january"],months["february"],months["march"],months["april"],months["may"],months["june"],months["july"],months["august"],months["september"],months["october"],months["november"],months["december"]],
                                             backgroundColor:'rgb(64, 137, 233)',
                                         }
                                     ]
@@ -264,14 +313,18 @@
                 <div class="Barchart">
                     <canvas id="myChart" ></canvas>
                     <script>
-                        
+                        let category= <?php 
+                                echo $months = json_encode($months)
+                             ?>;
+                        let month = <?php echo json_encode($currentMonth["month"])?>;
+
                         //setup
                         const data ={
                             labels:['Plumbing','Electronic','General','Welding','Carpentry'],
                                     datasets:[
                                         { 
-                                            label:"Faults Reported December",
-                                            data:[9,12,15,3,9],
+                                            label:"Faults Reported "+month,
+                                            data:[category["plumbing"],category["electronic"],category["general"],category["welding"],category["carpentry"]],
                                             backgroundColor:'rgb(64, 137, 233)',
                                         }
                                     ]

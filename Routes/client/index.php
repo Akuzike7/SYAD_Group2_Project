@@ -1,5 +1,12 @@
 <?php
     require_once "../components/AutoLoader.php";
+
+    if(isset($_POST['logout'])){
+        echo "it works";
+        session_unset();
+        session_destroy();
+        header("Location:\SYAD_Group2_Project\Routes\index.php ");
+    }
     
 ?>
 <!DOCTYPE html>
@@ -301,7 +308,7 @@ closebtn.addEventListener("click",() =>{
         row.remove();
     })
 
-    const List_ids = document.getElementById("list_id");
+    const List_ids = document.getElementById("list_ids");
     List_ids.value = "";
     List_ids.innerHTML = null;
 

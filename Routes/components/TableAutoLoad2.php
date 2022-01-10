@@ -75,6 +75,7 @@ $userId = $_POST["userId"];
                 echo '<td>'.$row["description"].'</td>';
                 echo '<td>'.$row["location"].'</td>';
                 echo '<td>';
+                
                     foreach($Tables[1] as $row2){
                         if($row["id"] == $row2["fault_id"]){
                             echo $row2["firstname"]." ".$row2["lastname"];
