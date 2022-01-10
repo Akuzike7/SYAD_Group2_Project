@@ -38,11 +38,20 @@
             $totalReportedToday = $faultsStats->sumFaultsReportedToday();
             $totalResolvedToday = $faultsStats->sumFaultsResolvedToday();
 
+
             $totalPlumbingFaults = $faultsStats->sumFaultsReportedByCategory(1);
             $totalElectronicFaults = $faultsStats->sumFaultsReportedByCategory(2);
             $totalGeneralFaults = $faultsStats->sumFaultsReportedByCategory(3);
             $totalWeldingFaults = $faultsStats->sumFaultsReportedByCategory(4);
             $totalCarpentryFaults = $faultsStats->sumFaultsReportedByCategory(5);
+
+            $categoryMonthlyFaults;
+
+            for($n=1;$n <= 5;$n++){
+                $total = $faultsStats->sumCurrentMonthCategoryFaults($n);
+                $categoryMonthlyFaults[$n-1] = $total[0];
+            }
+            
 
             $userStats = new user;
             $totalAdminstrators = $userStats->sumUsers(1);
@@ -146,13 +155,13 @@
                   
                </div>
                
+               <form method="POST" class="LogoutForm" >
+                   <button class="LogoutBtn" type="submit" name="logout" style="width: 100%;">
+                       Logout
+                   </button>
+   
+               </form>
             </div>
-            <form method="POST" class="LogoutForm" >
-                <button class="LogoutBtn" type="submit" name="logout" style="width: 100%;">
-                    Logout
-                </button>
-
-            </form>
             
          </div>    
 
@@ -255,14 +264,14 @@
                 <div class="Barchart">
                     <canvas id="myChart" ></canvas>
                     <script>
-    
+                        
                         //setup
                         const data ={
-                            labels:['Plumbing','Electronic','Wielding','Carpentry'],
+                            labels:['Plumbing','Electronic','General','Welding','Carpentry'],
                                     datasets:[
                                         { 
                                             label:"Faults Reported December",
-                                            data:[9,12,15,3],
+                                            data:[9,12,15,3,9],
                                             backgroundColor:'rgb(64, 137, 233)',
                                         }
                                     ]

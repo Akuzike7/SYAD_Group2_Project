@@ -8,7 +8,7 @@
     $form = $valid->ValidateLogin(true);
 
     if(!isset($form)){
-        $valid->errors["creditional"] = "Incorrect creditionals";
+        $valid->errors["creditinals"] = "Incorrect creditionals";
         
     }
     
@@ -49,6 +49,10 @@
                     <p style="margin:0 0 0 5px"><?php echo $valid->errors["email"]; ?></p>
                     <img src="../Images/error_48px.png" width="14px" alt="" srcset="">
                 <?php endif; ?>
+                <?php if(array_key_exists("email2",$valid->errors)):?>
+                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["email2"]; ?></p>
+                    <img src="../Images/error_48px.png" width="14px" alt="" srcset="">
+                <?php endif; ?>
             </div>
             <?php endif; ?>
 
@@ -68,8 +72,8 @@
 
             <?php if(!$valid->val() && isset($_POST['submit'])): ?>
             <div class="error">
-                <?php if(array_key_exists("creditional",$valid->errors)):?>
-                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["creditional"]; ?></p>
+                <?php if(array_key_exists("creditinals",$valid->errors)):?>
+                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["creditinals"]; ?></p>
                     <img src="../Images/error_48px.png" width="14px" alt="" srcset="">
                 <?php endif; ?>
             </div>

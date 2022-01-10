@@ -20,7 +20,25 @@ class user extends database{
 
         }
         catch(PDOException $e){
-            return "Incorrect creditinals ".$e->getMessage();
+            return false;
+        }
+        
+        
+        
+    }
+
+    //register a new user
+    public function registerUser($firstname,$lastname,$password,$phone,$email,$role){
+        $this->query = $this->checkConnection()->prepare("INSERT INTO users(`firstname`,`lastname`,`password`,`phone`,`email`,`role`) VALUES(:fname,:lname,:password,:phone,:email,:role)");
+        $result = $this->query;
+        
+        try{
+            $result->execute(["fname"=>$firstname,"lname"=>$lastname,"password"=>$password,"phone"=>$phone,"email"=>$email,"role"=>$role]);    
+            return true;
+
+        }
+        catch(PDOException $e){
+            return false;
         }
         
         
@@ -55,7 +73,7 @@ class user extends database{
             return true;
         }
         catch(PDOException $e){
-            return "Failed to update".$e->getMessage();
+            return false;
         }
     }
 
@@ -69,7 +87,7 @@ class user extends database{
             return true;
         }
         catch(PDOException $e){
-            return "Failed to delete".$e->getMessage();
+            return false;
         }
     }
 

@@ -19,49 +19,18 @@ echo '<th>Status</th>';
 echo '</tr>';
 
 $action = $_POST['action'];
+$userId = $_POST["userId"];
 
 
 
-
-    $faults = new faults;
-    $userFaults = new UserFault;
+    $faults = new UserFault;
     
 
     if($action == '1'){
-        $Tables;
-
-        
-
-        $Tables = $faults->getUnassignedFaults();
-         
-
-        if($Tables){
-            
-            foreach($Tables as $row){
-                echo '<tr id="tableRow">';
-                echo '<td id="select"><input type="checkbox" name="selectionBx" id="<?php echo $row["fid"]?>"></td>';
-                echo ' <td>'. $row["id"].'</td>';
-                echo '<td>'.$row["date_created"].'</td>';
-                echo '<td>'. $row["category"].'</td>';
-                echo '<td>'.$row["description"].'</td>';
-                echo '<td>'.$row["location"].'</td>';
-                echo '<td></td>';
-
-                $name = $row["firstname"]." ".$row["lastname"];
-        
-                echo '<td>'.$name.'</td>';
-                echo '<td>'.$row["phone"].'</td>';
-                echo '<td>'.$row["status"].'</td>';
-                echo '</tr>';
-            }
-        }
-
-    }
-    if($action == '2'){
         
         
-            $Tables = $faults->getResolvedFaults();
-            
+        $Tables = $faults->getUserResolvedFaults($userId);
+          
         
         if($Tables){
             foreach($Tables[0] as $row){
@@ -89,76 +58,46 @@ $action = $_POST['action'];
             }
         }
     }
+
+    if($action == '2'){
+        
+    
+        $Tables = $faults->getUserUnresolvedFaults($userId);
+            
+
+        if($Tables){
+            foreach($Tables[0] as $row){
+                echo '<tr id="tableRow">';
+                echo '<td id="select"><input type="checkbox" name="selectionBx" id="<?php echo $row["fid"]?>"></td>';
+                echo ' <td>'. $row["id"].'</td>';
+                echo '<td>'.$row["date_created"].'</td>';
+                echo '<td>'. $row["category"].'</td>';
+                echo '<td>'.$row["description"].'</td>';
+                echo '<td>'.$row["location"].'</td>';
+                echo '<td>';
+                    foreach($Tables[1] as $row2){
+                        if($row["id"] == $row2["fault_id"]){
+                            echo $row2["firstname"]." ".$row2["lastname"];
+                        }
+                    }
+                echo '</td>';
+
+                $name = $row["firstname"]." ".$row["lastname"];
+        
+                echo '<td>'.$name.'</td>';
+                echo '<td>'.$row["phone"].'</td>';
+                echo '<td>'.$row["status"].'</td>';
+                echo '</tr>';
+            }
+        }
+    }
+    
+   
 
     if($action == '3'){
         
-    
-        $Tables = $faults->getUnresolvedFaults();
-           
-
-        if($Tables){
-            foreach($Tables[0] as $row){
-                echo '<tr id="tableRow">';
-                echo '<td id="select"><input type="checkbox" name="selectionBx" id="<?php echo $row["fid"]?>"></td>';
-                echo ' <td>'. $row["id"].'</td>';
-                echo '<td>'.$row["date_created"].'</td>';
-                echo '<td>'. $row["category"].'</td>';
-                echo '<td>'.$row["description"].'</td>';
-                echo '<td>'.$row["location"].'</td>';
-                echo '<td>';
-                    foreach($Tables[1] as $row2){
-                        if($row["id"] == $row2["fault_id"]){
-                            echo $row2["firstname"]." ".$row2["lastname"];
-                        }
-                    }
-                echo '</td>';
-
-                $name = $row["firstname"]." ".$row["lastname"];
+         $Tables = $faults->getUserFaults($userId);
         
-                echo '<td>'.$name.'</td>';
-                echo '<td>'.$row["phone"].'</td>';
-                echo '<td>'.$row["status"].'</td>';
-                echo '</tr>';
-            }
-        }
-    }
-    
-    if($action == '4'){
-        $Tables = $faults->getRemarkedFaults();
-
-       
-        if($Tables){
-            foreach($Tables[0] as $row){
-                echo '<tr id="tableRow">';
-                echo '<td id="select"><input type="checkbox" name="selectionBx" id="<?php echo $row["fid"]?>"></td>';
-                echo ' <td>'. $row["id"].'</td>';
-                echo '<td>'.$row["date_created"].'</td>';
-                echo '<td>'. $row["category"].'</td>';
-                echo '<td>'.$row["description"].'</td>';
-                echo '<td>'.$row["location"].'</td>';
-                echo '<td>';
-                    foreach($Tables[1] as $row2){
-                        if($row["id"] == $row2["fault_id"]){
-                            echo $row2["firstname"]." ".$row2["lastname"];
-                        }
-                    }
-                echo '</td>';
-
-                $name = $row["firstname"]." ".$row["lastname"];
-        
-                echo '<td>'.$name.'</td>';
-                echo '<td>'.$row["phone"].'</td>';
-                echo '<td>'.$row["status"].'</td>';
-                echo '</tr>';
-            }
-        }
-
-    }
-
-    if($action == '5'){
-        
-            $Tables = $faults->getFaults();
-       
         if($Tables){
             foreach($Tables[0] as $row){
                 echo '<tr id="tableRow">';

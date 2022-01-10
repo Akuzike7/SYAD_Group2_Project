@@ -1,6 +1,6 @@
 <?php
-    require "../components/AutoLoader.php";
-    
+    require_once "../components/AutoLoader.php";
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,38 +15,50 @@
     <script>
         $(document).ready(() => {
             $("#Unassigned-faults").click(() =>{
+                let userId = sessionStorage.getItem("user_id");
                 $(".faults").load("../components/TableAutoLoad.php",{
-                    action : '1'
+                    action : '1',
+                    userId : userId
                 });
             });
             $("#Resolved-faults").click(() =>{
+                let userId = sessionStorage.getItem("user_id");
                 $(".faults").load("../components/TableAutoLoad.php",{
-                    action : '2'
+                    action : '2',
+                    userId : userId
                 });
             });
             $("#Unresolved-faults").click(() =>{
+                let userId = sessionStorage.getItem("user_id");
                 $(".faults").load("../components/TableAutoLoad.php",{
-                    action : '3'
+                    action : '3',
+                    userId : userId
                 });
             });
             $("#Remarked-faults").click(() =>{
+                let userId = sessionStorage.getItem("user_id");
                 $(".faults").load("../components/TableAutoLoad.php",{
-                    action : '4'
+                    action : '4',
+                    userId : userId
                 });
             });
             $("#All-faults").click(() =>{
+                let userId = sessionStorage.getItem("user_id");
+                console.log(userId);
                 $(".faults").load("../components/TableAutoLoad.php",{
-                    action : '5'
+                    action : '5',
+                    userId : userId
                 }); 
             });
+            
            
         })
+        
     </script>
     <title>Faults</title>
 </head>
 <body>
    <?php require_once "../components/Header.php" ?>
-   <?php require_once "../admin/faults.php"?>
     
     <div class="mainContent">
        
@@ -164,6 +176,7 @@
                     <?php require "../components/AssignFault.php"?>
                     <?php require "../components/UpdateFault.php"?>
                     <?php require "../components/DeleteFault.php"?>
+                    <?php require "../components/RemarkFault.php"?>
                       
                     <table class="ListFaults">
 
@@ -198,7 +211,8 @@
                                 <td><?php echo $row["location"]?></td>
                                 <td><?php
                                         foreach($Tables[1] as $row2){
-                                            if($row["id"] == $row2["id"]){
+                                            
+                                            if($row["id"] == $row2["fault_id"]){
                                                 echo $row2["firstname"]." ".$row2["lastname"];
                                             }
                                         }
@@ -239,14 +253,16 @@
                 <button class="navLink" id="delete" disabled>Delete
                     <img src="../../Images/delete_trash_48px.png" width="24px">
                 </button>
-
+                <?php if($_SESSION["roleName"] == "Administrator"):?>
                 <button class="navLink" id="assignTech" disabled>Assign Technician
                     <img src="../../Images/worker_24px.png">
                 </button>
 
-                <button class="navLink" id="remark">Remark
-                    <img src="../../Images/feedback_48px.png" width="24px" >
+                <button class="navLink" id="remarkBtn" type="submit" disabled>Remark
+                        <img src="../../Images/feedback_48px.png" width="24px" >
                 </button>
+                <?php endif?>  
+              
 
             </div>
             <hr class="hrule" style="margin-top: 20px; margin-bottom: 10px;">

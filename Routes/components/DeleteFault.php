@@ -1,17 +1,17 @@
-<form class="deleteForm" action="./faultHandler.php" method="POST" >
-        <button class="close" id="close4">&times;</button>
+<form class="deleteForm" action="../components/CRUD/DeleteHandle.php" method="POST" >
+        <button class="close" id="close3">&times;</button>
         <h3 id="title">Delete Faults</h3>
-        <table id="deleteTable">
-            <tr id="header">
+        <table class="deleteTable">
+            <tr id="deleteHeader">
                 <th>Id</th>
                 <th>Category</th>
                 <th>Description</th>
+                <th>Location</th>
             </tr>
 
         </table>
-        <label class="formLabel" for="category">Technician</label>
-        <input type="text" name="category" id="categoryInput"disabled>
-        <input type="text" name="description" id="descriptionInput"disabled>
-        <button class="formBtn"id="Cancel3Btn" type="">Cancel></button>
-        <button class="formBtn"id="deleteFaultBtn" type="submit">Delete</button>
+        
+        <input  type="text" name="list_id" id="list_ids2" hidden>
+        <button class="formBtn" id="CancelBtn3" type="">Cancel</button>
+        <button class="formBtn" id="deleteFaultBtn" type="submit">Delete</button>
 </form>

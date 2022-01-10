@@ -81,7 +81,9 @@
 .ListFaults tr:nth-child(odd) {
     background-color: #fff; 
 }
-
+.remarkForm{
+    width: 100%;
+}
 /*Adding a fault styles */
 .addForm{
     width: 600px;
@@ -106,11 +108,11 @@
     background-color: #eee;
     text-align:center;
 }
-#TableHeader{
+#TableHeader,#deleteHeader{
     width: 100%;
     background-color: rgb(64, 137, 233);
 }
-#TableHeader th{
+#TableHeader th,#deleteHeader th{
     font-size: smaller;
     color: white;
     padding: 3px; 
@@ -149,6 +151,10 @@
     padding: 8px;
     z-index: 1;
 }
+.deleteTable{
+    width: 100%;
+    margin-bottom: 5px;
+}
 
 /*Assigning fault styles*/
 .assignForm{
@@ -172,6 +178,27 @@
     display: none;
 }
 
+/*Remarking fault style*/
+.RemarkForm{
+    width: 600px;
+    display: none;
+    background-color: white;
+    border: 1px royalblue solid;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 8px;
+    z-index: 1;
+}
+.RemarkTable{
+    width: 100%;
+   
+}
+
+.RemarkForm input{
+    display: none;
+}
 
 .close{
     display: flex;
@@ -189,6 +216,30 @@
     background-color: rgb(228, 46, 46);
     color: white;
 }
+.updateInputs,.deleteInputs{
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px #ccc solid;
+    outline: none;
+    padding: 5px;
+}
+.updateInputs:focus,.deleteInputs:focus{
+    border-bottom: 1px rgb(64, 137, 233) solid;
+}
+
+#TxtareaRemark{
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px #ccc solid;
+    outline: none;
+    padding: 5px;
+    resize: none;
+}
+#TxtareaRemark:hover{
+    border-bottom: 1px rgb(64, 137, 233) solid;
+}
 
 #category{
     display: block;
@@ -202,6 +253,18 @@
     border-bottom: 1px rgb(64, 137, 233) solid;
 }
 
+#id{
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px #ccc solid;
+    outline: none;
+    padding: 5px;
+}
+#id:focus{
+    border-bottom: 1px rgb(64, 137, 233) solid;
+}
+
 #technician{
     display: block;
     margin: 10px 0;
@@ -211,6 +274,18 @@
     padding: 5px;
 }
 #technician:focus{
+    border-bottom: 1px rgb(64, 137, 233) solid;
+}
+
+#Status{
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px #ccc solid;
+    outline: none;
+    padding: 5px;
+}
+#Status:focus{
     border-bottom: 1px rgb(64, 137, 233) solid;
 }
 

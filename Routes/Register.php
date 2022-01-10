@@ -1,12 +1,16 @@
 <?php
-    require "components/AutoLoader.php";
+    require "./core/database.php";
+    require "./core/validation.php";
     
     $Login_directory = 'index.php';
     $valid = new validation();
     
     $form = $valid->validateRegister();
     
-    
+    if(!isset($form)){
+        $valid->errors["mismatch"] = "mismatch";
+        
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,17 +37,40 @@
             
             <div class="fields">
                 <label for="fname">Firstname</label>
-                <input type="text" name="fname" id="Fname" placeholder="firstname" required>
+                <input type="text" name="Fname" id="Fname" placeholder="firstname" required>
             </div>
 
             <div class="fields">
                 <label for="lname">Lastname</label>
-                <input type="text" name="lname" id="Lname" placeholder="lastname" required>
+                <input type="text" name="Lname" id="Lname" placeholder="lastname" required>
             </div>
 
             <div class="fields">
                 <label for="mail">Email</label>
                 <input type="email" name="Email" id="mail" placeholder="email" required>
+            </div>
+            <div class="fields">
+                <label for="phone">Phone</label>
+                <input type="text" name="Phone" id="phone" placeholder="phone" required>
+            </div>
+
+            <div class="fields">
+                <label for="mail">Role</label>
+                <select name="Role" id="role">
+                    <option value="2">Student</option>
+                    <option value="3">Lecturer</option>
+                    <option value="4">Technician</option>
+                </select>
+            </div>
+
+            <div class="fields">
+                <label for="password">Password</label>
+                <input type="password" name="Password" id="password" placeholder="password" required>
+            </div>
+
+            <div class="fields">
+                <label for="cpassword">Confirm Password</label>
+                <input type="password" name="CPassword" id="cpassword" placeholder="confirm password" >
             </div>
 
             <?php if(!$valid->val() && isset($_POST['submit'])): ?>
@@ -64,10 +91,7 @@
             </div>
             <?php endif; ?>
 
-            <div class="fields">
-                <label for="password">Password</label>
-                <input type="password" name="Password" id="password" placeholder="password" required>
-            </div>
+           
           
             <?php if(!$valid->val() && isset($_POST['submit'])): ?>
             <div class="error">
@@ -78,10 +102,7 @@
             </div>
             <?php endif; ?>
 
-            <div class="fields">
-                <label for="cpassword">Confirm Password</label>
-                <input type="password" name="CPassword" id="cpassword" placeholder="confirm password" >
-            </div>
+            
 
             <?php if(!$valid->val() && isset($_POST['submit'])): ?>
             <div class="error">
@@ -93,8 +114,8 @@
 
             <?php if(!$valid->val() && isset($_POST['submit'])): ?>
             <div class="error">
-                <?php if(array_key_exists("creditional",$valid->errors)):?>
-                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["creditional"]; ?></p>
+                <?php if(array_key_exists("mismatch",$valid->errors)):?>
+                    <p style="margin:0 0 0 5px"><?php echo $valid->errors["mismatch"]; ?></p>
                     <img src="../Images/error_48px.png" width="14px" alt="" srcset="">
                 <?php endif; ?>
             </div>

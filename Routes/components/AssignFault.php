@@ -29,6 +29,6 @@
         </select>
         
         <input type="text" id="list_id" name="list_id" hidden>
-        <button class="formBtn" id="CancelBtn" type="">Cancel</button>
+        <button class="formBtn" id="CancelBtn4" type="">Cancel</button>
         <button class="formBtn" id="assignFaultBtn" type="submit">Assign</button>
 </form>

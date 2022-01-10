@@ -2,7 +2,8 @@
 const messageInput = document.getElementById("comment");
 
 messageInput.addEventListener("keypress",(e) =>{
-    var rows = parseInt(messageInput.getAttribute("rows"));
+    console.log("pressed");
+    let rows = parseInt(messageInput.getAttribute("rows"));
     if(e.key =="Enter"){
         messageInput.setAttribute("rows",++rows);
     }
@@ -11,25 +12,6 @@ messageInput.addEventListener("keypress",(e) =>{
     }
 });
 
-/*Adding the message on the messageboard */
-const messageBtn = document.getElementById("messageBtn");
-const messageBoard = document.querySelector(".remarkChat");
 
-messageBtn.addEventListener("click",() =>{
-    let message = document.createElement("div");
-    message.className = "outgoingMsg";
 
-    let msgtext = document.createElement("p");
-    msgtext.textContent = messageInput.value;
-    message.appendChild(msgtext);
 
-    let msgTime = document.createElement("h6");
-    msgTime.id = "chatMsgTime2";
-    let time = new Date();
-    msgTime.textContent = time.toLocaleString();
-    message.appendChild(msgTime);
-
-    messageBoard.appendChild(message);
-    messageInput.value = "";
-
-})

@@ -9,13 +9,16 @@
     if(!empty($technician)){
         $fault = new UserFault;
 
-        foreach($ids as $id){
-            $fault->assignTechnician($id,$technician);
+        try{
 
+            foreach($ids as $id){
+                $fault->assignTechnician($id,$technician);
+            }
+        }
+        catch(Exception $e){
+            echo $e->getMessage();
         }
 
         
         
     }
-
-    return header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Faults.php");

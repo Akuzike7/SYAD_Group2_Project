@@ -1,5 +1,6 @@
 <?php
-    require "components/AutoLoader.php";
+    require_once "core/database.php";
+    require_once "core/validation.php";
     
     $Login_directory = "index.php";  
     $valid = new validation();

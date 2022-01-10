@@ -4,9 +4,15 @@ class validation{
         
         private $email;
         private $password;
+        private $hashedPassword;
         private $cpassword;
+        private $firstname;
+        private $lastname;
+        private $role;
+        private $phone;
         private $token;
         public $errors = [];
+        
         
         
                  
@@ -25,15 +31,20 @@ class validation{
         {
             require_once "database.php";
             require_once "user.php";
-
+            
+            
             //login validation
             if($login) {
                 if(empty($_POST['Email']) || !isset($_POST['Email'])) {
-                    $this->errors["email"] = "Email is required ";
+                   return $this->errors["email"] = "Email is required ";
                 }
 
                 if(empty($_POST['Password']) || !isset($_POST['Password'])) {
-                    $this->errors["password"] = "Password is required ";
+                   return $this->errors["password"] = "Password is required ";
+                }
+
+                if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)) {
+                    return $this->errors["email2"] = "Invalid email format"; 
                 }
 
                 if(isset($_POST['Email']) && isset($_POST['Password'])){
@@ -49,28 +60,22 @@ class validation{
 
                    $data = new user;
                    $data->checkConnection();
+
                    $row = $data->getUser($this->email);
-
-                   //setting the user
-                   if(isset($row["password"])){
-                       session_start();
-                       $_SESSION["user_id"] = $row["id"];
-                       $_SESSION["email"] = $row["email"];
-                       $_SESSION["password"] = $row["password"];
-                       $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
-                       $_SESSION["role"] = $row["role_id"];
-                       $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
-
-                   }
-                   else{
-                       header("Location: \SYAD_Group2_Project\Routes\index.php");
-                       
-                   }
                    
+                   if(!$row){
+                        return  $this->errors["creditinals"] = "incorrect creditinals";
+                   }
 
                    //navigating to dashboard based on user role
-                   if($this->password == $row["password"]){ 
-
+                   if(password_verify($this->password,$row["password"])){ 
+                        session_start();
+                        $_SESSION["user_id"] = $row["id"];
+                        $_SESSION["email"] = $row["email"];
+                        $_SESSION["password"] = $row["password"];
+                        $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
+                        $_SESSION["role"] = $row["role_id"];
+                        $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
 
                        if($_SESSION["role"] == 1){
                             return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
@@ -86,7 +91,7 @@ class validation{
                        }
                    }
                    else{
-                       return  false;
+                       return  $this->errors["creditinals"] = "incorrect creditinals";
                    }
                     
                 }
@@ -102,108 +107,173 @@ class validation{
             
             //reset password validation
             if(empty($_POST['Email']) || !isset($_POST['Email'])) {
-                $this->errors["email"] = "Email is required ";
+                return $this->errors["email"] = "Email is required ";
                
             }
+           
+            if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)) {
+                return $this->errors["email2"] = "Invalid email format"; 
+            }
+            session_start();
+            $_SESSION["email"] = $_POST["Email"];
 
-            
+            return header("Location: \SYAD_GROUP2_Project\Routes\ResetPassword.php ");
 
             
         }
         
 
         public function validateResetPassword(){
-            
+            require_once "database.php";
+            require_once "user.php";
+
             if(empty($_POST['Password']) || !isset($_POST['Password'])) {
-                $this->errors['password'] = "Password is required ";
+               return $this->errors['password'] = "Password is required ";
             }
 
             if(empty($_POST['CPassword']) || !isset($_POST['CPassword'])) {
-                $this->errors['cpassword'] = "Confirm Password is required ";
+               return $this->errors['cpassword'] = "Confirm Password is required ";
             }
 
             if(!($this->password == $this->cpassword)){
-                $this->errors['mismatch'] = "password and confirm password do not match";
+              return  $this->errors['mismatch'] = "password and confirm password do not match";
             }
 
             //cleaning user input for security
-            if(isset($_POST['Email']) && isset($_POST['Password']) && isset($_POST['CPassword'])){
-                $this->email = $this->Sanitize($_POST['Email']);
+            if(isset($_POST['Password']) && isset($_POST['CPassword'])){
+                session_start();
+                $this->email = $this->Sanitize($_SESSION["email"]);
                 $this->password = $this->Sanitize($_POST['Password']);
                 $this->cpassword = $this->Sanitize($_POST['CPassword']);
             }
 
             if(empty($this->errors)){
-                $data = new user;
-                echo $data->checkConnection();
+                   $data = new user;
+                   $data->checkConnection();
+                   
+               
+                   
 
                 //reseting the password
                 if(($this->password == $this->cpassword) && (isset($this->password) && isset($this->cpassword))){
-                    $update = $data->updateUser($this->email,$this->password);
+                    $this->hashedPassword = password_hash($this->password,PASSWORD_DEFAULT);
+                    $update = $data->updateUser($this->email,$this->hashedPassword);
+
+                    $row = $data->getUser($this->email);
+
+                    //navigating to dashboard based on user role
+                   if(password_verify($this->password,$row["password"])){ 
+                        
+                        $_SESSION["user_id"] = $row["id"];
+                        $_SESSION["email"] = $row["email"];
+                        $_SESSION["password"] = $row["password"];
+                        $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
+                        $_SESSION["role"] = $row["role_id"];
+                        $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
+
+                        if($_SESSION["role"] == 1){
+                                return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
+                        }
+                        if($_SESSION["role"] == 2){
+                                return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
+                        }
+                        if($_SESSION["role"] == 3){
+                                return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
+                        }
+                        if($_SESSION["role"] == 4){
+                                return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
+                        }
+                    }
+                    else{
+                        return  $this->errors["creditinals"] = "incorrect creditinals";
+                    }
+                    
                 }
 
-                $row = $data->getUser($this->email);
+                   
 
-                require_once "database.php";
-
-                //setting the user
-                session_start();
-                $_SESSION["user_id"] = $row["id"];
-                $_SESSION["email"] = $row["email"];
-                $_SESSION["password"] = $row["password"];
-                $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
-                $_SESSION["role"] = $row["role"];
-                $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
-
-                //navigating to dashboard based on user role
-                if($this->password == $row["password"]){
-                    if($_SESSION["role"] == 1){
-                        return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
-                    }
-                    if($_SESSION["role"] == 2){
-                        return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
-                    }
-                    if($_SESSION["role"] == 3){
-                        return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
-                    }
-                    if($_SESSION["role"] == 4){
-                        return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
-                    }
-                }
+                   
             }
         }
 
         public function validateRegister(){
+            require_once "database.php";
+            require_once "user.php";
+
             if(empty($_POST['Fname']) || !isset($_POST['Fname'])) {
-                $this->errors["fname"] = "firstname is required ";
+                return $this->errors["fname"] = "firstname is required ";
             }
+
             if(empty($_POST['Lname']) || !isset($_POST['Lname'])) {
-                $this->errors["lname"] = "Lastname is required ";
+                return $this->errors["lname"] = "Lastname is required ";
             }
+
             if(empty($_POST['Email']) || !isset($_POST['Email'])) {
-                $this->errors["email"] = "Email is required ";
+                return $this->errors["email"] = "Email is required ";
             }
+
             if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)) {
-                $this->errors["email2"] = "Invalid email format"; 
+                return $this->errors["email2"] = "Invalid email format"; 
             }
 
             if(empty($_POST['Password']) || !isset($_POST['Password'])) {
-                $this->errors["password"] = "Password is required ";
+                return $this->errors["password"] = "Password is required ";
             }
 
             if(empty($_POST['CPassword']) || !isset($_POST['CPassword'])) {
-                $this->errors['cpassword'] = "Confirm Password is required ";
+                return $this->errors["cpassword"] = "Confirm Password is required ";
+            }
+
+            if(empty($_POST['Phone']) || !isset($_POST['Phone'])) {
+                return $this->errors["phone"] = "Phone nnumber is required ";
             }
 
             if(!($this->password == $this->cpassword)){
-                $this->errors['mismatch'] = "password and confirm password do not match";
+                return $this->errors["mismatch"] = "password and confirm password do not match";
+            }
+            
+            if(empty($this->errors)){
+                if(isset($_POST['Fname']) && isset($_POST['Lname']) && isset($_POST['Email']) && isset($_POST['Password']) && isset($_POST['CPassword'])&& isset($_POST['Role']) && isset($_POST['Phone'])){
+
+                    $this->email = $this->Sanitize($_POST['Email']);
+                    $this->firstname = $this->Sanitize($_POST["Fname"]);
+                    $this->lastname = $this->Sanitize($_POST["Lname"]);
+                    $this->role = $this->Sanitize($_POST["Role"]);
+                    $this->phone = $this->Sanitize($_POST["Phone"]);
+                    $this->password = $this->Sanitize($_POST["Password"]);
+                    $this->hashedPassword = password_hash($this->password,PASSWORD_DEFAULT);
+
+                    $user = new user;
+                    $user = $user->registerUser($this->firstname,$this->lastname,$this->hashedPassword,$this->phone,$this->email,$this->role);
+                }
+
+                
+                $data = new user;
+                $row = $data->getUser($this->email);
+
+                session_start();
+                $_SESSION["user_id"] = $row["id"];
+                $_SESSION["email"] = $row["email"];
+                $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
+                $_SESSION["role"] = $row["role"];
+                $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
+
+                if($_SESSION["role"] == 1){
+                    return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
+                }
+                if($_SESSION["role"] == 2){
+                    return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
+                }
+                if($_SESSION["role"] == 3){
+                    return header("Location: \SYAD_Group2_Project\Routes\client\index.php");
+                }
+                if($_SESSION["role"] == 4){
+                    return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");
+                }
+
+                
             }
 
-
-            if(isset($_POST['Email']) && isset($_POST['Password'])){
-                $this->email = $this->Sanitize($_POST['Email']);
-                $this->password = $this->Sanitize($_POST['Password']);
-            }
             
         }
         

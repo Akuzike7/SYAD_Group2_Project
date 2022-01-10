@@ -29,6 +29,7 @@
             <input type="text" name="location" id="Location">
             <label class="formLabel" for="Phone">Phone</label>
             <input type="text" name="Phone" id="Phone">
+            <textarea name="list_ids" id="list_ids" cols="30" rows="10" hidden></textarea>
             <button class="formBtn" id="addBtn" disabled><img src="../../Images/add_list_48px.png" width="15px" alt="" srcset=""></button>
             <button class="formBtn" id="ReportBtn" type="submit" value="addFault" disabled>Report</button>
                    

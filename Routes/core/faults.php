@@ -14,7 +14,7 @@ class faults extends database{
            $result->execute();
            $row = $result->fetchAll(PDO::FETCH_ASSOC);
 
-           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.fault_id FROM users
            INNER JOIN fault_technician ON  users.id = fault_technician.technician_id
            INNER JOIN faults ON faults.id = fault_technician.fault_id;");
            $result = $this->query;
@@ -32,14 +32,13 @@ class faults extends database{
    
        
    }
-
-    //getting all unassigned faults
+   
+   //getting all unassigned faults
     public function getUnassignedFaults(){
        
-       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
-       INNER JOIN users ON  users.id = faults.user_id
-       INNER JOIN fault_category ON fault_category.id = faults.category_id
-       INNER JOIN fault_technician ON fault_technician.fault_id != faults.id;");
+       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults,fault_technician
+       INNER JOIN users ON  users.id != faults.user_id
+       INNER JOIN fault_category ON fault_category.id != faults.category_id;");
        $result = $this->query;
    
        try{
@@ -70,7 +69,7 @@ class faults extends database{
        try{
            $result->execute();
            $row = $result->fetchAll(PDO::FETCH_ASSOC);
-           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.fault_id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
            $result = $this->query;
            $result->execute();
            $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -99,7 +98,7 @@ class faults extends database{
        try{
            $result->execute();
            $row = $result->fetchAll(PDO::FETCH_ASSOC);
-           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.fault_id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
            $result = $this->query;
            $result->execute();
            $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -115,6 +114,7 @@ class faults extends database{
    
        
    }
+
 
     //getting all Unresolved faults
     public function getUnresolvedFaults(){
@@ -127,7 +127,7 @@ class faults extends database{
        try{
            $result->execute();
            $row = $result->fetchAll(PDO::FETCH_ASSOC);
-           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.fault_id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
            $result = $this->query;
            $result->execute();
            $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -144,6 +144,7 @@ class faults extends database{
        
    }
 
+  
     //getting all Unresolved faults
     public function getRemarkedFaults(){
        
@@ -156,7 +157,7 @@ class faults extends database{
        try{
            $result->execute();
            $row = $result->fetchAll(PDO::FETCH_ASSOC);
-           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.fault_id FROM users INNER JOIN fault_technician ON  users.id = fault_technician.technician_id  INNER JOIN faults ON faults.id = fault_technician.fault_id;");
            $result = $this->query;
            $result->execute();
            $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -200,7 +201,7 @@ class faults extends database{
    }
 
    //updating fault reported by specific user
-   public function updateFault($id,$category,$description,$location,$phone,$user){
+   public function updateFault($id,$category,$description,$location,$user,$status){
         $this->query = $this->checkConnection()->prepare("SELECT id FROM fault_category WHERE Category = :category;");
         $category_id = $this->query;
         
@@ -208,12 +209,12 @@ class faults extends database{
             $category_id->execute(["category"=>$category]);
             $cat_id = $category_id->fetch(PDO::FETCH_ASSOC);
 
-            $this->query = $this->checkConnection()->prepare("UPDATE faults SET category_id = :category_id, SET description = :description, SET location = :location,
-                        SET phone = :phone, SET user_id = :user WHERE id = :id)");
+            $this->query = $this->checkConnection()->prepare("UPDATE faults SET category_id = :category_id, description = :description,  location = :location, status = :status, user_id = :user WHERE id = :id;");
                         
             $result = $this->query;
-            $result->execute(["category_id"=>$cat_id["id"],"description"=>$description,"location"=>$location,"phone"=>$phone,"user"=>$user,"id"=>$id]);
-            return true;
+            $result->execute(["category_id"=>$cat_id["id"],"description"=>$description,"location"=>$location,"user"=>$user,"id"=>$id,"status"=>$status]);
+
+            return header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Faults.php ");
         }
         catch(PDOException $e){
             return "Failed to update fault ".$e->getMessage();
@@ -230,6 +231,7 @@ class faults extends database{
                         
         try{
             $result->execute(["id"=>$id]);
+            header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Faults.php");
             return true;
         }
         catch(PDOException $e){
@@ -312,6 +314,49 @@ class faults extends database{
     }
 }
 
+//getting faults reported monthly
+public function sumMonthlyFaults($month){
+    $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE MONTH(date_created) = :month AND YEAR(date_created) = YEAR(CURRENT_DATE)");
+    $result = $this->query;
 
+    try{
+        $result->execute(["month"=>$month]);
+        $result = $result->fetch();
+        return $result;
+    }
+    catch(PDOException $e){
+         "Failed to get number of faults ".$e->getMessage();
+    }
+}
+
+//getting faults reported monthly category
+public function sumMonthlyCategoryFaults($category_id,$month){
+    $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE category_id=:id AND MONTH(date_created) = :month AND YEAR(date_created) = YEAR(CURRENT_DATE)");
+    $result = $this->query;
+
+    try{
+        $result->execute(["id"=>$category_id,"month" => $month]);
+        $result = $result->fetch();
+        return $result;
+    }
+    catch(PDOException $e){
+         "Failed to get number of faults ".$e->getMessage();
+    }
+}
+
+//getting faults reported monthly category
+public function sumCurrentMonthCategoryFaults($category_id){
+    $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) FROM faults WHERE category_id=:id AND MONTH(date_created) = MONTH(CURRENT_DATE) AND YEAR(date_created) = YEAR(CURRENT_DATE)");
+    $result = $this->query;
+
+    try{
+        $result->execute(["id"=>$category_id]);
+        $result = $result->fetch();
+        return $result;
+    }
+    catch(PDOException $e){
+         "Failed to get number of faults ".$e->getMessage();
+    }
+}
 }
 
