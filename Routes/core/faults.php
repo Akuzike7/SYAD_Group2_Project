@@ -365,6 +365,36 @@ public function sumCurrentMonthCategoryFaults($category_id){
     }
 }
 
+//getting faults reported weekly category
+public function sumCurrentWeekCategoryFaults($category_id){
+    $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) as week FROM faults WHERE category_id=:id AND WEEK(date_created) = WEEK(CURRENT_DATE) AND YEAR(date_created) = YEAR(CURRENT_DATE)");
+    $result = $this->query;
+
+    try{
+        $result->execute(["id"=>$category_id]);
+        $result = $result->fetch();
+        return $result;
+    }
+    catch(PDOException $e){
+         "Failed to get number of faults ".$e->getMessage();
+    }
+}
+
+//getting faults reported weekly category
+public function getCurrentWeekCategoryFaults($category_id){
+    $this->query = $this->checkConnection()->prepare("SELECT COUNT(*) as week FROM faults WHERE category_id=:id AND WEEK(date_created) = WEEK(CURRENT_DATE) AND YEAR(date_created) = YEAR(CURRENT_DATE)");
+    $result = $this->query;
+
+    try{
+        $result->execute(["id"=>$category_id]);
+        $result = $result->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    catch(PDOException $e){
+         "Failed to get number of faults ".$e->getMessage();
+    }
+}
+
 //getting current month
 public function getCurrentMonth(){
     $this->query = $this->checkConnection()->prepare("SELECT MONTHNAME(CURRENT_DATE) as month;");

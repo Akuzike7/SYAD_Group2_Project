@@ -10,16 +10,16 @@
     user-select: none;
 }
 /* scrollbar customization*/
-.chat::-webkit-scrollbar,.remarks::-webkit-scrollbar,.ListFaults tbody::-webkit-scrollbar{
+.remarkChat::-webkit-scrollbar,.remarkside::-webkit-scrollbar,.ListFaults::-webkit-scrollbar{
     width: 5px;
     border-radius: 15px;
       
 }
-.chat::-webkit-scrollbar-thumb,.remarks::-webkit-scrollbar-thumb,.ListFaults tbody::-webkit-scrollbar-thumb{
+.remarkChat::-webkit-scrollbar-thumb,.remarkside::-webkit-scrollbar-thumb,.ListFaults::-webkit-scrollbar-thumb{
     background-color: gray;
     border-radius: 20px;
 }
-.chat::-webkit-scrollbar-track,.chat::-webkit-scrollbar-track,.ListFaults tbody::-webkit-scrollbar-track  {
+.remarkChat::-webkit-scrollbar-track,.remarkChat::-webkit-scrollbar-track,.ListFaults::-webkit-scrollbar-track  {
     border-radius: 15px;
     background-color: transparent;
 }
@@ -388,3 +388,89 @@
     z-index: 1;
 }
 
+/*------------------Report styles -------------------------*/
+.Report{
+    margin:0 auto;
+    width: 1000px;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 1px 1px #ccc;
+    padding-bottom: 10px;
+}
+
+.Tabs{
+    display: flex;
+    justify-content: flex-end;
+    margin-right:1px;
+}
+
+.Tabs h4{
+    margin: 1px 0;
+    padding: 5px;
+    font-size: smaller;
+    background-color: #eee;
+    border: 1px #ccc solid;
+    
+}
+
+.Tabs h4:hover{
+    background-color: #ccc;
+}
+
+.ReportTitle{
+    display: flex;
+    justify-content: center;
+    font: small;
+    margin: 40px 0;
+}
+
+.ReportBarchart{  
+    border: 1px #ccc solid;
+    padding: 10px;
+    width: 500px;
+    height: 350px;
+    margin: 2px;
+    
+}
+.ReportLinechart{  
+    border: 1px #ccc solid;
+    padding: 10px;
+    width: 500px;
+    height: 350px;
+    margin: 2px;
+    
+}
+.ReportGraphs{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+.ReportStats{
+    margin: 0 2px;
+    margin-top: 40px;
+    padding: 0 10px;
+}
+.ReportSummary{
+    margin: 0 2px;
+    margin-top: 40px;
+    padding: 0 10px;
+}
+.ReportBtns{
+    margin: 0 2px;
+    margin-top: 40px;
+    padding: 0 10px;
+    
+}
+.ReportBtn{
+    background-color:white ;
+    color: rgb(64, 137, 233);
+    border: 1px solid rgb(64, 137, 233);
+    border-radius: 3px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 150px;
+}
+.ReportBtn:hover{
+    cursor: pointer;
+    background-color: rgb(64, 137, 233);
+    color: white;
+}
