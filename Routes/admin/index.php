@@ -264,6 +264,17 @@
                             type:'line',
                                 data:data2,
                             options:{ 
+                                
+                                responsive: true,
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: 'Faults Reported Monthly'
+                                    },
+                                    legend: {
+                                        display:false,
+                                    }
+                                },
                                 maintainAspectRatio:false,
                                    
                                     scale:{
@@ -336,7 +347,15 @@
                             type:'bar',
                                 data,
                             options:{ 
-                                
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: 'Faults Reported '+month,
+                                        },
+                                        legend: {
+                                            display:false,
+                                        }
+                                    },
                                     maintainAspectRatio:false,
                                     scale:{
                                         y:{

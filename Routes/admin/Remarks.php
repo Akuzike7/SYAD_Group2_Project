@@ -30,6 +30,8 @@
 
                 let id = "#"+element.id;
 
+            
+
                 $(id).click(() =>{
                     const item = document.getElementById(element.id);
                     const comment = document.getElementById("comment");
@@ -49,6 +51,8 @@
                         location : location,
                         action : 1
                     })
+
+                    
                 })
             }),
             $(".remarkmain").on("keypress","#comment", (e) =>{
@@ -65,17 +69,22 @@
             }),
             $(".remarkmain").on("click","#messageBtn", () =>{
                 const messageInput = document.getElementById("comment");
-                let user = <?php echo $user?>;
-                let remarkId = sessionStorage.getItem("remarkId");
-                let response = messageInput.value;
-                messageInput.value = null;
 
-                $(".remarkChat").load("../components/RemarkAutoLoad.php",{
-                    userId : user,
-                    remarkId : remarkId,
-                    response : response,
-                    action : 2
-                })
+                if(messageInput.value != ""){
+                    let user = <?php echo $user?>;
+                    let remarkId = sessionStorage.getItem("remarkId");
+                    let response = messageInput.value;
+                    messageInput.value = null;
+    
+                    $(".remarkChat").load("../components/RemarkAutoLoad.php",{
+                        userId : user,
+                        remarkId : remarkId,
+                        response : response,
+                        action : 2
+                    })
+                    
+
+                }
             })
         })
        

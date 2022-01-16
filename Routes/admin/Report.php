@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../Style/style.css">
-    <script src="../../Chart.js-3.6.2/package/dist/chart.js"></script>
     <link rel="stylesheet" href="../components/style/Header.css">
     <title>Report</title>
+    <script src="../../Chart.js-3.6.2/package/dist/chart.js"></script>
+    <script src="../../javascript/jquery-3.6.0.min.js"></script>
+    
 </head>
 <body>
     <?php
@@ -16,14 +18,9 @@
     ?>
 
     <div class="Report">
-        <div>
-            <div class="Tabs">
-                <h4 id="weeklyBtn">Weekly</h4>
-                <h4 id="monthlyBtn">Monthly</h4> 
-            </div>
-        </div>
+        
         <div class="ReportTitle">
-            <h3>Weekly Report</h3>
+            <h3>Report</h3>
         </div>
         <div>
             <?php
@@ -58,7 +55,7 @@
 
                 $weeks = $faultsStats->getCurrentWeekCategoryFaults(5);
                 $week["carpentry"] = $weeks["week"];
-
+                
                 
             ?>
             <div class="ReportGraphs">
@@ -69,26 +66,7 @@
                             let category= <?php 
                                     echo $week = json_encode($week);
                                  ?>;
-                            let weeklyBtn = document.getElementById("weeklyBtn");
-                            let monthlyBtn = document.getElementById("monthlyBtn");
                             
-                            weeklyBtn.addEventListener("click",() =>{
-                                category= <?php 
-                                    echo $week = json_encode($week);
-                                 ?>;
-    
-                                let title = document.querySelector(".ReportTitle h3");
-                                title.innerHTML = "Weekly Report";
-                            });
-    
-                            monthlyBtn.addEventListener("click",() => {
-                                category= <?php 
-                                    echo $month = json_encode($months);
-                                 ?>;
-                                let title = document.querySelector(".ReportTitle h3");
-                                title.innerHTML = "Monthly Report";
-                                
-                            })
                             //setup
                             const data ={
                                 labels:['Plumbing','Electronic','General','Welding','Carpentry'],
@@ -107,7 +85,15 @@
                                 type:'bar',
                                     data,
                                 options:{ 
-                                    
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: 'Faults Reported ',
+                                            },
+                                            legend: {
+                                                display:false,
+                                            }
+                                        },
                                         maintainAspectRatio:false,
                                         scale:{
                                             y:{
@@ -137,28 +123,6 @@
                                 category= <?php 
                                     echo $week = json_encode($week);
                                  ?>;
-                                weeklyBtn = document.getElementById("weeklyBtn");
-                                monthlyBtn = document.getElementById("monthlyBtn");
-                            
-                            weeklyBtn.addEventListener("click",() =>{
-                                category= <?php 
-                                    echo $week = json_encode($week);
-                                 ?>;
-                                 monthly = false;
-    
-                                 title = document.querySelector(".ReportTitle h3");
-                                title.innerHTML = "Weekly Report";
-                            });
-    
-                            monthlyBtn.addEventListener("click",() => {
-                                category= <?php 
-                                    echo $month = json_encode($months);
-                                 ?>;
-                                 monthly = true;
-                                 title = document.querySelector(".ReportTitle h3");
-                                title.innerHTML = "Monthly Report";
-                                
-                            })
                             
                             <?php
                              $monthlyFault = $faultsStats->sumMonthlyFaults(1);
@@ -198,79 +162,48 @@
                              $monthy["december"] = $monthlyFault["month"];
                             ?>
                             
-                                if(monthly){
-                                    let months = <?php  echo $monthy = json_encode($monthy)?>;
-                                    console.log("we are in monthly");
-                                    //setup
-                                    const data2 ={
-                                        labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
-                                                datasets:[
-                                                    { 
-                                                        label:"Faults Reported Monthly",
-                                                        data:[months["january"],months["february"],months["march"],months["april"],months["may"],months["june"],months["july"],months["august"],months["september"],months["october"],months["november"],months["december"]],
-                                                        backgroundColor:'rgb(64, 137, 233)',
-                                                    }
-                                                ]
-                                            
-                                    }
-                    
-                                    //config block
-                                    const config2={
-                                        type:'line',
-                                        data:data2,
-                                        options:{ 
-                                            maintainAspectRatio:false,
-                                            
-                                                scale:{
-                                                    y:{
-                                                        beginAtZero: true,
-                                                    }
-                                                }
+            
+                            let months = <?php  echo $monthy = json_encode($monthy)?>;
+                            //setup
+                            const data2 ={
+                                labels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+                                        datasets:[
+                                            { 
+                                                label:"Faults Reported Monthly",
+                                                data:[months["january"],months["february"],months["march"],months["april"],months["may"],months["june"],months["july"],months["august"],months["september"],months["october"],months["november"],months["december"]],
+                                                backgroundColor:'rgb(64, 137, 233)',
                                             }
-                                    }
-                                    //init / render block
-                                    const myChart2 = document.getElementById('myChart2');
-                    
-                                    const massPopChart2 = new Chart(myChart2,config2);
-
-                                }
-                                else{
-                                    //setup
-                                    const data2 ={
-                                        labels:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-                                                datasets:[
-                                                    { 
-                                                        label:"Faults Reported",
-                                                        data:[4,8,4,2,6,9,2],
-                                                        backgroundColor:'rgb(64, 137, 233)',
-                                                    }
-                                                ]
-                                            
-                                    }
-                    
-                                    //config block
-                                    const config2={
-                                        type:'line',
-                                        data:data2,
-                                        options:{ 
-                                            maintainAspectRatio:false,
-                                            
-                                                scale:{
-                                                    y:{
-                                                        beginAtZero: true,
-                                                    }
-                                                }
-                                            }
-                                    }
-                                    //init / render block
-                                    const myChart2 = document.getElementById('myChart2');
-                    
-                                    const massPopChart2 = new Chart(myChart2,config2);
-                                }
-                            
-                               
+                                        ]
                                     
-                               
+                            }
+            
+                            //config block
+                            const config2={
+                                type:'line',
+                                data:data2,
+                                options:{ 
+                                    plugins: {
+                                            title: {
+                                                display: true,
+                                                text: 'Faults Reported ',
+                                            },
+                                            legend: {
+                                                display:false,
+                                            }
+                                        },
+                                    maintainAspectRatio:false,
+                                    
+                                        scale:{
+                                            y:{
+                                                beginAtZero: true,
+                                            }
+                                        }
+                                    }
+                            }
+                            //init / render block
+                            const myChart2 = document.getElementById('myChart2');
+            
+                            const massPopChart2 = new Chart(myChart2,config2);                            
                                 
         
                     </script>
@@ -298,7 +231,6 @@
             </div>
             <div style="display: flex;justify-content: flex-end;">
                 <div class="ReportBtns">
-                    <button class="ReportBtn">Cancel</button>
                     <button class="ReportBtn">Print</button>
                 </div>
             </div>

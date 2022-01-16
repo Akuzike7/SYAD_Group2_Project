@@ -21,8 +21,6 @@ echo '</tr>';
 $action = $_POST['action'];
 
 
-
-
     $faults = new faults;
     $userFaults = new UserFault;
     
