@@ -137,7 +137,39 @@ class faults extends database{
 
        }
        catch(PDOException $e){
-            return false;
+            return $e;
+       }
+       
+   
+       
+   }
+
+    //getting all faults not resolved within 24hrs 
+    public function getUnresolvedFaults24(){
+       
+       $this->query = $this->checkConnection()->prepare("SELECT COUNT(faults.id) as total FROM faults
+       INNER JOIN users ON  users.id = faults.user_id  
+       INNER JOIN fault_category ON fault_category.id = faults.category_id WHERE faults.status != 'Done' AND CURRENT_DATE > DATE_ADD(faults.date_created, INTERVAL 1 DAY);");
+       $result = $this->query;
+   
+       try{
+           $result->execute();
+           $row = $result->fetchAll(PDO::FETCH_ASSOC);
+           $this->query = $this->checkConnection()->prepare("SELECT users.firstname,users.lastname,fault_technician.fault_id,faults.description,DATEDIFF(CURRENT_DATE,faults.date_created) as overdue FROM users
+           INNER JOIN fault_technician ON  users.id = fault_technician.technician_id
+           INNER JOIN faults ON faults.id = fault_technician.fault_id
+           WHERE faults.status != 'Done' AND CURRENT_DATE > DATE_ADD(faults.date_created, INTERVAL 1 DAY);");
+
+           $result = $this->query;
+           $result->execute();
+           $row2 = $result->fetchAll(PDO::FETCH_ASSOC);
+           
+           $faults = [$row,$row2];
+           return $faults;
+
+       }
+       catch(PDOException $e){
+            return $e;
        }
        
    
@@ -148,7 +180,7 @@ class faults extends database{
     //getting all Unresolved faults
     public function getRemarkedFaults(){
        
-       $this->query = $this->checkConnection()->prepare("SELECT faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
+       $this->query = $this->checkConnection()->prepare("SELECT COUNT(faults.id) as total,faults.id,faults.description,faults.location,faults.status,faults.date_created,faults.phone,users.firstname,users.lastname,fault_category.category FROM faults
        INNER JOIN users ON  users.id = faults.user_id  
        INNER JOIN fault_category ON fault_category.id = faults.category_id
        INNER JOIN remarks ON remarks.fault_id = faults.id;");
@@ -409,5 +441,6 @@ public function getCurrentMonth(){
          "Failed to get number of faults ".$e->getMessage();
     }
 }
+
 }
 

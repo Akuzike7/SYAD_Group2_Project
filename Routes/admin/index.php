@@ -225,19 +225,36 @@
 
                     <div class="tileStat">
                         <div class="tileItem">
+                        <?php
+                                require_once "../components/AutoLoader.php";
+                                $unremarked = new faults; 
+                                $unremarked = $unremarked->getRemarkedFaults();
+                                
+                            ?>
                             <img src="../../Images/online_maintenance_portal_48px.png" width="20px" alt="" srcset="">
                             <h4>Remarks</h4>
                         </div>
-                        <h4>9</h4>
+                        <h4><?php print_r($unremarked[0][0]["total"])?></h4>
                     </div> 
                     <div class="tileStat">
                         <div class="tileItem">
+                            <?php
+                                require_once "../components/AutoLoader.php";
+                                $unresolved = new faults; 
+                                $unresolved = $unresolved->getUnresolvedFaults24();
+                                
+                            ?>
                             <img src="../../Images/error_48px.png" width="20px" alt="" srcset="">
                             <h4>Faults not resolved in 24hrs</h4>
                         </div>
-                        <h4>9</h4>
+                        <h4><?php echo $unresolved[0][0]["total"]?></h4>
                     </div> 
-                   
+                    <div class="dashBtns">
+                        <button class="dashboardBtn" id="Unassigned_faults">Unassigned Faults</button>
+                        <button class="dashboardBtn" id="Unresolved_faults">Unresolved Faults</button>
+                        <button class="dashboardBtn">Generate Report</button>
+                        
+                    </div>
                 </div>
                 
 
@@ -297,29 +314,30 @@
                    </div>
             </div>
             <div class="CLeft">
-            <div class="notifications">
-                    <h4 class="tileTitle">Notifications</h4>
-
-                    <div class="tileStat">
-                        <div class="tileItem">
-                            <img src="../../Images/online_maintenance_portal_48px.png" width="20px" alt="" srcset="">
-                            <h4>Remarks</h4>
-                        </div>
-                        <h4>9</h4>
-                    </div> 
-                    <div class="tileStat">
-                        <div class="tileItem">
-                            <img src="../../Images/error_48px.png" width="20px" alt="" srcset="">
-                            <h4>Faults not resolved in 24hrs</h4>
-                        </div>
-                        <h4>9</h4>
-                    </div> 
-                    <div class="dashBtns">
-                        <button class="dashboardBtn" id="Unassigned_faults">Unassigned Faults</button>
-                        <button class="dashboardBtn" id="Unresolved_faults">Unresolved Faults</button>
-                        <button class="dashboardBtn">Generate Report</button>
+            <div id="Overdue">
+                    <table id="overdueTable">
+                        <caption class="ListFaultTitle">Overdue Tasks</caption>
+                        <tr id="overdueHead">
+                            <th>id</th>
+                            <th>Fault</th>
+                            <th>Technician</th>
+                            <th>Overdue</th>
+                        </tr>
+                        <?php foreach($unresolved[1] as $fault):?>
+                        <tr>
+                            <td><?php echo $fault["fault_id"]?></td>
+                            <td><?php echo $fault["description"]?></td>
+                            <td><?php echo $fault["firstname"]." ".$fault["lastname"]?></td>
+                            <td><?php echo $fault["overdue"]?></td>
+                        </tr>
+                        <?php endforeach?>
+                       
                         
-                    </div>
+                        
+                       
+                        
+                    </table>
+                    
                 </div>
                 <div class="Barchart">
                     <canvas id="myChart" ></canvas>

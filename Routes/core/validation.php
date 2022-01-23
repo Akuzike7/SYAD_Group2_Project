@@ -245,18 +245,19 @@ class validation{
 
                     $user = new user;
                     $user = $user->registerUser($this->firstname,$this->lastname,$this->hashedPassword,$this->phone,$this->email,$this->role);
+                   
+                    $data = new user;
+                    $row = $data->getUser($this->email);
+    
+                    session_start();
+                    $_SESSION["user_id"] = $row["id"];
+                    $_SESSION["email"] = $row["email"];
+                    $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
+                    $_SESSION["role"] = $row["role"];
+                    $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
                 }
 
                 
-                $data = new user;
-                $row = $data->getUser($this->email);
-
-                session_start();
-                $_SESSION["user_id"] = $row["id"];
-                $_SESSION["email"] = $row["email"];
-                $_SESSION["name"] = $row["firstname"] ." ". $row["lastname"];
-                $_SESSION["role"] = $row["role"];
-                $_SESSION["roleName"] = $data->getRole($_SESSION["role"]);
 
                 if($_SESSION["role"] == 1){
                     return header("Location: \SYAD_Group2_Project\Routes\admin\index.php");

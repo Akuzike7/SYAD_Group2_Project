@@ -199,7 +199,7 @@
                                
                             ?>
                             <?php if($Tables):?>
-                               
+                            <?php rsort($Tables[0])?> 
                             <?php foreach($Tables[0] as $row):?>
                             
                             <tr id="tableRow">
@@ -223,7 +223,15 @@
                                 ?>
                                 <td><?php echo $name?></td>
                                 <td><?php echo $row["phone"]?></td>
-                                <td><?php echo $row["status"]?></td>
+                                <td style="color:<?php 
+                                if($row["status"] == 'Done'){
+                                    echo "rgb(94,255,40)";
+                                }
+                                else{
+                                    echo "red";
+                                }?>">
+                                    <?php echo $row["status"]?>
+                                </td>
                             </tr>
 
                             <?php endforeach?>

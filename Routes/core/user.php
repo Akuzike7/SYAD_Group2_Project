@@ -38,7 +38,7 @@ class user extends database{
 
         }
         catch(PDOException $e){
-            return false;
+            return $e;
         }
         
         

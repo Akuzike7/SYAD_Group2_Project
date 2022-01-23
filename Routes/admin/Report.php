@@ -88,7 +88,7 @@
                                         plugins: {
                                             title: {
                                                 display: true,
-                                                text: 'Faults Reported ',
+                                                text: 'Faults Reported Weekly ',
                                             },
                                             legend: {
                                                 display:false,
@@ -185,7 +185,7 @@
                                     plugins: {
                                             title: {
                                                 display: true,
-                                                text: 'Faults Reported ',
+                                                text: 'Faults Reported Monthly',
                                             },
                                             legend: {
                                                 display:false,

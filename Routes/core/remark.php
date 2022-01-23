@@ -9,7 +9,7 @@ class remark extends database{
             $result = $this->query;
             $result->execute(["user_id"=>$user_id,"fault_id"=>$fault_id,"remark"=>$remark]); 
                      
-            return header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Remarks.php ");        
+            return header("Location: \SYAD_GROUP2_PROJECT\Routes\admin\Remarks.php");        
         }
         catch(PDOException $e){
             return "Failed to Report fault ".$e->getMessage();
